@@ -50,7 +50,7 @@ export default function ContactPage() {
             <p className="text-xs sm:text-sm text-muted leading-relaxed font-normal">
               For general inquiries, editorial feedback, or privacy-related questions:
             </p>
-            <div className="p-3.5 rounded-xl bg-[#F6F6F4] dark:bg-[#161619] border border-border/80 text-xs font-mono text-foreground">
+            <div className="p-3.5 rounded-xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper text-xs font-mono text-foreground">
               [TODO: OWNER - Supply official contact email, e.g. support@base64toolkit.com]
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function ContactPage() {
             <p className="text-xs sm:text-sm text-muted leading-relaxed font-normal">
               If a specific byte sequence, character, or file fails to encode or decode properly, please provide the details below to help us reproduce the issue.
             </p>
-            <div className="p-3.5 rounded-xl bg-[#F6F6F4] dark:bg-[#161619] border border-border/80 text-xs font-mono text-muted">
+            <div className="p-3.5 rounded-xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper text-xs font-mono text-muted">
               [TODO: OWNER - Supply issue tracker or bug report channel]
             </div>
           </div>

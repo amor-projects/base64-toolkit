@@ -147,7 +147,7 @@ export function ImageToBase64Tool() {
 
   return (
     <ToolPanel variant="primary" className="w-full">
-      <ToolPanelHeader className="flex-wrap bg-[#FBFBFA] dark:bg-[#131316]">
+      <ToolPanelHeader className="flex-wrap bg-surface dark:bg-[#141417]">
         <div className="flex items-center gap-2.5">
           <span className="w-2.5 h-2.5 rounded-full bg-[#84CC16] shadow-[0_0_8px_rgba(132,204,22,0.6)]" />
           <span className="font-semibold text-sm tracking-tight text-foreground font-sans">
@@ -195,7 +195,7 @@ export function ImageToBase64Tool() {
             className={`md:col-span-2 border-2 border-dashed rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-180 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isDragging
                 ? "border-[#84CC16] bg-[#84CC16]/10 scale-[1.01]"
-                : "border-border/90 bg-[#F9F9F7] dark:bg-[#161619] hover:border-[#84CC16]/60 hover:bg-surface"
+                : "border-border/90 bg-surface dark:bg-[#161619] hover:border-[#84CC16]/60 shadow-whisper"
             }`}
           >
             <input

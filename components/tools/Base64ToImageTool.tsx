@@ -136,7 +136,7 @@ export function Base64ToImageTool() {
 
   return (
     <ToolPanel variant="primary" className="w-full">
-      <ToolPanelHeader className="flex-wrap bg-[#FBFBFA] dark:bg-[#131316]">
+      <ToolPanelHeader className="flex-wrap bg-surface dark:bg-[#141417]">
         <div className="flex items-center gap-2.5">
           <span className="w-2.5 h-2.5 rounded-full bg-[#84CC16] shadow-[0_0_8px_rgba(132,204,22,0.6)]" />
           <span className="font-semibold text-sm tracking-tight text-foreground font-sans">
@@ -198,7 +198,7 @@ export function Base64ToImageTool() {
             <div className="border border-border/80 rounded-2xl p-4 bg-surface flex flex-col items-center justify-center text-center min-h-[260px] sm:min-h-[300px]">
               {previewDataUri ? (
                 <div className="flex flex-col items-center justify-center gap-3 w-full h-full">
-                  <div className="w-full h-44 flex items-center justify-center bg-[#F4F4F2] dark:bg-[#1E1E22] rounded-xl overflow-hidden p-2">
+                  <div className="w-full h-44 flex items-center justify-center bg-black/[0.02] dark:bg-[#1E1E22] rounded-xl overflow-hidden p-2">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={previewDataUri}
@@ -230,7 +230,7 @@ export function Base64ToImageTool() {
         </div>
 
         {/* Download controls */}
-        <div className="p-5 rounded-2xl bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+        <div className="p-5 rounded-2xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
           <div className="flex-1 w-full max-w-sm flex flex-col gap-1.5">
             <label htmlFor={filenameId} className="text-xs font-semibold text-foreground">
               Save Filename

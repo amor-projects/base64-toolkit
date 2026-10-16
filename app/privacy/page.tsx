@@ -106,7 +106,7 @@ export default function PrivacyPage() {
             <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
               4. Advertising &amp; Third-Party Integrations
             </h2>
-            <div className="p-4 rounded-xl bg-[#F6F6F4] dark:bg-[#161619] border border-border/80 space-y-2">
+            <div className="p-4 rounded-xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper space-y-2">
               <div className="flex items-center gap-2 text-foreground font-semibold text-xs">
                 <InfoIcon size={16} />
                 <span>Planned Integrations Disclosure</span>

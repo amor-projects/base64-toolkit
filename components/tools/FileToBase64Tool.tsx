@@ -115,7 +115,7 @@ export function FileToBase64Tool() {
 
   return (
     <ToolPanel variant="primary" className="w-full">
-      <ToolPanelHeader className="flex-wrap bg-[#FBFBFA] dark:bg-[#131316]">
+      <ToolPanelHeader className="flex-wrap bg-surface dark:bg-[#141417]">
         <div className="flex items-center gap-2.5">
           <span className="w-2.5 h-2.5 rounded-full bg-[#84CC16] shadow-[0_0_8px_rgba(132,204,22,0.6)]" />
           <span className="font-semibold text-sm tracking-tight text-foreground font-sans">
@@ -168,7 +168,7 @@ export function FileToBase64Tool() {
           className={`border-2 border-dashed rounded-3xl p-8 sm:p-10 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-180 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             isDragging
               ? "border-[#84CC16] bg-[#84CC16]/10 scale-[1.01]"
-              : "border-border/90 bg-[#F9F9F7] dark:bg-[#161619] hover:border-[#84CC16]/60 hover:bg-surface"
+              : "border-border/90 bg-surface dark:bg-[#161619] hover:border-[#84CC16]/60 shadow-whisper"
           }`}
         >
           <input
@@ -225,13 +225,13 @@ export function FileToBase64Tool() {
               Base64 Output String
             </label>
             <div className="flex items-center gap-1.5 font-mono text-[11px] text-muted">
-              <span className="bg-[#F0F0EE] dark:bg-[#1E1E22] px-2 py-0.5 rounded-md">
+              <span className="bg-black/[0.03] dark:bg-white/[0.06] border border-border/70 text-foreground/80 px-2 py-0.5 rounded-md">
                 {base64Output.length} chars
               </span>
               {metadata && (
                 <>
                   <span>•</span>
-                  <span className="bg-[#F0F0EE] dark:bg-[#1E1E22] px-2 py-0.5 rounded-md">
+                  <span className="bg-black/[0.03] dark:bg-white/[0.06] border border-border/70 text-foreground/80 px-2 py-0.5 rounded-md">
                     +{Math.round(((base64Output.length - metadata.size) / metadata.size) * 100)}% expansion
                   </span>
                 </>

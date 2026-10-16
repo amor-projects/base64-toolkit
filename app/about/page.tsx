@@ -104,7 +104,7 @@ export default function AboutPage() {
         </section>
 
         {/* Operator Information Box */}
-        <section className="p-6 rounded-2xl bg-[#F6F6F4] dark:bg-[#161619] border border-border/80 text-xs text-muted space-y-2">
+        <section className="p-6 rounded-2xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper text-xs text-muted space-y-2">
           <h3 className="text-sm font-semibold text-foreground">Project Operator &amp; Contact</h3>
           <p>
             This website is maintained as an independent open developer resource.

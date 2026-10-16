@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "@fontsource/comic-mono/400.css";
+import "@fontsource/comic-mono/700.css";
 import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/navigation/Footer";
 
@@ -55,7 +57,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <Header />
-        <div className="flex-1 flex flex-col">{children}</div>
+        <main className="flex-1 flex flex-col animate-page-enter">{children}</main>
         <Footer />
       </body>
     </html>

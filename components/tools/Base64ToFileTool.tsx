@@ -107,7 +107,7 @@ export function Base64ToFileTool() {
 
   return (
     <ToolPanel variant="primary" className="w-full">
-      <ToolPanelHeader className="flex-wrap bg-[#FBFBFA] dark:bg-[#131316]">
+      <ToolPanelHeader className="flex-wrap bg-surface dark:bg-[#141417]">
         <div className="flex items-center gap-2.5">
           <span className="w-2.5 h-2.5 rounded-full bg-[#84CC16] shadow-[0_0_8px_rgba(132,204,22,0.6)]" />
           <span className="font-semibold text-sm tracking-tight text-foreground font-sans">
@@ -145,13 +145,13 @@ export function Base64ToFileTool() {
               Base64 or Data URI Input
             </label>
             <div className="flex items-center gap-1.5 font-mono text-[11px] text-muted">
-              <span className="bg-[#F0F0EE] dark:bg-[#1E1E22] px-2 py-0.5 rounded-md">
+              <span className="bg-black/[0.03] dark:bg-white/[0.06] border border-border/70 text-foreground/80 px-2 py-0.5 rounded-md">
                 {input.length} chars
               </span>
               {byteRes && byteRes.success && (
                 <>
                   <span>•</span>
-                  <span className="bg-[#F0F0EE] dark:bg-[#1E1E22] px-2 py-0.5 rounded-md">
+                  <span className="bg-black/[0.03] dark:bg-white/[0.06] border border-border/70 text-foreground/80 px-2 py-0.5 rounded-md">
                     {formatBytes(byteRes.data.length)} binary bytes
                   </span>
                 </>
@@ -192,7 +192,7 @@ export function Base64ToFileTool() {
         )}
 
         {/* Filename & Download Controls */}
-        <div className="p-5 rounded-2xl bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+        <div className="p-5 rounded-2xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
           <div className="flex-1 w-full max-w-sm flex flex-col gap-1.5">
             <label htmlFor={filenameId} className="text-xs font-semibold text-foreground">
               Save Filename

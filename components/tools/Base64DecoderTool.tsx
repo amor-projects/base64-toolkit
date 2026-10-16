@@ -172,7 +172,7 @@ export function Base64DecoderTool({ initialBase64 = "", className = "" }: Base64
   return (
     <ToolPanel variant="primary" className={`w-full ${className}`}>
       {/* Header */}
-      <ToolPanelHeader className="flex-wrap bg-[#FBFBFA] dark:bg-[#131316]">
+      <ToolPanelHeader className="flex-wrap bg-surface dark:bg-[#141417]">
         <div className="flex items-center gap-2.5">
           <span className="w-2.5 h-2.5 rounded-full bg-[#84CC16] shadow-[0_0_8px_rgba(132,204,22,0.6)]" />
           <span className="font-semibold text-sm tracking-tight text-foreground font-sans">
@@ -252,13 +252,13 @@ export function Base64DecoderTool({ initialBase64 = "", className = "" }: Base64
                 Base64 Encoded Input
               </label>
               <div className="flex items-center gap-1.5 font-mono text-[11px] text-muted">
-                <span className="bg-[#F0F0EE] dark:bg-[#1E1E22] px-2 py-0.5 rounded-md">
+                <span className="bg-black/[0.03] dark:bg-white/[0.06] border border-border/70 text-foreground/80 px-2 py-0.5 rounded-md">
                   {inputCharCount} chars
                 </span>
                 {estimatedByteSize > 0 && (
                   <>
                     <span>•</span>
-                    <span className="bg-[#F0F0EE] dark:bg-[#1E1E22] px-2 py-0.5 rounded-md">
+                    <span className="bg-black/[0.03] dark:bg-white/[0.06] border border-border/70 text-foreground/80 px-2 py-0.5 rounded-md">
                       ~{estimatedByteSize} decoded bytes
                     </span>
                   </>
@@ -287,11 +287,11 @@ export function Base64DecoderTool({ initialBase64 = "", className = "" }: Base64
                 Decoded Plain Text (UTF-8)
               </label>
               <div className="flex items-center gap-1.5 font-mono text-[11px] text-muted">
-                <span className="bg-[#F0F0EE] dark:bg-[#1E1E22] px-2 py-0.5 rounded-md">
+                <span className="bg-black/[0.03] dark:bg-white/[0.06] border border-border/70 text-foreground/80 px-2 py-0.5 rounded-md">
                   {outputCharCount} chars
                 </span>
                 <span>•</span>
-                <span className="bg-[#F0F0EE] dark:bg-[#1E1E22] px-2 py-0.5 rounded-md">
+                <span className="bg-black/[0.03] dark:bg-white/[0.06] border border-border/70 text-foreground/80 px-2 py-0.5 rounded-md">
                   {outputByteCount} UTF-8 bytes
                 </span>
               </div>

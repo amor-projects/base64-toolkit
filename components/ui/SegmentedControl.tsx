@@ -37,7 +37,7 @@ export function SegmentedControl<T extends string = string>({
   return (
     <div
       role="tablist"
-      className={`inline-flex items-center bg-[#EFEFED] dark:bg-[#1E1E22] border border-black/[0.03] dark:border-white/[0.04] ${sizeStyles[size]} ${className}`}
+      className={`inline-flex items-center bg-black/[0.04] dark:bg-[#1E1E22] border border-border/70 ${sizeStyles[size]} ${className}`}
     >
       {options.map((option) => {
         const isSelected = option.id === value;

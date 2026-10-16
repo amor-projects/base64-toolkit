@@ -57,19 +57,19 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`px-3 py-1.5 rounded-xl text-[13px] transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center gap-2 ${
+                className={`relative px-3.5 py-2 rounded-xl text-[13px] transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center ${
                   isActive
-                    ? "bg-black/[0.05] dark:bg-white/[0.08] text-foreground border border-black/[0.06] dark:border-white/[0.08] shadow-whisper font-semibold"
+                    ? "text-foreground font-semibold bg-black/[0.04] dark:bg-white/[0.06]"
                     : "text-muted font-medium hover:text-foreground hover:bg-black/[0.03] dark:hover:bg-white/[0.04]"
                 }`}
               >
+                <span>{item.label}</span>
                 {isActive && (
                   <span
-                    className="w-1.5 h-1.5 rounded-full bg-[#65A30D] dark:bg-[#A3E635] shadow-[0_0_6px_rgba(101,163,13,0.7)]"
+                    className="absolute bottom-0 inset-x-2.5 h-[2px] bg-[#65A30D] dark:bg-[#A3E635] rounded-full"
                     aria-hidden="true"
                   />
                 )}
-                <span>{item.label}</span>
               </Link>
             );
           })}

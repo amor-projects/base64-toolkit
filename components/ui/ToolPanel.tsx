@@ -17,7 +17,7 @@ export function ToolPanel({
     secondary:
       "bg-surface border border-border/80 shadow-card rounded-2xl",
     subtle:
-      "bg-[#FBFBFA] dark:bg-[#141416] border border-border/60 shadow-whisper rounded-2xl",
+      "bg-surface dark:bg-[#141416] border border-border/70 shadow-whisper rounded-2xl",
   };
 
   return (
@@ -37,7 +37,7 @@ export function ToolPanelHeader({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={`px-6 py-4.5 border-b border-border/60 flex items-center justify-between gap-4 ${className}`}
+      className={`px-6 py-4.5 bg-surface dark:bg-[#141417] border-b border-border/60 flex items-center justify-between gap-4 ${className}`}
       {...props}
     >
       {children}
@@ -64,7 +64,7 @@ export function ToolPanelFooter({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={`px-6 py-4 bg-[#F8F8F6] dark:bg-[#121215] border-t border-border/60 flex flex-wrap items-center justify-between gap-4 text-xs text-muted ${className}`}
+      className={`px-6 py-4 bg-surface dark:bg-[#121215] border-t border-border/60 flex flex-wrap items-center justify-between gap-4 text-xs text-muted ${className}`}
       {...props}
     >
       {children}

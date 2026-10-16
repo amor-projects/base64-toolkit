@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EDUCATIONAL_GUIDES } from "@/lib/content/guides";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { MarkdownRenderer } from "@/components/content/MarkdownRenderer";
 import {
   ShieldCheckIcon,
   ArrowRightIcon,
@@ -138,14 +139,12 @@ export default async function GuidePage({ params }: GuidePageProps) {
                 {section.title}
               </h2>
 
-              <div className="text-sm sm:text-base text-muted space-y-4 font-normal leading-relaxed whitespace-pre-line">
-                {section.content}
-              </div>
+              <MarkdownRenderer content={section.content} />
 
               {section.codeSnippet && (
                 <div className="rounded-2xl border border-border/80 overflow-hidden shadow-whisper my-4">
                   {section.codeSnippet.caption && (
-                    <div className="px-4 py-2 bg-[#F6F6F4] dark:bg-[#161619] border-b border-border/80 text-[11px] font-mono text-muted flex items-center justify-between">
+                    <div className="px-4 py-2 bg-surface dark:bg-[#161619] border-b border-border/80 text-[11px] font-mono text-muted flex items-center justify-between">
                       <span>{section.codeSnippet.caption}</span>
                       <span className="uppercase text-[10px] font-semibold">
                         {section.codeSnippet.language}

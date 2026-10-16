@@ -56,7 +56,7 @@ export default function Base64SizeCalculatorPage() {
           <div className="overflow-x-auto rounded-2xl border border-border/80 shadow-whisper bg-surface">
             <table className="w-full text-left text-xs border-collapse font-sans">
               <thead>
-                <tr className="border-b border-border/70 bg-[#FBFBFA] dark:bg-[#151518]">
+                <tr className="border-b border-border/70 bg-surface dark:bg-[#151518]">
                   <th className="py-3 px-4 font-semibold text-foreground">Binary Input Size</th>
                   <th className="py-3 px-4 font-semibold text-foreground">Base64 Output Length</th>
                   <th className="py-3 px-4 font-semibold text-foreground">Added Overhead</th>

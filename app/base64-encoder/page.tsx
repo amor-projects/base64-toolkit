@@ -127,7 +127,7 @@ export default function Base64EncoderPage() {
           <div className="overflow-x-auto rounded-2xl border border-border/80 shadow-whisper bg-surface">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="border-b border-border/70 bg-[#FBFBFA] dark:bg-[#151518]">
+                <tr className="border-b border-border/70 bg-surface dark:bg-[#151518]">
                   <th className="py-3 px-4 font-semibold text-foreground">Input Text</th>
                   <th className="py-3 px-4 font-semibold text-foreground">Type / Notes</th>
                   <th className="py-3 px-4 font-semibold text-foreground">Base64 Encoded</th>
