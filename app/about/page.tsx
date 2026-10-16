@@ -115,8 +115,8 @@ export default function AboutPage() {
             This website is maintained as an independent open developer resource.
           </p>
           <p className="font-mono text-[11px]">
-            Operator: [TODO: OWNER - Specify individual or company operator name]<br />
-            Location: [TODO: OWNER - Specify operator jurisdiction/country]<br />
+            Operator: Abdul Samad (aka amorzephyr)<br />
+            Location: Pakistan (operator residence)<br />
             Inquiries: <Link href="/contact" className="text-[#27440D] dark:text-[#BEF264] underline">Contact Page</Link>
           </p>
         </section>

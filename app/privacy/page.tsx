@@ -133,9 +133,9 @@ export default function PrivacyPage() {
               If you have questions regarding this Privacy Policy or data handling practices, please contact:
             </p>
             <div className="p-4 rounded-xl bg-surface border border-border/80 font-mono text-xs space-y-1">
-              <p>Operator: [TODO: OWNER - Supply legal entity name or operator name]</p>
-              <p>Email: [TODO: OWNER - Supply privacy contact email address]</p>
-              <p>Jurisdiction: [TODO: OWNER - Supply legal jurisdiction / country]</p>
+              <p>Operator: Abdul Samad (aka amorzephyr)</p>
+              <p>Email: <a href="mailto:amorzephyr@gmail.com" className="underline underline-offset-2">amorzephyr@gmail.com</a></p>
+              <p>Jurisdiction: Pakistan (operator residence)</p>
               <p>Effective Date: [TODO: OWNER - Supply effective date, e.g. October 16, 2026]</p>
             </div>
           </section>

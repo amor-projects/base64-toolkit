@@ -52,7 +52,7 @@ Run the relevant checks before submitting changes. Browser-level coverage can be
 
 ## Configuration
 
-The canonical site URL defaults to `https://base64toolkit.com`. Set `NEXT_PUBLIC_SITE_URL` in the deployment environment when using another domain:
+The canonical site URL defaults to `https://best-base64-toolkit.vercel.app`. Set `NEXT_PUBLIC_SITE_URL` in the deployment environment when using another domain:
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://your-domain.example
@@ -80,26 +80,22 @@ Conversion logic should remain independent of React so it can be tested without 
 - Base64 is an encoding, not encryption. The product must not describe encoded output as secret or secure.
 - Decoded content is treated as untrusted. Do not execute or inject decoded HTML/SVG content without a deliberate sanitization design.
 - File conversion has a default 10 MB limit to reduce browser memory and responsiveness problems.
-- The privacy policy currently describes hosting access logs and states that advertising and behavioral tracking scripts are not active.
+- The privacy policy currently describes hosting access logs and the browser-local processing model.
 
-## Owner information still needed
+## Owner and publication details
 
-The legal and contact pages contain explicit `[TODO: OWNER]` markers. Please provide the following before treating those pages as publication-ready:
+The current operator and contact details are:
 
-1. **Operator identity** — the individual or legal company name to display as the site operator.
-2. **Location and jurisdiction** — country/state or other jurisdiction for the About and Privacy pages.
-3. **Governing law** — the jurisdiction whose laws govern the Terms page. This should match the advice of your legal professional where applicable.
-4. **Official contact email** — the public support/general-inquiry address.
-5. **Privacy contact email** — whether this is the same address or a separate privacy address.
-6. **Bug-report channel** — a GitHub issue URL, email address, or other support channel for technical reports.
-7. **Effective date** — the date the Privacy Policy and Terms should take effect.
+- **Operator:** Abdul Samad, also known as `amorzephyr`
+- **Residence/jurisdiction:** Pakistan
+- **General contact:** [base64.toolkit@gmail.com](mailto:base64.toolkit@gmail.com)
+- **Privacy contact:** [amorzephyr@gmail.com](mailto:amorzephyr@gmail.com)
+- **Bug reports:** [GitHub Issues](https://github.com/amor-projects/base64-toolkit/issues)
+- **Production URL:** [best-base64-toolkit.vercel.app](https://best-base64-toolkit.vercel.app/)
 
-There are also two deployment decisions to confirm:
+The effective date for the Privacy Policy and Terms still needs to be selected before those pages are treated as final.
 
-- **Canonical production domain:** confirm `base64toolkit.com`, or provide the actual domain for `NEXT_PUBLIC_SITE_URL`.
-- **Analytics/advertising plan:** confirm whether GA4, AdSense, or another third-party service will be enabled. None should be described as active until it is actually configured, disclosed, and paired with the required consent behavior for the regions served.
-
-Current placeholder locations are [About](app/about/page.tsx), [Contact](app/contact/page.tsx), [Privacy](app/privacy/page.tsx), and [Terms](app/terms/page.tsx).
+The effective date is still pending on the [Privacy](app/privacy/page.tsx) and [Terms](app/terms/page.tsx) pages.
 
 ## Contribution expectations
 

@@ -6,10 +6,11 @@ import type { Metadata } from "next";
  * Deployment Instructions:
  * Configure `NEXT_PUBLIC_SITE_URL` in your hosting environment (e.g. Vercel, Cloudflare, Docker).
  * Example: NEXT_PUBLIC_SITE_URL="https://yourcustomdomain.com"
- * If not specified, it falls back to the default production domain "https://base64toolkit.com".
+ * If not specified, it falls back to the current production deployment
+ * "https://best-base64-toolkit.vercel.app".
  */
 export const SITE_URL: string = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://base64toolkit.com"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://best-base64-toolkit.vercel.app"
 ).replace(/\/+$/, "");
 
 export const SITE_NAME = "Base64 Toolkit";

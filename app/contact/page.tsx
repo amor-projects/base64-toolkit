@@ -56,7 +56,9 @@ export default function ContactPage() {
               For general inquiries, editorial feedback, or privacy-related questions:
             </p>
             <div className="p-3.5 rounded-xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper text-xs font-mono text-foreground">
-              [TODO: OWNER - Supply official contact email, e.g. support@base64toolkit.com]
+              <a href="mailto:base64.toolkit@gmail.com" className="underline underline-offset-2">
+                base64.toolkit@gmail.com
+              </a>
             </div>
           </div>
 
@@ -68,8 +70,10 @@ export default function ContactPage() {
             <p className="text-xs sm:text-sm text-muted leading-relaxed font-normal">
               If a specific byte sequence, character, or file fails to encode or decode properly, please provide the details below to help us reproduce the issue.
             </p>
-            <div className="p-3.5 rounded-xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper text-xs font-mono text-muted">
-              [TODO: OWNER - Supply issue tracker or bug report channel]
+            <div className="p-3.5 rounded-xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper text-xs font-mono text-muted break-all">
+              <a href="https://github.com/amor-projects/base64-toolkit/issues" className="underline underline-offset-2">
+                github.com/amor-projects/base64-toolkit/issues
+              </a>
             </div>
           </div>
         </div>
