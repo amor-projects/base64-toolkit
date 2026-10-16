@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/navigation/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -41,8 +43,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${outfit.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.classList.remove('dark');document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <Header />
         <div className="flex-1 flex flex-col">{children}</div>

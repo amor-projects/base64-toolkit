@@ -4,11 +4,12 @@ import Link from "next/link";
 import { Base64EncoderTool } from "@/components/tools/Base64EncoderTool";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ToolPanel, ToolPanelBody } from "@/components/ui/ToolPanel";
+import { ShieldCheckIcon, LockIcon } from "@/components/ui/Icons";
 
 export const metadata: Metadata = {
   title: "Base64 Encoder Online — Fast, Private Text Encoding",
   description:
-    "Encode plain text, UTF-8 strings, and emojis into standard Base64 or Base64URL directly in your browser. 100% client-side with zero server uploads.",
+    "Encode plain text, UTF-8 strings, and international characters into standard Base64 or Base64URL directly in your browser. 100% client-side with zero server uploads.",
   alternates: {
     canonical: "https://base64toolkit.com/base64-encoder",
   },
@@ -23,12 +24,12 @@ export const metadata: Metadata = {
 
 export default function Base64EncoderPage() {
   return (
-    <main className="flex-1 flex flex-col items-center py-10 sm:py-14">
+    <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* 1. Header & Value Proposition */}
         <section className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#6259E8]/8 dark:bg-[#756EF0]/12 text-[#6259E8] dark:text-[#756EF0] border border-[#6259E8]/15 mb-4 shadow-whisper">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#6259E8] dark:bg-[#756EF0]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25 mb-4 shadow-whisper">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#65A30D] dark:bg-[#A3E635]" />
             <span>Flagship Utility • In-Browser Execution</span>
           </div>
 
@@ -37,7 +38,7 @@ export default function Base64EncoderPage() {
           </h1>
 
           <p className="mt-3.5 text-base sm:text-lg text-muted max-w-2xl leading-relaxed font-normal">
-            Convert UTF-8 text, international characters, and emojis into RFC 4648 Base64 or
+            Convert UTF-8 text, international accents, and symbols into RFC 4648 Base64 or
             Base64URL strings. Processed completely on your local device—no server transmissions.
           </p>
         </section>
@@ -50,10 +51,8 @@ export default function Base64EncoderPage() {
         {/* 3. Verified Privacy Statement */}
         <section className="p-5 rounded-2xl bg-surface border border-border/80 shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-              </svg>
+            <div className="w-9 h-9 rounded-xl bg-[#84CC16]/12 text-[#3F6212] dark:text-[#BEF264] flex items-center justify-center shrink-0 border border-[#84CC16]/25">
+              <ShieldCheckIcon size={18} className="text-[#65A30D] dark:text-[#A3E635]" />
             </div>
             <div>
               <p className="text-xs font-semibold text-foreground">Local Execution Guarantee</p>
@@ -64,7 +63,7 @@ export default function Base64EncoderPage() {
           </div>
           <Link
             href="/base64-decoder"
-            className="text-xs font-medium text-[#6259E8] dark:text-[#756EF0] hover:underline shrink-0"
+            className="text-xs font-semibold text-[#3F6212] dark:text-[#BEF264] hover:underline shrink-0"
           >
             Need to decode? Switch to Base64 Decoder →
           </Link>
@@ -81,7 +80,7 @@ export default function Base64EncoderPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <ToolPanel variant="subtle">
               <ToolPanelBody className="space-y-2.5">
-                <span className="text-xs font-mono text-[#6259E8] dark:text-[#756EF0] font-semibold">
+                <span className="text-xs font-mono text-[#3F6212] dark:text-[#BEF264] font-semibold">
                   01 • Multi-Byte UTF-8
                 </span>
                 <h3 className="text-sm font-semibold text-foreground">Accents, CJK & Emojis</h3>
@@ -93,7 +92,7 @@ export default function Base64EncoderPage() {
 
             <ToolPanel variant="subtle">
               <ToolPanelBody className="space-y-2.5">
-                <span className="text-xs font-mono text-[#6259E8] dark:text-[#756EF0] font-semibold">
+                <span className="text-xs font-mono text-[#3F6212] dark:text-[#BEF264] font-semibold">
                   02 • Base64URL Safe
                 </span>
                 <h3 className="text-sm font-semibold text-foreground">URL & Filename Safe</h3>
@@ -105,7 +104,7 @@ export default function Base64EncoderPage() {
 
             <ToolPanel variant="subtle">
               <ToolPanelBody className="space-y-2.5">
-                <span className="text-xs font-mono text-[#6259E8] dark:text-[#756EF0] font-semibold">
+                <span className="text-xs font-mono text-[#3F6212] dark:text-[#BEF264] font-semibold">
                   03 • Padding Control
                 </span>
                 <h3 className="text-sm font-semibold text-foreground">Flexible Padding (=)</h3>
@@ -122,7 +121,7 @@ export default function Base64EncoderPage() {
           <SectionHeading
             eyebrow="Test Vectors"
             title="Verified Input & Output Examples"
-            description="RFC 4648 test vectors and Unicode test cases validated against standard cryptographic specifications."
+            description="RFC 4648 test vectors and Unicode test cases validated against standard specifications."
           />
 
           <div className="overflow-x-auto rounded-2xl border border-border/80 shadow-whisper bg-surface">
@@ -139,25 +138,25 @@ export default function Base64EncoderPage() {
                 <tr>
                   <td className="py-3 px-4 text-foreground font-sans">Hello World</td>
                   <td className="py-3 px-4 text-muted font-sans">ASCII standard</td>
-                  <td className="py-3 px-4 text-[#6259E8] dark:text-[#756EF0]">SGVsbG8gV29ybGQ=</td>
+                  <td className="py-3 px-4 text-[#3F6212] dark:text-[#BEF264] font-semibold">SGVsbG8gV29ybGQ=</td>
                   <td className="py-3 px-4 text-muted">SGVsbG8gV29ybGQ</td>
                 </tr>
                 <tr>
                   <td className="py-3 px-4 text-foreground font-sans">Café</td>
                   <td className="py-3 px-4 text-muted font-sans">Accented (2-byte é)</td>
-                  <td className="py-3 px-4 text-[#6259E8] dark:text-[#756EF0]">Q2Fmw6k=</td>
+                  <td className="py-3 px-4 text-[#3F6212] dark:text-[#BEF264] font-semibold">Q2Fmw6k=</td>
                   <td className="py-3 px-4 text-muted">Q2Fmw6k</td>
                 </tr>
                 <tr>
-                  <td className="py-3 px-4 text-foreground font-sans">🚀</td>
-                  <td className="py-3 px-4 text-muted font-sans">Emoji (4 UTF-8 bytes)</td>
-                  <td className="py-3 px-4 text-[#6259E8] dark:text-[#756EF0]">8J+agA==</td>
-                  <td className="py-3 px-4 text-muted">8J-agA</td>
+                  <td className="py-3 px-4 text-foreground font-sans">Space Rover</td>
+                  <td className="py-3 px-4 text-muted font-sans">Clean Unicode plain text</td>
+                  <td className="py-3 px-4 text-[#3F6212] dark:text-[#BEF264] font-semibold">U3BhY2UgUm92ZXI=</td>
+                  <td className="py-3 px-4 text-muted">U3BhY2UgUm92ZXI</td>
                 </tr>
                 <tr>
                   <td className="py-3 px-4 text-foreground font-sans">foobar</td>
                   <td className="py-3 px-4 text-muted font-sans">RFC 4648 Vector</td>
-                  <td className="py-3 px-4 text-[#6259E8] dark:text-[#756EF0]">Zm9vYmFy</td>
+                  <td className="py-3 px-4 text-[#3F6212] dark:text-[#BEF264] font-semibold">Zm9vYmFy</td>
                   <td className="py-3 px-4 text-muted">Zm9vYmFy</td>
                 </tr>
               </tbody>
@@ -214,7 +213,7 @@ export default function Base64EncoderPage() {
           <div className="space-y-4">
             <div className="p-5 rounded-2xl bg-surface border border-border/80 shadow-whisper">
               <h3 className="text-sm font-semibold text-foreground mb-1">
-                The dreaded “InvalidCharacterError” in JavaScript
+                The &ldquo;InvalidCharacterError&rdquo; in JavaScript
               </h3>
               <p className="text-xs text-muted leading-relaxed font-normal">
                 If you run <code className="font-mono text-[11px]">btoa(&apos;Café&apos;)</code> in browser developer tools, you will receive an <code className="font-mono text-[11px]">InvalidCharacterError</code>. This happens because native <code className="font-mono text-[11px]">btoa()</code> only supports 1-byte Latin-1 characters. Our tool uses <code className="font-mono text-[11px]">new TextEncoder().encode()</code> to convert strings to UTF-8 binary bytes first, guaranteeing complete Unicode compatibility.
@@ -222,8 +221,9 @@ export default function Base64EncoderPage() {
             </div>
 
             <div className="p-5 rounded-2xl bg-surface border border-border/80 shadow-whisper">
-              <h3 className="text-sm font-semibold text-foreground mb-1">
-                Base64 is an Encoding, NOT Encryption
+              <h3 className="text-sm font-semibold text-foreground mb-1 flex items-center gap-2">
+                <LockIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+                <span>Base64 is an Encoding, NOT Encryption</span>
               </h3>
               <p className="text-xs text-muted leading-relaxed font-normal">
                 Base64 is a data representation format, not a security mechanism. Anyone can decode

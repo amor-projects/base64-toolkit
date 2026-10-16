@@ -67,7 +67,7 @@ export function SegmentedControl<T extends string = string>({
               <span
                 className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono font-medium ${
                   isSelected
-                    ? "bg-[#6259E8]/10 text-[#6259E8] dark:bg-[#756EF0]/20 dark:text-[#756EF0]"
+                    ? "bg-[#84CC16]/15 text-[#3F6212] dark:bg-[#BEF264]/18 dark:text-[#BEF264]"
                     : "bg-black/[0.05] dark:bg-white/[0.06] text-muted"
                 }`}
               >

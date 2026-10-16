@@ -8,7 +8,7 @@ export function Footer() {
           {/* Brand & Privacy Column */}
           <div className="md:col-span-1 flex flex-col gap-3.5">
             <div className="flex items-center gap-2.5">
-              <div className="w-6 h-6 rounded-md bg-[#6259E8] text-white flex items-center justify-center font-mono font-bold text-[10px]">
+              <div className="w-6 h-6 rounded-md bg-[#84CC16] text-[#0F172A] flex items-center justify-center font-mono font-bold text-[10px] shadow-[0_1px_3px_rgba(132,204,22,0.4)]">
                 64
               </div>
               <span className="font-semibold text-sm tracking-tight text-foreground">
@@ -24,35 +24,50 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Planned Tools Column */}
+          {/* Suite Tools Column */}
           <div className="flex flex-col gap-3">
             <h3 className="text-xs font-semibold uppercase tracking-wider text-foreground">
-              Planned Suite
+              Tool Suite
             </h3>
             <ul className="flex flex-col gap-2 text-xs text-muted">
               <li>
-                <a href="#encoder" className="hover:text-foreground transition-colors duration-150">
+                <a href="/base64-encoder" className="hover:text-foreground transition-colors duration-150">
                   Text Base64 Encoder
                 </a>
               </li>
               <li>
-                <a href="#tools" className="hover:text-foreground transition-colors duration-150">
-                  File to Base64 (25MB Limit)
+                <a href="/base64-decoder" className="hover:text-foreground transition-colors duration-150">
+                  Text Base64 Decoder
                 </a>
               </li>
               <li>
-                <a href="#tools" className="hover:text-foreground transition-colors duration-150">
+                <a href="/file-to-base64" className="hover:text-foreground transition-colors duration-150">
+                  File to Base64 (10MB)
+                </a>
+              </li>
+              <li>
+                <a href="/base64-to-file" className="hover:text-foreground transition-colors duration-150">
+                  Base64 to Downloadable File
+                </a>
+              </li>
+              <li>
+                <a href="/image-to-base64" className="hover:text-foreground transition-colors duration-150">
                   Image & Data URI Studio
                 </a>
               </li>
               <li>
-                <a href="#tools" className="hover:text-foreground transition-colors duration-150">
-                  Base64URL Safe Converter
+                <a href="/base64-to-image" className="hover:text-foreground transition-colors duration-150">
+                  Base64 to Image Preview
                 </a>
               </li>
               <li>
-                <a href="#tools" className="hover:text-foreground transition-colors duration-150">
-                  Encoding Inspector & Validator
+                <a href="/base64-inspector" className="hover:text-foreground transition-colors duration-150">
+                  Base64 Inspector & Validator
+                </a>
+              </li>
+              <li>
+                <a href="/base64-size-calculator" className="hover:text-foreground transition-colors duration-150">
+                  Size & Overhead Calculator
                 </a>
               </li>
             </ul>

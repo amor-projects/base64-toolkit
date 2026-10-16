@@ -3,77 +3,51 @@ import Link from "next/link";
 import { ToolPanel, ToolPanelBody, ToolPanelFooter } from "@/components/ui/ToolPanel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Base64EncoderTool } from "@/components/tools/Base64EncoderTool";
+import {
+  ShieldCheckIcon,
+  CodeIcon,
+  BoltIcon,
+  FileIcon,
+  ImageIcon,
+  SwapIcon,
+  TuneIcon,
+  ArrowRightIcon,
+} from "@/components/ui/Icons";
 
 export default function Home() {
   return (
     <main className="flex-1 flex flex-col items-center">
       {/* Hero Section — Restrained, purposeful, Apple-level clarity */}
       <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-12 flex flex-col items-center text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#6259E8]/8 dark:bg-[#756EF0]/12 text-[#6259E8] dark:text-[#756EF0] border border-[#6259E8]/15 mb-5 shadow-whisper">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#6259E8] dark:bg-[#756EF0]" />
-          <span>Privacy-First Architecture • Phase 1 Shell</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25 mb-5 shadow-whisper">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#65A30D] dark:bg-[#A3E635]" />
+          <span>Privacy-First Architecture • In-Browser Utilities</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-semibold tracking-[-0.03em] text-foreground max-w-2xl leading-[1.12]">
+        <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-semibold tracking-[-0.03em] text-foreground max-w-2xl leading-[1.12] font-sans">
           Precision Base64, processed entirely in your browser.
         </h1>
 
-        <p className="mt-4 text-base sm:text-lg text-muted max-w-xl leading-relaxed font-normal">
+        <p className="mt-4 text-base sm:text-lg text-muted max-w-xl leading-relaxed font-normal font-sans">
           Fast, private encoding, decoding, and diagnostics. No server uploads, no artificial
           delays, and strict RFC 4648 compliance.
         </p>
 
-        {/* Spec highlights */}
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs font-medium text-muted">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface border border-border/80 shadow-whisper">
-            <svg
-              className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
-              />
-            </svg>
-            <span>Native Web APIs</span>
+        {/* Spec highlights with Google Icons */}
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs font-medium text-muted font-sans">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface border border-border/80 shadow-whisper">
+            <ShieldCheckIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+            <span className="text-foreground">Native Web APIs</span>
           </div>
 
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface border border-border/80 shadow-whisper">
-            <svg
-              className="w-3.5 h-3.5 text-[#6259E8] dark:text-[#756EF0]"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
-              />
-            </svg>
-            <span>Strict Multi-Byte UTF-8</span>
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface border border-border/80 shadow-whisper">
+            <CodeIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+            <span className="text-foreground">Strict Multi-Byte UTF-8</span>
           </div>
 
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface border border-border/80 shadow-whisper">
-            <svg
-              className="w-3.5 h-3.5 text-indigo-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
-              />
-            </svg>
-            <span>Zero Network Latency</span>
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-surface border border-border/80 shadow-whisper">
+            <BoltIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+            <span className="text-foreground">Zero Network Latency</span>
           </div>
         </div>
       </section>
@@ -94,19 +68,20 @@ export default function Home() {
           description="Each utility focuses on a specific data format with explicit boundary limits, local execution, and zero unnecessary dependencies."
         />
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1: Text Studio */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-sans">
+          {/* Card 1: Text Encoder */}
           <Link href="/base64-encoder" className="flex flex-col group">
-            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#6259E8]/50 group-hover:shadow-card transition-all duration-200">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
               <ToolPanelBody className="flex flex-col gap-3.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#6259E8]/8 dark:bg-[#756EF0]/14 text-[#6259E8] dark:text-[#756EF0] font-mono">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] font-mono">
                     Live Tool
                   </span>
                   <span className="text-[11px] text-muted font-mono">RFC 4648</span>
                 </div>
-                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#6259E8] dark:group-hover:text-[#756EF0] transition-colors">
-                  Base64 Text Encoder Online →
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#3F6212] dark:group-hover:text-[#BEF264] transition-colors flex items-center gap-1.5">
+                  <span>Base64 Text Encoder Online</span>
+                  <ArrowRightIcon size={15} />
                 </h3>
                 <p className="text-xs text-muted leading-relaxed font-normal">
                   Bidirectional conversion of arbitrary UTF-8 text, multi-byte characters, and
@@ -115,124 +90,197 @@ export default function Home() {
               </ToolPanelBody>
               <ToolPanelFooter>
                 <span className="font-medium text-foreground">Input: UTF-8 Strings</span>
-                <span className="text-[11px] text-[#6259E8] dark:text-[#756EF0] font-medium">Open Tool →</span>
+                <span className="text-[11px] text-[#3F6212] dark:text-[#BEF264] font-semibold">Open Tool →</span>
               </ToolPanelFooter>
             </ToolPanel>
           </Link>
 
-          {/* Card 2: File Conversion */}
-          <ToolPanel variant="secondary" className="flex flex-col justify-between hover:border-border transition-all duration-200">
-            <ToolPanelBody className="flex flex-col gap-3.5">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-muted font-mono">
-                  Phase 4 Planned
-                </span>
-                <span className="text-[11px] text-muted font-mono">25MB Limit</span>
-              </div>
-              <h3 className="text-base font-semibold text-foreground tracking-tight">
-                File to Base64 & Download
-              </h3>
-              <p className="text-xs text-muted leading-relaxed font-normal">
-                Convert arbitrary files (PDFs, archives, binaries) to Base64 strings, or turn
-                Base64 strings back into downloadable files with sanitized filenames.
-              </p>
-            </ToolPanelBody>
-            <ToolPanelFooter>
-              <span className="font-medium text-foreground">Input: Any Binary File</span>
-              <span className="text-[11px] text-muted">Planned</span>
-            </ToolPanelFooter>
-          </ToolPanel>
+          {/* Card 2: Text Decoder */}
+          <Link href="/base64-decoder" className="flex flex-col group">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
+              <ToolPanelBody className="flex flex-col gap-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] font-mono">
+                    Live Tool
+                  </span>
+                  <span className="text-[11px] text-muted font-mono">Diagnostics</span>
+                </div>
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#3F6212] dark:group-hover:text-[#BEF264] transition-colors flex items-center gap-1.5">
+                  <span>Base64 Text Decoder Online</span>
+                  <ArrowRightIcon size={15} />
+                </h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Strictly validates Base64 and Base64URL strings. Detects malformed padding and
+                  intelligently separates binary payloads from plain UTF-8 text.
+                </p>
+              </ToolPanelBody>
+              <ToolPanelFooter>
+                <span className="font-medium text-foreground">Input: Base64 Strings</span>
+                <span className="text-[11px] text-[#3F6212] dark:text-[#BEF264] font-semibold">Open Tool →</span>
+              </ToolPanelFooter>
+            </ToolPanel>
+          </Link>
 
-          {/* Card 3: Image to Base64 */}
-          <ToolPanel variant="secondary" className="flex flex-col justify-between hover:border-border transition-all duration-200">
-            <ToolPanelBody className="flex flex-col gap-3.5">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-muted font-mono">
-                  Phase 4 Planned
-                </span>
-                <span className="text-[11px] text-muted font-mono">Data URI</span>
-              </div>
-              <h3 className="text-base font-semibold text-foreground tracking-tight">
-                Image & Data URI Studio
-              </h3>
-              <p className="text-xs text-muted leading-relaxed font-normal">
-                Transform PNG, JPG, WebP, and SVG images into raw Base64 or ready-to-embed Data URIs
-                for HTML <code className="text-[11px] font-mono bg-black/[0.04] dark:bg-white/[0.06] px-1 py-0.5 rounded">&lt;img&gt;</code> and CSS <code className="text-[11px] font-mono bg-black/[0.04] dark:bg-white/[0.06] px-1 py-0.5 rounded">url()</code>.
-              </p>
-            </ToolPanelBody>
-            <ToolPanelFooter>
-              <span className="font-medium text-foreground">Input: Image Formats</span>
-              <span className="text-[11px] text-muted">Planned</span>
-            </ToolPanelFooter>
-          </ToolPanel>
+          {/* Card 3: File Conversion */}
+          <Link href="/file-to-base64" className="flex flex-col group">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
+              <ToolPanelBody className="flex flex-col gap-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] font-mono">
+                    Live Tool
+                  </span>
+                  <span className="text-[11px] text-muted font-mono">10MB Limit</span>
+                </div>
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#3F6212] dark:group-hover:text-[#BEF264] transition-colors flex items-center gap-1.5">
+                  <FileIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+                  <span>File to Base64 & Download</span>
+                  <ArrowRightIcon size={15} />
+                </h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Convert arbitrary files (PDFs, archives, binaries) to Base64 strings, or turn
+                  Base64 strings back into downloadable files with sanitized filenames.
+                </p>
+              </ToolPanelBody>
+              <ToolPanelFooter>
+                <span className="font-medium text-foreground">Input: Any Binary File</span>
+                <span className="text-[11px] text-[#3F6212] dark:text-[#BEF264] font-semibold">Open Tool →</span>
+              </ToolPanelFooter>
+            </ToolPanel>
+          </Link>
 
-          {/* Card 4: Base64URL */}
-          <ToolPanel variant="secondary" className="flex flex-col justify-between hover:border-border transition-all duration-200">
-            <ToolPanelBody className="flex flex-col gap-3.5">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-muted font-mono">
-                  Phase 4 Planned
-                </span>
-                <span className="text-[11px] text-muted font-mono">RFC 4648 §5</span>
-              </div>
-              <h3 className="text-base font-semibold text-foreground tracking-tight">
-                Base64URL Safe Converter
-              </h3>
-              <p className="text-xs text-muted leading-relaxed font-normal">
-                URL- and filename-safe encoding that swaps <code className="font-mono text-xs">+</code> and <code className="font-mono text-xs">/</code> for <code className="font-mono text-xs">-</code> and <code className="font-mono text-xs">_</code> with configurable unpadded modes for JWTs.
-              </p>
-            </ToolPanelBody>
-            <ToolPanelFooter>
-              <span className="font-medium text-foreground">Input: Tokens / URLs</span>
-              <span className="text-[11px] text-muted">Planned</span>
-            </ToolPanelFooter>
-          </ToolPanel>
+          {/* Card 4: Image to Base64 */}
+          <Link href="/image-to-base64" className="flex flex-col group">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
+              <ToolPanelBody className="flex flex-col gap-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] font-mono">
+                    Live Tool
+                  </span>
+                  <span className="text-[11px] text-muted font-mono">Data URI</span>
+                </div>
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#3F6212] dark:group-hover:text-[#BEF264] transition-colors flex items-center gap-1.5">
+                  <ImageIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+                  <span>Image & Data URI Studio</span>
+                  <ArrowRightIcon size={15} />
+                </h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Transform PNG, JPG, WebP, and SVG images into raw Base64 or ready-to-embed Data URIs
+                  for HTML <code className="text-[11px] font-mono bg-black/[0.04] dark:bg-white/[0.06] px-1 py-0.5 rounded">&lt;img&gt;</code> and CSS <code className="text-[11px] font-mono bg-black/[0.04] dark:bg-white/[0.06] px-1 py-0.5 rounded">url()</code>.
+                </p>
+              </ToolPanelBody>
+              <ToolPanelFooter>
+                <span className="font-medium text-foreground">Input: Image Formats</span>
+                <span className="text-[11px] text-[#3F6212] dark:text-[#BEF264] font-semibold">Open Tool →</span>
+              </ToolPanelFooter>
+            </ToolPanel>
+          </Link>
 
-          {/* Card 5: Inspector */}
-          <ToolPanel variant="secondary" className="flex flex-col justify-between hover:border-border transition-all duration-200">
-            <ToolPanelBody className="flex flex-col gap-3.5">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-muted font-mono">
-                  Phase 4 Planned
-                </span>
-                <span className="text-[11px] text-muted font-mono">Diagnostics</span>
-              </div>
-              <h3 className="text-base font-semibold text-foreground tracking-tight">
-                Inspector & Validator
-              </h3>
-              <p className="text-xs text-muted leading-relaxed font-normal">
-                Inspect malformed strings, validate character sets, check padding integrity, and
-                heuristically detect MIME types with explicit disclaimers on certainty.
-              </p>
-            </ToolPanelBody>
-            <ToolPanelFooter>
-              <span className="font-medium text-foreground">Input: Encoded Strings</span>
-              <span className="text-[11px] text-muted">Planned</span>
-            </ToolPanelFooter>
-          </ToolPanel>
+          {/* Card 5: Base64URL */}
+          <Link href="/base64url-encoder" className="flex flex-col group">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
+              <ToolPanelBody className="flex flex-col gap-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] font-mono">
+                    Live Tool
+                  </span>
+                  <span className="text-[11px] text-muted font-mono">RFC 4648 §5</span>
+                </div>
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#3F6212] dark:group-hover:text-[#BEF264] transition-colors flex items-center gap-1.5">
+                  <SwapIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+                  <span>Base64URL Safe Converter</span>
+                  <ArrowRightIcon size={15} />
+                </h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  URL- and filename-safe encoding that swaps <code className="font-mono text-xs">+</code> and <code className="font-mono text-xs">/</code> for <code className="font-mono text-xs">-</code> and <code className="font-mono text-xs">_</code> with configurable unpadded modes for JWTs.
+                </p>
+              </ToolPanelBody>
+              <ToolPanelFooter>
+                <span className="font-medium text-foreground">Input: Tokens / URLs</span>
+                <span className="text-[11px] text-[#3F6212] dark:text-[#BEF264] font-semibold">Open Tool →</span>
+              </ToolPanelFooter>
+            </ToolPanel>
+          </Link>
 
-          {/* Card 6: Size Calculator */}
-          <ToolPanel variant="secondary" className="flex flex-col justify-between hover:border-border transition-all duration-200">
-            <ToolPanelBody className="flex flex-col gap-3.5">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-muted font-mono">
-                  Phase 4 Planned
-                </span>
-                <span className="text-[11px] text-muted font-mono">Math Engine</span>
-              </div>
-              <h3 className="text-base font-semibold text-foreground tracking-tight">
-                Size & Overhead Calculator
-              </h3>
-              <p className="text-xs text-muted leading-relaxed font-normal">
-                Accurately compute the 4:3 (~33%) size expansion, Data URI byte overhead, and
-                bandwidth implications before sending encoded payloads across networks.
-              </p>
-            </ToolPanelBody>
-            <ToolPanelFooter>
-              <span className="font-medium text-foreground">Input: Byte / Char Count</span>
-              <span className="text-[11px] text-muted">Planned</span>
-            </ToolPanelFooter>
-          </ToolPanel>
+          {/* Card 6: Inspector */}
+          <Link href="/base64-inspector" className="flex flex-col group">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
+              <ToolPanelBody className="flex flex-col gap-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] font-mono">
+                    Live Tool
+                  </span>
+                  <span className="text-[11px] text-muted font-mono">Diagnostics</span>
+                </div>
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#3F6212] dark:group-hover:text-[#BEF264] transition-colors flex items-center gap-1.5">
+                  <ShieldCheckIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+                  <span>Base64 Inspector & Validator</span>
+                  <ArrowRightIcon size={15} />
+                </h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Strictly validates Base64 and Base64URL strings. Pinpoints malformed padding, detects
+                  magic byte headers, and identifies file formats in milliseconds.
+                </p>
+              </ToolPanelBody>
+              <ToolPanelFooter>
+                <span className="font-medium text-foreground">Input: Any Base64 String</span>
+                <span className="text-[11px] text-[#3F6212] dark:text-[#BEF264] font-semibold">Open Tool →</span>
+              </ToolPanelFooter>
+            </ToolPanel>
+          </Link>
+
+          {/* Card 7: Size Calculator */}
+          <Link href="/base64-size-calculator" className="flex flex-col group">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
+              <ToolPanelBody className="flex flex-col gap-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] font-mono">
+                    Live Tool
+                  </span>
+                  <span className="text-[11px] text-muted font-mono">Math Engine</span>
+                </div>
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#3F6212] dark:group-hover:text-[#BEF264] transition-colors flex items-center gap-1.5">
+                  <TuneIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+                  <span>Size & Overhead Calculator</span>
+                  <ArrowRightIcon size={15} />
+                </h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Accurately compute the 4:3 (~33%) size expansion, Data URI byte overhead, and
+                  bandwidth implications before sending encoded payloads across networks.
+                </p>
+              </ToolPanelBody>
+              <ToolPanelFooter>
+                <span className="font-medium text-foreground">Input: Byte / Char Count</span>
+                <span className="text-[11px] text-[#3F6212] dark:text-[#BEF264] font-semibold">Open Tool →</span>
+              </ToolPanelFooter>
+            </ToolPanel>
+          </Link>
+
+          {/* Card 8: Data URI Generator */}
+          <Link href="/data-uri-generator" className="flex flex-col group">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
+              <ToolPanelBody className="flex flex-col gap-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] font-mono">
+                    Live Tool
+                  </span>
+                  <span className="text-[11px] text-muted font-mono">RFC 2397</span>
+                </div>
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#3F6212] dark:group-hover:text-[#BEF264] transition-colors flex items-center gap-1.5">
+                  <CodeIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+                  <span>Data URI Studio</span>
+                  <ArrowRightIcon size={15} />
+                </h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Construct standard Data URIs with custom MIME types and generate ready-to-use HTML
+                  and CSS code snippets.
+                </p>
+              </ToolPanelBody>
+              <ToolPanelFooter>
+                <span className="font-medium text-foreground">Input: Base64 / URI</span>
+                <span className="text-[11px] text-[#3F6212] dark:text-[#BEF264] font-semibold">Open Tool →</span>
+              </ToolPanelFooter>
+            </ToolPanel>
+          </Link>
         </div>
       </section>
 
@@ -247,9 +295,9 @@ export default function Home() {
           description="How Base64 Toolkit processes data locally without sacrificing performance or browser stability."
         />
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
           <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-card flex flex-col gap-3">
-            <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 flex items-center justify-center font-bold text-xs font-mono">
+            <div className="w-8 h-8 rounded-xl bg-[#84CC16]/15 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/30 flex items-center justify-center font-bold text-xs font-mono">
               01
             </div>
             <h3 className="text-base font-semibold text-foreground tracking-tight">
@@ -262,7 +310,7 @@ export default function Home() {
           </div>
 
           <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-card flex flex-col gap-3">
-            <div className="w-8 h-8 rounded-xl bg-[#6259E8]/10 text-[#6259E8] dark:text-[#756EF0] border border-[#6259E8]/20 flex items-center justify-center font-bold text-xs font-mono">
+            <div className="w-8 h-8 rounded-xl bg-[#84CC16]/15 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/30 flex items-center justify-center font-bold text-xs font-mono">
               02
             </div>
             <h3 className="text-base font-semibold text-foreground tracking-tight">
@@ -275,7 +323,7 @@ export default function Home() {
           </div>
 
           <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-card flex flex-col gap-3">
-            <div className="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 flex items-center justify-center font-bold text-xs font-mono">
+            <div className="w-8 h-8 rounded-xl bg-[#84CC16]/15 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/30 flex items-center justify-center font-bold text-xs font-mono">
               03
             </div>
             <h3 className="text-base font-semibold text-foreground tracking-tight">
@@ -300,10 +348,10 @@ export default function Home() {
           description="Technical guides covering encoding standards, padding rules, and performance trade-offs."
         />
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
           <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-card flex flex-col justify-between">
             <div className="flex flex-col gap-2">
-              <span className="text-[11px] font-mono text-[#6259E8] dark:text-[#756EF0] uppercase">
+              <span className="text-[11px] font-mono text-[#3F6212] dark:text-[#BEF264] uppercase font-semibold">
                 Guide • Fundamentals
               </span>
               <h3 className="text-base font-semibold text-foreground tracking-tight">
@@ -322,7 +370,7 @@ export default function Home() {
 
           <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-card flex flex-col justify-between">
             <div className="flex flex-col gap-2">
-              <span className="text-[11px] font-mono text-[#6259E8] dark:text-[#756EF0] uppercase">
+              <span className="text-[11px] font-mono text-[#3F6212] dark:text-[#BEF264] uppercase font-semibold">
                 Guide • Standards
               </span>
               <h3 className="text-base font-semibold text-foreground tracking-tight">

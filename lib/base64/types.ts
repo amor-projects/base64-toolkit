@@ -9,7 +9,15 @@ export type Base64ErrorCode =
   | "INVALID_PADDING"
   | "DISALLOWED_WHITESPACE"
   | "INVALID_UTF8"
-  | "UNEXPECTED_ERROR";
+  | "UNEXPECTED_ERROR"
+  | "INVALID_DATA_URI"
+  | "NOT_A_DATA_URI"
+  | "MALFORMED_DATA_URI"
+  | "NO_FILE"
+  | "FILE_TOO_LARGE"
+  | "READ_FAILED"
+  | "ENCODE_FAILED"
+  | "BLOB_FAILED";
 
 export class Base64Error extends Error {
   readonly code: Base64ErrorCode;

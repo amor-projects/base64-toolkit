@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Base64DecoderTool } from "@/components/tools/Base64DecoderTool";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ToolPanel, ToolPanelBody } from "@/components/ui/ToolPanel";
+import { ShieldCheckIcon } from "@/components/ui/Icons";
 
 export const metadata: Metadata = {
   title: "Base64 Decoder Online — Fast, Safe In-Browser Decoding",
@@ -23,12 +24,12 @@ export const metadata: Metadata = {
 
 export default function Base64DecoderPage() {
   return (
-    <main className="flex-1 flex flex-col items-center py-10 sm:py-14">
+    <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* 1. Header */}
         <section className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#6259E8]/8 dark:bg-[#756EF0]/12 text-[#6259E8] dark:text-[#756EF0] border border-[#6259E8]/15 mb-4 shadow-whisper">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#6259E8] dark:bg-[#756EF0]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25 mb-4 shadow-whisper">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#65A30D] dark:bg-[#A3E635]" />
             <span>Strict Validation • UTF-8 Safe</span>
           </div>
 
@@ -50,10 +51,8 @@ export default function Base64DecoderPage() {
         {/* 3. Verified Privacy Statement */}
         <section className="p-5 rounded-2xl bg-surface border border-border/80 shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-              </svg>
+            <div className="w-9 h-9 rounded-xl bg-[#84CC16]/12 text-[#3F6212] dark:text-[#BEF264] flex items-center justify-center shrink-0 border border-[#84CC16]/25">
+              <ShieldCheckIcon size={18} className="text-[#65A30D] dark:text-[#A3E635]" />
             </div>
             <div>
               <p className="text-xs font-semibold text-foreground">Local In-Memory Decoding</p>
@@ -64,7 +63,7 @@ export default function Base64DecoderPage() {
           </div>
           <Link
             href="/base64-encoder"
-            className="text-xs font-medium text-[#6259E8] dark:text-[#756EF0] hover:underline shrink-0"
+            className="text-xs font-semibold text-[#3F6212] dark:text-[#BEF264] hover:underline shrink-0"
           >
             Need to encode? Switch to Base64 Encoder →
           </Link>
@@ -81,7 +80,7 @@ export default function Base64DecoderPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ToolPanel variant="subtle">
               <ToolPanelBody className="space-y-2.5">
-                <span className="text-xs font-mono text-[#6259E8] dark:text-[#756EF0] font-semibold">
+                <span className="text-xs font-mono text-[#3F6212] dark:text-[#BEF264] font-semibold">
                   Standard RFC 4648 §4
                 </span>
                 <h3 className="text-sm font-semibold text-foreground">Standard Alphabet (+, /, =)</h3>
@@ -93,7 +92,7 @@ export default function Base64DecoderPage() {
 
             <ToolPanel variant="subtle">
               <ToolPanelBody className="space-y-2.5">
-                <span className="text-xs font-mono text-[#6259E8] dark:text-[#756EF0] font-semibold">
+                <span className="text-xs font-mono text-[#3F6212] dark:text-[#BEF264] font-semibold">
                   URL-Safe RFC 4648 §5
                 </span>
                 <h3 className="text-sm font-semibold text-foreground">Base64URL Alphabet (-, _)</h3>

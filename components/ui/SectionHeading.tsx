@@ -23,12 +23,12 @@ export function SectionHeading({
   return (
     <div className={`flex flex-col ${alignClass} ${className}`}>
       {eyebrow && (
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#6259E8]/8 dark:bg-[#756EF0]/12 text-[#6259E8] dark:text-[#756EF0] border border-[#6259E8]/15 text-[11px] font-semibold tracking-wide uppercase mb-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#6259E8] dark:bg-[#756EF0]" />
+        <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25 text-[11px] font-semibold tracking-wide uppercase mb-3 shadow-whisper">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#65A30D] dark:bg-[#A3E635]" />
           <span>{eyebrow}</span>
         </div>
       )}
-      <HeadingTag className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-[-0.025em] text-foreground leading-[1.2]">
+      <HeadingTag className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-[-0.025em] text-foreground leading-[1.2] font-sans">
         {title}
       </HeadingTag>
       {description && (
