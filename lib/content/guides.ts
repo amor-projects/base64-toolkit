@@ -4,6 +4,8 @@
  * Strictly adheres to RFC 4648 and RFC 2397 specifications.
  */
 
+import { absoluteUrl } from "@/lib/seo/site";
+
 export interface GuideSection {
   id: string;
   title: string;
@@ -48,7 +50,7 @@ export const EDUCATIONAL_GUIDES: EducationalGuide[] = [
     shortTitle: "What Is Base64?",
     description:
       "A complete technical explanation of RFC 4648 Base64 encoding. Understand 6-bit chunking, ASCII mappings, why Base64 is not encryption, and where to use it.",
-    canonicalUrl: "https://base64toolkit.com/learn/what-is-base64",
+    canonicalUrl: absoluteUrl("/learn/what-is-base64"),
     readTimeMinutes: 5,
     lastUpdated: "October 2026",
     relatedTool: {
@@ -134,7 +136,7 @@ Result:           TWFu`,
     shortTitle: "Base64 vs Base64URL",
     description:
       "Understand the technical differences between standard Base64 and URL-safe Base64URL. Learn how '+' and '/' are replaced with '-' and '_', and how padding is handled in JWTs.",
-    canonicalUrl: "https://base64toolkit.com/learn/base64-vs-base64url",
+    canonicalUrl: absoluteUrl("/learn/base64-vs-base64url"),
     readTimeMinutes: 4,
     lastUpdated: "October 2026",
     relatedTool: {
@@ -219,7 +221,7 @@ export function fromBase64Url(base64url: string): string {
     shortTitle: "How Base64 Padding Works",
     description:
       "Demystifying '=' padding characters in Base64 strings. Learn why inputs are aligned to 4-character blocks, the three mathematical cases, and how to troubleshoot padding errors.",
-    canonicalUrl: "https://base64toolkit.com/learn/base64-padding",
+    canonicalUrl: absoluteUrl("/learn/base64-padding"),
     readTimeMinutes: 4,
     lastUpdated: "October 2026",
     relatedTool: {
@@ -297,7 +299,7 @@ The input has 2 leftover bytes (16 bits). 16 bits require three 6-bit blocks (18
     shortTitle: "Base64 File Size Overhead",
     description:
       "Learn the exact mathematical formulas for Base64 size expansion. Calculate byte overhead, understand why Base64 compresses poorly, and know when to avoid it.",
-    canonicalUrl: "https://base64toolkit.com/learn/base64-file-size",
+    canonicalUrl: absoluteUrl("/learn/base64-file-size"),
     readTimeMinutes: 5,
     lastUpdated: "October 2026",
     relatedTool: {
@@ -366,7 +368,7 @@ This means Base64 data is **always roughly 33.3% larger** than the source file. 
     shortTitle: "Base64 Data URIs",
     description:
       "Master RFC 2397 Data URIs. Learn how to embed PNG, JPEG, WebP, and SVG images directly into HTML and CSS stylesheets, with syntax rules and practical examples.",
-    canonicalUrl: "https://base64toolkit.com/learn/base64-data-uri",
+    canonicalUrl: absoluteUrl("/learn/base64-data-uri"),
     readTimeMinutes: 5,
     lastUpdated: "October 2026",
     relatedTool: {

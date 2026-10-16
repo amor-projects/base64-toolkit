@@ -1,8 +1,10 @@
 import React from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ToolPanel, ToolPanelBody, ToolPanelFooter } from "@/components/ui/ToolPanel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Base64EncoderTool } from "@/components/tools/Base64EncoderTool";
+import { absoluteUrl, generateWebApplicationSchema } from "@/lib/seo/site";
 import {
   ShieldCheckIcon,
   CodeIcon,
@@ -14,9 +16,39 @@ import {
   ArrowRightIcon,
 } from "@/components/ui/Icons";
 
+export const metadata: Metadata = {
+  title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
+  description:
+    "Free, private in-browser Base64 utilities for developers. Encode, decode, convert, and inspect UTF-8 text, files, and images locally with zero server uploads.",
+  alternates: {
+    canonical: absoluteUrl("/"),
+  },
+  openGraph: {
+    title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
+    description:
+      "Transform and inspect Base64 text and files locally with zero network transmission.",
+    url: absoluteUrl("/"),
+    type: "website",
+  },
+};
+
 export default function Home() {
+  const schema = generateWebApplicationSchema({
+    name: "Base64 Toolkit",
+    description:
+      "Client-side suite of Base64 and Base64URL encoders, decoders, file converters, image utilities, and diagnostic inspectors.",
+    path: "/",
+    applicationCategory: "UtilitiesApplication",
+  });
+
   return (
     <main className="flex-1 flex flex-col items-center">
+      {/* Schema.org WebApplication structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+
       {/* Hero Section — Restrained, purposeful, Apple-level clarity */}
       <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-12 flex flex-col items-center text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#27440D] dark:text-[#BEF264] border border-[#84CC16]/25 mb-5 shadow-whisper">

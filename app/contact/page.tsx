@@ -4,25 +4,30 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ShieldCheckIcon, CodeIcon } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateBreadcrumbSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Contact & Support — Base64 Toolkit",
   description:
     "Get in touch with the Base64 Toolkit team. Report technical bugs, suggest encoding features, or ask questions about our privacy-first conversion tools.",
-  alternates: {
-    canonical: "https://base64toolkit.com/contact",
-  },
-  openGraph: {
-    title: "Contact & Support — Base64 Toolkit",
-    description:
-      "Submit feedback, report unexpected conversion bugs, or get in touch regarding technical questions.",
-    url: "https://base64toolkit.com/contact",
-    type: "website",
-  },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact" },
+  ]);
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Header */}
         <section className="flex flex-col items-center text-center">

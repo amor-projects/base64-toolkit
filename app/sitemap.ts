@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { EDUCATIONAL_GUIDES } from "@/lib/content/guides";
+import { SITE_URL } from "@/lib/seo/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://base64toolkit.com";
+  const baseUrl = SITE_URL;
   const today = "2026-10-16";
 
   const coreRoutes: MetadataRoute.Sitemap = [

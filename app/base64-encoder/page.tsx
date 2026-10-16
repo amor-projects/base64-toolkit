@@ -6,26 +6,54 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ToolPanel, ToolPanelBody } from "@/components/ui/ToolPanel";
 import { ShieldCheckIcon, LockIcon } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateWebApplicationSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Base64 Encoder Online — Fast, Private Text Encoding",
   description:
     "Encode plain text, UTF-8 strings, and international characters into standard Base64 or Base64URL directly in your browser. 100% client-side with zero server uploads.",
-  alternates: {
-    canonical: "https://base64toolkit.com/base64-encoder",
-  },
-  openGraph: {
-    title: "Base64 Encoder Online — Fast, Private Text Encoding",
-    description:
-      "Transform plain text into standard RFC 4648 or Base64URL strings instantly. Zero server uploads.",
-    url: "https://base64toolkit.com/base64-encoder",
-    type: "website",
-  },
-};
+  path: "/base64-encoder",
+});
 
 export default function Base64EncoderPage() {
+  const webAppSchema = generateWebApplicationSchema({
+    name: "Base64 Encoder Online",
+    description:
+      "Encode plain text, UTF-8 strings, and international characters into standard Base64 or Base64URL.",
+    path: "/base64-encoder",
+  });
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Base64 Encoder", path: "/base64-encoder" },
+  ]);
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        {/* Breadcrumb Navigation */}
+        <nav
+          aria-label="Breadcrumb"
+          className="flex items-center gap-2 text-xs text-muted font-mono"
+        >
+          <Link href="/" className="hover:text-foreground">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="text-foreground font-semibold">Encoder</span>
+        </nav>
+
         {/* 1. Header & Value Proposition */}
         <section className="flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25 mb-4 shadow-whisper">

@@ -12,6 +12,12 @@ import {
   WarningIcon,
 } from "@/components/ui/Icons";
 
+import {
+  buildRouteMetadata,
+  generateBreadcrumbSchema,
+  generateArticleSchema,
+} from "@/lib/seo/site";
+
 interface GuidePageProps {
   params: Promise<{ slug: string }>;
 }
@@ -27,19 +33,12 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
   const guide = EDUCATIONAL_GUIDES.find((g) => g.slug === slug);
   if (!guide) return {};
 
-  return {
-    title: `${guide.title} — Base64 Toolkit`,
+  return buildRouteMetadata({
+    title: guide.title,
     description: guide.description,
-    alternates: {
-      canonical: guide.canonicalUrl,
-    },
-    openGraph: {
-      title: `${guide.title} — Base64 Toolkit`,
-      description: guide.description,
-      url: guide.canonicalUrl,
-      type: "article",
-    },
-  };
+    path: `/learn/${guide.slug}`,
+    type: "article",
+  });
 }
 
 export default async function GuidePage({ params }: GuidePageProps) {
@@ -50,8 +49,27 @@ export default async function GuidePage({ params }: GuidePageProps) {
     notFound();
   }
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Guides", path: "/learn" },
+    { name: guide.shortTitle, path: `/learn/${guide.slug}` },
+  ]);
+  const articleSchema = generateArticleSchema({
+    title: guide.title,
+    description: guide.description,
+    path: `/learn/${guide.slug}`,
+  });
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Breadcrumb Navigation */}
         <nav

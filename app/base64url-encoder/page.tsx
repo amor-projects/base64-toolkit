@@ -4,26 +4,54 @@ import Link from "next/link";
 import { Base64EncoderTool } from "@/components/tools/Base64EncoderTool";
 import { ShieldCheckIcon } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateWebApplicationSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Base64URL Encoder Online — URL-Safe RFC 4648 §5 Encoding",
   description:
     "Encode strings to URL-safe Base64URL (- and _) directly in your browser. Configurable unpadded modes for JSON Web Tokens (JWT) and web query parameters.",
-  alternates: {
-    canonical: "https://base64toolkit.com/base64url-encoder",
-  },
-  openGraph: {
-    title: "Base64URL Encoder Online — URL-Safe RFC 4648 §5 Encoding",
-    description:
-      "Transform text into URL-safe Base64 strings using '-' and '_' with unpadded support.",
-    url: "https://base64toolkit.com/base64url-encoder",
-    type: "website",
-  },
-};
+  path: "/base64url-encoder",
+});
 
 export default function Base64UrlEncoderPage() {
+  const webAppSchema = generateWebApplicationSchema({
+    name: "Base64URL Encoder Online",
+    description:
+      "Encode strings to URL-safe Base64URL (- and _) directly in your browser.",
+    path: "/base64url-encoder",
+  });
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Base64URL Encoder", path: "/base64url-encoder" },
+  ]);
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        {/* Breadcrumb Navigation */}
+        <nav
+          aria-label="Breadcrumb"
+          className="flex items-center gap-2 text-xs text-muted font-mono"
+        >
+          <Link href="/" className="hover:text-foreground">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="text-foreground font-semibold">Base64URL Encoder</span>
+        </nav>
+
         {/* Header */}
         <section className="flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25 mb-4 shadow-whisper">

@@ -2,25 +2,30 @@ import React from "react";
 import type { Metadata } from "next";
 import { ShieldCheckIcon, InfoIcon } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateBreadcrumbSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Privacy Policy — Base64 Toolkit",
   description:
     "Transparent privacy policy for Base64 Toolkit. Detailed disclosure of our in-browser architecture, zero server uploads, and data handling practices.",
-  alternates: {
-    canonical: "https://base64toolkit.com/privacy",
-  },
-  openGraph: {
-    title: "Privacy Policy — Base64 Toolkit",
-    description:
-      "Understand how Base64 Toolkit handles your data. Learn why files and strings never leave your device.",
-    url: "https://base64toolkit.com/privacy",
-    type: "website",
-  },
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Privacy Policy", path: "/privacy" },
+  ]);
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Header */}
         <section className="flex flex-col items-center text-center">

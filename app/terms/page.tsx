@@ -3,25 +3,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { WarningIcon } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateBreadcrumbSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Terms of Service — Base64 Toolkit",
   description:
     "Terms of service for Base64 Toolkit. Clear terms covering permitted use, intellectual property, disclaimer of warranties, and limitation of liability.",
-  alternates: {
-    canonical: "https://base64toolkit.com/terms",
-  },
-  openGraph: {
-    title: "Terms of Service — Base64 Toolkit",
-    description:
-      "Review the terms governing the use of Base64 Toolkit web utilities.",
-    url: "https://base64toolkit.com/terms",
-    type: "website",
-  },
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Terms of Service", path: "/terms" },
+  ]);
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Header */}
         <section className="flex flex-col items-center text-center">

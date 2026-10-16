@@ -5,26 +5,54 @@ import { ImageToBase64Tool } from "@/components/tools/ImageToBase64Tool";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ShieldCheckIcon } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateWebApplicationSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Image to Base64 Converter Online — Data URI & HTML/CSS Generator",
   description:
     "Convert PNG, JPG, WebP, SVG, and GIF images to Base64 strings, Data URIs, HTML <img> tags, and CSS url() snippets directly in your browser. 100% private.",
-  alternates: {
-    canonical: "https://base64toolkit.com/image-to-base64",
-  },
-  openGraph: {
-    title: "Image to Base64 Converter Online — Data URI & HTML/CSS Generator",
-    description:
-      "Convert images into Raw Base64 or Data URIs with instant HTML and CSS embed snippets.",
-    url: "https://base64toolkit.com/image-to-base64",
-    type: "website",
-  },
-};
+  path: "/image-to-base64",
+});
 
 export default function ImageToBase64Page() {
+  const webAppSchema = generateWebApplicationSchema({
+    name: "Image to Base64 Converter Online",
+    description:
+      "Convert PNG, JPG, WebP, SVG, and GIF images to Base64 strings, Data URIs, HTML <img> tags, and CSS snippets.",
+    path: "/image-to-base64",
+  });
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Image to Base64", path: "/image-to-base64" },
+  ]);
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        {/* Breadcrumb Navigation */}
+        <nav
+          aria-label="Breadcrumb"
+          className="flex items-center gap-2 text-xs text-muted font-mono"
+        >
+          <Link href="/" className="hover:text-foreground">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="text-foreground font-semibold">Image to Base64</span>
+        </nav>
+
         {/* Header */}
         <section className="flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25 mb-4 shadow-whisper">

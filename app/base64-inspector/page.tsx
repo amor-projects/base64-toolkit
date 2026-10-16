@@ -3,25 +3,41 @@ import type { Metadata } from "next";
 import { Base64InspectorTool } from "@/components/tools/Base64InspectorTool";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateBreadcrumbSchema,
+  generateWebApplicationSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Base64 Validator & Inspector Online — Syntax & Format Diagnostics",
   description:
     "Inspect, validate, and diagnose Base64 and Base64URL strings. Detect malformed padding, check length modulo 4, identify magic byte file signatures directly in your browser.",
-  alternates: {
-    canonical: "https://base64toolkit.com/base64-inspector",
-  },
-  openGraph: {
-    title: "Base64 Validator & Inspector Online — Syntax & Format Diagnostics",
-    description:
-      "Deeply inspect Base64 strings for RFC 4648 compliance, alphabet mixing, and file signatures.",
-    url: "https://base64toolkit.com/base64-inspector",
-    type: "website",
-  },
-};
+  path: "/base64-inspector",
+});
 
 export default function Base64InspectorPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Base64 Inspector", path: "/base64-inspector" },
+  ]);
+  const toolSchema = generateWebApplicationSchema({
+    name: "Base64 Validator & Inspector",
+    description:
+      "Client-side RFC 4648 Base64 validator, diagnostic inspector, and magic byte analyzer.",
+    path: "/base64-inspector",
+  });
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
+      />
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Header */}
         <section className="flex flex-col items-center text-center">

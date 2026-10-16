@@ -3,25 +3,41 @@ import type { Metadata } from "next";
 import { Base64SizeCalculatorTool } from "@/components/tools/Base64SizeCalculatorTool";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateBreadcrumbSchema,
+  generateWebApplicationSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Base64 Size & Overhead Calculator — 4:3 Ratio & Bandwidth Math",
   description:
     "Calculate the exact 33.3% size expansion of Base64 encoding. Compute byte overhead, Data URI prefix lengths, and mobile payload bandwidth impact directly in your browser.",
-  alternates: {
-    canonical: "https://base64toolkit.com/base64-size-calculator",
-  },
-  openGraph: {
-    title: "Base64 Size & Overhead Calculator — 4:3 Ratio & Bandwidth Math",
-    description:
-      "Accurately model Base64 and Data URI overhead with instant byte math.",
-    url: "https://base64toolkit.com/base64-size-calculator",
-    type: "website",
-  },
-};
+  path: "/base64-size-calculator",
+});
 
 export default function Base64SizeCalculatorPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Base64 Size Calculator", path: "/base64-size-calculator" },
+  ]);
+  const toolSchema = generateWebApplicationSchema({
+    name: "Base64 Size Calculator",
+    description:
+      "Client-side Base64 expansion overhead calculator and bandwidth footprint modeler.",
+    path: "/base64-size-calculator",
+  });
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
+      />
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Header */}
         <section className="flex flex-col items-center text-center">

@@ -4,25 +4,41 @@ import Link from "next/link";
 import { Base64DecoderTool } from "@/components/tools/Base64DecoderTool";
 import { ShieldCheckIcon } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateBreadcrumbSchema,
+  generateWebApplicationSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Base64URL Decoder Online — Decode URL-Safe & JWT Strings",
   description:
     "Decode URL-safe Base64URL strings (-, _) with or without padding. Safely inspect JWT payloads and URL query parameters directly in your browser with zero server uploads.",
-  alternates: {
-    canonical: "https://base64toolkit.com/base64url-decoder",
-  },
-  openGraph: {
-    title: "Base64URL Decoder Online — Decode URL-Safe & JWT Strings",
-    description:
-      "Decode Base64URL tokens and URL-safe strings with strict UTF-8 validation.",
-    url: "https://base64toolkit.com/base64url-decoder",
-    type: "website",
-  },
-};
+  path: "/base64url-decoder",
+});
 
 export default function Base64UrlDecoderPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Base64URL Decoder", path: "/base64url-decoder" },
+  ]);
+  const toolSchema = generateWebApplicationSchema({
+    name: "Base64URL Decoder",
+    description:
+      "Client-side RFC 4648 §5 Base64URL decoder for JWTs, tokens, and web-safe strings.",
+    path: "/base64url-decoder",
+  });
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
+      />
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Header */}
         <section className="flex flex-col items-center text-center">

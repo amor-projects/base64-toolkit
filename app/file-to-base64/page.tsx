@@ -6,26 +6,54 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ToolPanel, ToolPanelBody } from "@/components/ui/ToolPanel";
 import { ShieldCheckIcon } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateWebApplicationSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "File to Base64 Converter Online — Fast, Private Local Conversion",
   description:
     "Convert any file (PDF, image, audio, archive, or binary) into a Base64 string directly in your browser. 10MB safe ceiling, zero server uploads, 100% private.",
-  alternates: {
-    canonical: "https://base64toolkit.com/file-to-base64",
-  },
-  openGraph: {
-    title: "File to Base64 Converter Online — Fast, Private Local Conversion",
-    description:
-      "Transform arbitrary binary files into RFC 4648 Base64 strings directly in your browser. Zero server uploads.",
-    url: "https://base64toolkit.com/file-to-base64",
-    type: "website",
-  },
-};
+  path: "/file-to-base64",
+});
 
 export default function FileToBase64Page() {
+  const webAppSchema = generateWebApplicationSchema({
+    name: "File to Base64 Converter Online",
+    description:
+      "Convert any file (PDF, image, audio, archive, or binary) into a Base64 string directly in your browser.",
+    path: "/file-to-base64",
+  });
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "File to Base64", path: "/file-to-base64" },
+  ]);
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        {/* Breadcrumb Navigation */}
+        <nav
+          aria-label="Breadcrumb"
+          className="flex items-center gap-2 text-xs text-muted font-mono"
+        >
+          <Link href="/" className="hover:text-foreground">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="text-foreground font-semibold">File to Base64</span>
+        </nav>
+
         {/* Header */}
         <section className="flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25 mb-4 shadow-whisper">

@@ -18,11 +18,17 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+import { SITE_URL } from "@/lib/seo/site";
+
 export const metadata: Metadata = {
   title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
   description:
     "Encode, decode, convert, and inspect Base64, Base64URL, files, and images directly in your browser. Fast, private by design, with zero server uploads.",
-  metadataBase: new URL("https://base64toolkit.com"),
+  metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   robots: {
     index: true,
     follow: true,

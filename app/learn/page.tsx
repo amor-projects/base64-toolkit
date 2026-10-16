@@ -5,25 +5,30 @@ import { EDUCATIONAL_GUIDES } from "@/lib/content/guides";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ShieldCheckIcon, CodeIcon, ArrowRightIcon } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
+import {
+  buildRouteMetadata,
+  generateBreadcrumbSchema,
+} from "@/lib/seo/site";
+
+export const metadata: Metadata = buildRouteMetadata({
   title: "Base64 Technical Guides & Standards — RFC 4648 & 2397 Tutorials",
   description:
     "In-depth, technically accurate tutorials on Base64, Base64URL, padding mechanics, size expansion overhead, and RFC 2397 Data URIs. Written with tested code examples.",
-  alternates: {
-    canonical: "https://base64toolkit.com/learn",
-  },
-  openGraph: {
-    title: "Base64 Technical Guides & Standards — RFC 4648 & 2397 Tutorials",
-    description:
-      "Explore comprehensive technical guides on Base64 encoding mechanics, URL-safe variants, padding mathematics, and performance tradeoffs.",
-    url: "https://base64toolkit.com/learn",
-    type: "website",
-  },
-};
+  path: "/learn",
+});
 
 export default function LearnIndexPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Guides", path: "/learn" },
+  ]);
+
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Header */}
         <section className="flex flex-col items-center text-center">
