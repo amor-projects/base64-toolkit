@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { calculateSizeMetrics, formatBytes } from "@/lib/base64";
 import { ToolPanel, ToolPanelHeader, ToolPanelBody, ToolPanelFooter } from "@/components/ui/ToolPanel";
 import { Input } from "@/components/ui/Input";
+import { Select } from "@/components/ui/Select";
 import { ShieldCheckIcon, InfoIcon } from "@/components/ui/Icons";
 
 export function Base64SizeCalculatorTool() {
@@ -74,10 +75,11 @@ export function Base64SizeCalculatorTool() {
             <label className="text-xs font-semibold text-foreground">
               Data URI MIME Type Prefix
             </label>
-            <select
+            <Select
               value={mimeType}
               onChange={(e) => setMimeType(e.target.value)}
-              className="w-full px-3.5 py-2 text-xs bg-surface border border-border/80 rounded-xl text-foreground font-mono"
+              className="w-full"
+              isMono
             >
               <option value="image/png">image/png</option>
               <option value="image/jpeg">image/jpeg</option>
@@ -86,7 +88,7 @@ export function Base64SizeCalculatorTool() {
               <option value="application/pdf">application/pdf</option>
               <option value="application/json">application/json</option>
               <option value="application/octet-stream">application/octet-stream</option>
-            </select>
+            </Select>
             <p className="text-[11px] text-muted">
               Data URI adds <code className="font-mono text-[11px] font-semibold">data:{mimeType};base64,</code> (+{`data:${mimeType};base64,`.length} bytes).
             </p>

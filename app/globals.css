@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   --background: #fafaf8;
   --surface: #ffffff;
-  --foreground: #171717;
-  --muted: #6b7280;
-  --border: #e7e5e4;
+  --foreground: #111827;
+  --muted: #52525b;
+  --border: #e4e4e7;
 
   /* Accessible High-Contrast Lime Palette */
-  --accent: #3f6212;
+  --accent: #27440d;
   --accent-surface: #84cc16;
   --accent-surface-hover: #65a30d;
-  --accent-foreground: #0f172a;
-  --accent-tint: rgba(132, 204, 22, 0.12);
-  --accent-border: rgba(132, 204, 22, 0.35);
+  --accent-foreground: #090d04;
+  --accent-tint: rgba(132, 204, 22, 0.10);
+  --accent-border: rgba(101, 163, 13, 0.28);
 
-  --code-surface: #f6f6f4;
-  --code-surface-subtle: #f0f0ee;
+  --code-surface: #ffffff;
+  --code-surface-subtle: #f8faf5;
   --success: #15803d;
   --error: #dc2626;
 
@@ -26,6 +27,7 @@
 
 .dark,
 [data-theme="dark"] {
+  color-scheme: dark;
   --background: #0e0e10;
   --surface: #161618;
   --foreground: #f4f4f5;
@@ -36,17 +38,18 @@
   --accent-surface: #a3e635;
   --accent-surface-hover: #84cc16;
   --accent-foreground: #090d04;
-  --accent-tint: rgba(190, 242, 100, 0.14);
-  --accent-border: rgba(190, 242, 100, 0.3);
+  --accent-tint: rgba(190, 242, 100, 0.12);
+  --accent-border: rgba(190, 242, 100, 0.25);
 
-  --code-surface: #1a1a1e;
-  --code-surface-subtle: #222227;
+  --code-surface: #141417;
+  --code-surface-subtle: #1c1c20;
   --success: #22c55e;
   --error: #ef4444;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light):not([data-theme="light"]) {
+    color-scheme: dark;
     --background: #0e0e10;
     --surface: #161618;
     --foreground: #f4f4f5;
@@ -57,11 +60,11 @@
     --accent-surface: #a3e635;
     --accent-surface-hover: #84cc16;
     --accent-foreground: #090d04;
-    --accent-tint: rgba(190, 242, 100, 0.14);
-    --accent-border: rgba(190, 242, 100, 0.3);
+    --accent-tint: rgba(190, 242, 100, 0.12);
+    --accent-border: rgba(190, 242, 100, 0.25);
 
-    --code-surface: #1a1a1e;
-    --code-surface-subtle: #222227;
+    --code-surface: #141417;
+    --code-surface-subtle: #1c1c20;
     --success: #22c55e;
     --error: #ef4444;
   }

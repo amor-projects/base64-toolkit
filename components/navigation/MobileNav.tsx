@@ -74,27 +74,16 @@ export function MobileNav({ items }: MobileNavProps) {
                   aria-current={isActive ? "page" : undefined}
                   className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.99] ${
                     isActive
-                      ? "bg-[#84CC16]/15 dark:bg-[#BEF264]/12 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/30 font-semibold"
-                      : "text-foreground hover:bg-black/[0.04] dark:hover:bg-white/[0.05]"
+                      ? "bg-black/[0.05] dark:bg-white/[0.08] text-foreground border border-black/[0.06] dark:border-white/[0.08] font-semibold"
+                      : "text-foreground hover:bg-black/[0.03] dark:hover:bg-white/[0.04]"
                   }`}
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     {isActive && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#65A30D] dark:bg-[#A3E635]" />
+                      <span className="w-2 h-2 rounded-full bg-[#65A30D] dark:bg-[#A3E635] shadow-[0_0_6px_rgba(101,163,13,0.7)]" />
                     )}
                     <span>{item.label}</span>
                   </div>
-                  {item.badge && (
-                    <span
-                      className={`text-[11px] px-2 py-0.5 rounded-full font-mono font-medium ${
-                        isActive
-                          ? "bg-[#65A30D] text-white dark:bg-[#A3E635] dark:text-[#090D04]"
-                          : "bg-[#84CC16]/12 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25"
-                      }`}
-                    >
-                      {item.badge}
-                    </span>
-                  )}
                 </Link>
               );
             })}

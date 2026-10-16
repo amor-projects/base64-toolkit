@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/Button";
 import { ToolPanel, ToolPanelHeader, ToolPanelBody, ToolPanelFooter } from "@/components/ui/ToolPanel";
 import { StatusMessage } from "@/components/ui/StatusMessage";
 import { Checkbox } from "@/components/ui/Checkbox";
+import { Select } from "@/components/ui/Select";
 import {
   CopyIcon,
   CheckIcon,
@@ -271,7 +272,7 @@ export function Base64DecoderTool({ initialBase64 = "", className = "" }: Base64
               onChange={(e) => setInput(e.target.value)}
               rows={12}
               placeholder="Paste Base64 or Base64URL string here (e.g. SGVsbG8gV29ybGQ=)..."
-              className="w-full min-h-[280px] sm:min-h-[340px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:bg-surface focus:border-[#84CC16] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/25 resize-y"
+              className="w-full min-h-[280px] sm:min-h-[340px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-surface dark:bg-[#141417] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-[#65A30D] dark:focus:border-[#BEF264] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/20 resize-y"
               aria-describedby="decoder-input-hint"
             />
             <p id="decoder-input-hint" className="text-[11px] text-muted leading-tight font-sans">
@@ -306,7 +307,7 @@ export function Base64DecoderTool({ initialBase64 = "", className = "" }: Base64
                   ? "Input contains binary data that cannot be represented as UTF-8 text."
                   : "Decoded UTF-8 plain text will appear here..."
               }
-              className={`w-full min-h-[280px] sm:min-h-[340px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:bg-surface focus:border-[#84CC16] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/25 resize-y ${
+              className={`w-full min-h-[280px] sm:min-h-[340px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-surface dark:bg-[#141417] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-[#65A30D] dark:focus:border-[#BEF264] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/20 resize-y ${
                 isBinaryPayload ? "opacity-60 bg-amber-500/[0.03]" : ""
               }`}
             />
@@ -322,15 +323,14 @@ export function Base64DecoderTool({ initialBase64 = "", className = "" }: Base64
             {/* Format selection */}
             <div className="flex items-center gap-2">
               <span className="text-foreground font-medium">Format:</span>
-              <select
+              <Select
                 value={mode}
                 onChange={(e) => setMode(e.target.value as "auto" | "standard" | "urlsafe")}
-                className="bg-[#F0F0EE] dark:bg-[#1E1E22] border border-border text-foreground rounded-lg px-2.5 py-1 text-xs focus:ring-[#84CC16]/30 font-sans"
               >
                 <option value="auto">Auto Detect</option>
                 <option value="standard">Standard (+, /)</option>
                 <option value="urlsafe">Base64URL (-, _)</option>
-              </select>
+              </Select>
             </div>
 
             <Checkbox

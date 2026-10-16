@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { ToolPanel, ToolPanelHeader, ToolPanelBody, ToolPanelFooter } from "@/components/ui/ToolPanel";
 import { StatusMessage } from "@/components/ui/StatusMessage";
 import { SegmentedControl } from "@/components/ui/SegmentedControl";
+import { Select } from "@/components/ui/Select";
 import {
   CopyIcon,
   CheckIcon,
@@ -128,7 +129,7 @@ export function DataUriGeneratorTool() {
               onChange={(e) => handleInputChange(e.target.value)}
               rows={12}
               placeholder="Paste raw Base64 payload or existing data:... URI..."
-              className="w-full min-h-[260px] sm:min-h-[300px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:bg-surface focus:border-[#84CC16] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/25 resize-y"
+              className="w-full min-h-[260px] sm:min-h-[300px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-surface dark:bg-[#141417] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-[#65A30D] dark:focus:border-[#BEF264] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/20 resize-y"
             />
           </div>
 
@@ -153,7 +154,7 @@ export function DataUriGeneratorTool() {
               readOnly
               rows={12}
               placeholder="Generated Data URI or code snippet will appear here..."
-              className="w-full min-h-[260px] sm:min-h-[300px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:bg-surface focus:border-[#84CC16] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/25 resize-y"
+              className="w-full min-h-[260px] sm:min-h-[300px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-surface dark:bg-[#141417] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-[#65A30D] dark:focus:border-[#BEF264] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/20 resize-y"
             />
           </div>
         </div>
@@ -162,10 +163,10 @@ export function DataUriGeneratorTool() {
         <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-border/60 text-xs font-sans">
           <div className="flex items-center gap-2">
             <span className="text-foreground font-medium">MIME Type:</span>
-            <select
+            <Select
               value={mimeType}
               onChange={(e) => setMimeType(e.target.value)}
-              className="bg-[#F0F0EE] dark:bg-[#1E1E22] border border-border text-foreground rounded-lg px-2.5 py-1 text-xs focus:ring-[#84CC16]/30 font-mono"
+              isMono
             >
               <option value="image/png">image/png</option>
               <option value="image/jpeg">image/jpeg</option>
@@ -175,7 +176,7 @@ export function DataUriGeneratorTool() {
               <option value="application/json">application/json</option>
               <option value="text/plain">text/plain</option>
               <option value="application/octet-stream">application/octet-stream</option>
-            </select>
+            </Select>
           </div>
 
           <Button

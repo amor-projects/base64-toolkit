@@ -245,7 +245,7 @@ export function FileToBase64Tool() {
             readOnly
             rows={12}
             placeholder="Base64 encoded string will appear here after selecting a file..."
-            className="w-full min-h-[280px] sm:min-h-[340px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:bg-surface focus:border-[#84CC16] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/25 resize-y"
+            className="w-full min-h-[280px] sm:min-h-[340px] p-4 sm:p-5 text-[13.5px] sm:text-[14px] font-mono leading-relaxed bg-surface dark:bg-[#141417] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-[#65A30D] dark:focus:border-[#BEF264] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/20 resize-y"
           />
         </div>
 

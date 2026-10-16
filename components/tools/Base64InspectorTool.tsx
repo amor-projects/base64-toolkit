@@ -74,7 +74,7 @@ export function Base64InspectorTool() {
             onChange={(e) => setInput(e.target.value)}
             rows={8}
             placeholder="Paste any Base64 string to inspect format, padding, alphabet, and file signatures..."
-            className="w-full min-h-[180px] p-4 text-[13.5px] font-mono leading-relaxed bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:bg-surface focus:border-[#84CC16] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/25 resize-y"
+            className="w-full min-h-[180px] p-4 text-[13.5px] font-mono leading-relaxed bg-surface dark:bg-[#141417] border border-border/80 rounded-2xl text-foreground placeholder:text-muted/50 transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-[#65A30D] dark:focus:border-[#BEF264] focus:outline-none focus:ring-2 focus:ring-[#84CC16]/20 resize-y"
           />
         </div>
 

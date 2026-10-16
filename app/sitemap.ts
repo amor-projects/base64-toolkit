@@ -1,80 +1,124 @@
 import type { MetadataRoute } from "next";
+import { EDUCATIONAL_GUIDES } from "@/lib/content/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://base64toolkit.com";
+  const today = "2026-10-16";
 
-  return [
+  const coreRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: "2026-10-16",
+      lastModified: today,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${baseUrl}/base64-encoder`,
-      lastModified: "2026-10-16",
+      lastModified: today,
       changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 0.95,
     },
     {
       url: `${baseUrl}/base64-decoder`,
-      lastModified: "2026-10-16",
+      lastModified: today,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/file-to-base64`,
+      lastModified: today,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/file-to-base64`,
-      lastModified: "2026-10-16",
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
       url: `${baseUrl}/base64-to-file`,
-      lastModified: "2026-10-16",
+      lastModified: today,
       changeFrequency: "weekly",
-      priority: 0.85,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/image-to-base64`,
-      lastModified: "2026-10-16",
+      lastModified: today,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/base64-to-image`,
+      lastModified: today,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/base64url-encoder`,
+      lastModified: today,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/base64-to-image`,
-      lastModified: "2026-10-16",
+      url: `${baseUrl}/base64url-decoder`,
+      lastModified: today,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/data-uri-generator`,
+      lastModified: today,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
       url: `${baseUrl}/base64-inspector`,
-      lastModified: "2026-10-16",
+      lastModified: today,
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/base64-size-calculator`,
-      lastModified: "2026-10-16",
+      lastModified: today,
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.85,
     },
     {
-      url: `${baseUrl}/data-uri-generator`,
-      lastModified: "2026-10-16",
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/base64url-encoder`,
-      lastModified: "2026-10-16",
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/base64url-decoder`,
-      lastModified: "2026-10-16",
+      url: `${baseUrl}/learn`,
+      lastModified: today,
       changeFrequency: "weekly",
       priority: 0.8,
     },
   ];
+
+  const guideRoutes: MetadataRoute.Sitemap = EDUCATIONAL_GUIDES.map((guide) => ({
+    url: `${baseUrl}/learn/${guide.slug}`,
+    lastModified: today,
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  const trustRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/about`,
+      lastModified: today,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: today,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: today,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: today,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+  ];
+
+  return [...coreRoutes, ...guideRoutes, ...trustRoutes];
 }
