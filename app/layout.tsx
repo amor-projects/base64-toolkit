@@ -18,7 +18,12 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-import { SITE_URL } from "@/lib/seo/site";
+import {
+  DEFAULT_OG_IMAGE,
+  DEFAULT_TWITTER_IMAGE,
+  SITE_URL,
+  SOCIAL_IMAGE_ALT,
+} from "@/lib/seo/site";
 
 export const metadata: Metadata = {
   title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
@@ -40,6 +45,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Base64 Toolkit",
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: SOCIAL_IMAGE_ALT,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
+    description:
+      "Client-side Base64 tools for developers and creators. Process text and files locally with zero server transmissions.",
+    images: [DEFAULT_TWITTER_IMAGE],
   },
 };
 

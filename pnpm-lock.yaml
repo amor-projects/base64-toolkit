@@ -169,6 +169,9 @@ importers:
       '@fontsource/comic-mono':
         specifier: ^5.3.0
         version: 5.3.0
+      '@fontsource/outfit':
+        specifier: ^5.3.0
+        version: 5.3.0
       next:
         specifier: 16.4.0
         version: 16.4.0(@babel/core@7.29.7(supports-color@7.2.0))(@playwright/test@1.64.1)(@types/node@20.19.43)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -341,6 +344,9 @@ packages:
 
   '@fontsource/comic-mono@5.3.0':
     resolution: {integrity: sha512-DmYzEAKOmjDjKG79IR3HGHClDPL2cpYZ7ZFChoH99gSpokSKzx2T8lIaM1Ux9fXT4ieyYk5uA47x0kcsbF5czQ==}
+
+  '@fontsource/outfit@5.3.0':
+    resolution: {integrity: sha512-0AVHzTTVJSxWDOxPKSfMeHhZeBFDU3cmgrcOb76ZEyhGo0+xgyG3GsLF3h9+X8w0IX7G4jzjJgFQEBiWdX6VgA==}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -2701,6 +2707,8 @@ snapshots:
       levn: 0.4.1
 
   '@fontsource/comic-mono@5.3.0': {}
+
+  '@fontsource/outfit@5.3.0': {}
 
   '@humanfs/core@0.19.2':
     dependencies:

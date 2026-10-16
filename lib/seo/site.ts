@@ -14,7 +14,10 @@ export const SITE_URL: string = (
 ).replace(/\/+$/, "");
 
 export const SITE_NAME = "Base64 Toolkit";
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/icon.svg`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph-image`;
+export const DEFAULT_TWITTER_IMAGE = `${SITE_URL}/twitter-image`;
+export const SOCIAL_IMAGE_ALT =
+  "Base64 Toolkit — fast, private in-browser tools for encoding, decoding, and converting Base64";
 
 /**
  * Resolves an absolute URL based on the single configurable site origin.
@@ -63,12 +66,21 @@ export function buildRouteMetadata({
       siteName: SITE_NAME,
       locale: "en_US",
       type,
+      images: [
+        {
+          url: DEFAULT_OG_IMAGE,
+          width: 1200,
+          height: 630,
+          alt: SOCIAL_IMAGE_ALT,
+        },
+      ],
       ...(publishedTime && type === "article" ? { publishedTime } : {}),
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: `${title} | ${SITE_NAME}`,
       description,
+      images: [DEFAULT_TWITTER_IMAGE],
     },
   };
 }
