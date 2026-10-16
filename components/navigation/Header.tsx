@@ -3,10 +3,11 @@ import Link from "next/link";
 import { MobileNav } from "./MobileNav";
 
 const navItems = [
-  { label: "Encoder", href: "#encoder", badge: "Live Soon" },
-  { label: "Tools", href: "#tools" },
-  { label: "Architecture", href: "#privacy" },
-  { label: "Guides", href: "#learn" },
+  { label: "Encoder", href: "/base64-encoder", badge: "Live" },
+  { label: "Decoder", href: "/base64-decoder" },
+  { label: "Tools", href: "/#tools" },
+  { label: "Architecture", href: "/#privacy" },
+  { label: "Guides", href: "/#learn" },
 ];
 
 export function Header() {

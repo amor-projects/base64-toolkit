@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  ToolPanel,
-  ToolPanelHeader,
-  ToolPanelBody,
-  ToolPanelFooter,
-} from "@/components/ui/ToolPanel";
-import { Button } from "@/components/ui/Button";
-import { StatusMessage } from "@/components/ui/StatusMessage";
+import Link from "next/link";
+import { ToolPanel, ToolPanelBody, ToolPanelFooter } from "@/components/ui/ToolPanel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { SegmentedControl } from "@/components/ui/SegmentedControl";
+import { Base64EncoderTool } from "@/components/tools/Base64EncoderTool";
 
 export default function Home() {
   return (
@@ -86,133 +80,7 @@ export default function Home() {
 
       {/* Flagship Tool Canvas — Application centerpiece */}
       <section id="encoder" className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
-        <ToolPanel variant="primary">
-          {/* Canvas Header / Mode Bar */}
-          <ToolPanelHeader className="flex-wrap bg-[#FBFBFA] dark:bg-[#131316]">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#6259E8]" />
-                <span className="font-semibold text-sm tracking-tight text-foreground">
-                  Base64 Text Studio
-                </span>
-              </div>
-              <span className="hidden sm:inline-block text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 font-medium">
-                Active Architecture • Engine Hooks in Phase 2 & 3
-              </span>
-            </div>
-
-            {/* Apple-style Fluid Segmented Mode Switcher */}
-            <SegmentedControl
-              options={[
-                { id: "text", label: "Text Mode" },
-                { id: "file", label: "File Mode", disabled: true, badge: "Soon" },
-                { id: "image", label: "Image Mode", disabled: true, badge: "Soon" },
-              ]}
-              value="text"
-              size="sm"
-            />
-          </ToolPanelHeader>
-
-          {/* Canvas Workspace Body */}
-          <ToolPanelBody className="space-y-6">
-            <StatusMessage variant="info" title="Foundation Shell Active">
-              The design token system and application container are established. The pure conversion
-              engine (Phase 2) and live interactive controls (Phase 3) will mount directly into this
-              canvas. Controls below are disabled previews to guarantee transparent, honest UX.
-            </StatusMessage>
-
-            {/* Dual Pane Layout (Input & Output) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {/* Input Surface */}
-              <div className="flex flex-col gap-2.5">
-                <div className="flex items-center justify-between text-xs font-medium text-muted">
-                  <label htmlFor="canvas-input" className="text-foreground font-medium">
-                    Input (Plain Text / UTF-8)
-                  </label>
-                  <span className="font-mono text-[11px] px-2 py-0.5 rounded-md bg-[#F2F2F0] dark:bg-[#1E1E22] text-muted">
-                    0 chars • 0 bytes
-                  </span>
-                </div>
-                <textarea
-                  id="canvas-input"
-                  disabled
-                  rows={8}
-                  placeholder="Paste or type UTF-8 string here (Interactive input activates in Phase 3)..."
-                  className="w-full p-4 text-[13px] font-mono leading-relaxed bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 rounded-2xl text-muted resize-none opacity-80 cursor-not-allowed select-none"
-                />
-              </div>
-
-              {/* Output Surface */}
-              <div className="flex flex-col gap-2.5">
-                <div className="flex items-center justify-between text-xs font-medium text-muted">
-                  <label htmlFor="canvas-output" className="text-foreground font-medium">
-                    Output (Base64 Encoded)
-                  </label>
-                  <span className="font-mono text-[11px] px-2 py-0.5 rounded-md bg-[#F2F2F0] dark:bg-[#1E1E22] text-muted">
-                    Overhead: ~133%
-                  </span>
-                </div>
-                <textarea
-                  id="canvas-output"
-                  disabled
-                  rows={8}
-                  placeholder="RFC 4648 encoded output will be generated locally in your browser..."
-                  className="w-full p-4 text-[13px] font-mono leading-relaxed bg-[#F9F9F7] dark:bg-[#161619] border border-border/80 rounded-2xl text-muted resize-none opacity-80 cursor-not-allowed select-none"
-                />
-              </div>
-            </div>
-
-            {/* Options Bar & Actions */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-border/60 text-xs text-muted">
-              <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2 opacity-50 cursor-not-allowed">
-                  <input
-                    type="checkbox"
-                    disabled
-                    checked
-                    readOnly
-                    className="rounded border-border text-[#6259E8]"
-                  />
-                  <span>Standard Base64 (RFC 4648)</span>
-                </label>
-                <label className="flex items-center gap-2 opacity-50 cursor-not-allowed">
-                  <input
-                    type="checkbox"
-                    disabled
-                    checked
-                    readOnly
-                    className="rounded border-border text-[#6259E8]"
-                  />
-                  <span>Include Padding (=)</span>
-                </label>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex items-center gap-2.5">
-                <Button variant="secondary" size="sm" disabled aria-disabled="true">
-                  Clear
-                </Button>
-                <Button variant="outline" size="sm" disabled aria-disabled="true">
-                  Copy Output
-                </Button>
-                <Button variant="primary" size="sm" disabled aria-disabled="true">
-                  Encode (Phase 3)
-                </Button>
-              </div>
-            </div>
-          </ToolPanelBody>
-
-          {/* Canvas Footer */}
-          <ToolPanelFooter>
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span>In-Memory Execution: Input data never leaves this browser tab</span>
-            </div>
-            <div className="font-mono text-[11px] text-muted">
-              UTF-8 Native • No btoa Latin-1 limitation
-            </div>
-          </ToolPanelFooter>
-        </ToolPanel>
+        <Base64EncoderTool initialText="Hello World" />
       </section>
 
       {/* Planned Tool Suite — Apple/Raycast inspired card grid */}
@@ -228,27 +96,29 @@ export default function Home() {
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Card 1: Text Studio */}
-          <ToolPanel variant="secondary" className="flex flex-col justify-between hover:border-[#6259E8]/40 transition-all duration-200">
-            <ToolPanelBody className="flex flex-col gap-3.5">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#6259E8]/8 dark:bg-[#756EF0]/14 text-[#6259E8] dark:text-[#756EF0] font-mono">
-                  Phase 3 Flagship
-                </span>
-                <span className="text-[11px] text-muted font-mono">RFC 4648</span>
-              </div>
-              <h3 className="text-base font-semibold text-foreground tracking-tight">
-                Text Encoder & Decoder
-              </h3>
-              <p className="text-xs text-muted leading-relaxed font-normal">
-                Bidirectional conversion of arbitrary UTF-8 text, multi-byte characters, and
-                emojis. Handles padding toggles and whitespace normalization without data loss.
-              </p>
-            </ToolPanelBody>
-            <ToolPanelFooter>
-              <span className="font-medium text-foreground">Input: UTF-8 Strings</span>
-              <span className="text-[11px] text-[#6259E8] dark:text-[#756EF0] font-medium">In Progress</span>
-            </ToolPanelFooter>
-          </ToolPanel>
+          <Link href="/base64-encoder" className="flex flex-col group">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#6259E8]/50 group-hover:shadow-card transition-all duration-200">
+              <ToolPanelBody className="flex flex-col gap-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#6259E8]/8 dark:bg-[#756EF0]/14 text-[#6259E8] dark:text-[#756EF0] font-mono">
+                    Live Tool
+                  </span>
+                  <span className="text-[11px] text-muted font-mono">RFC 4648</span>
+                </div>
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#6259E8] dark:group-hover:text-[#756EF0] transition-colors">
+                  Base64 Text Encoder Online →
+                </h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Bidirectional conversion of arbitrary UTF-8 text, multi-byte characters, and
+                  emojis. Handles padding toggles and whitespace normalization without data loss.
+                </p>
+              </ToolPanelBody>
+              <ToolPanelFooter>
+                <span className="font-medium text-foreground">Input: UTF-8 Strings</span>
+                <span className="text-[11px] text-[#6259E8] dark:text-[#756EF0] font-medium">Open Tool →</span>
+              </ToolPanelFooter>
+            </ToolPanel>
+          </Link>
 
           {/* Card 2: File Conversion */}
           <ToolPanel variant="secondary" className="flex flex-col justify-between hover:border-border transition-all duration-200">

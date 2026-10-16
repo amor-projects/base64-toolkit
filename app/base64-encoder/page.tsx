@@ -1,0 +1,270 @@
+import React from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Base64EncoderTool } from "@/components/tools/Base64EncoderTool";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ToolPanel, ToolPanelBody } from "@/components/ui/ToolPanel";
+
+export const metadata: Metadata = {
+  title: "Base64 Encoder Online — Fast, Private Text Encoding",
+  description:
+    "Encode plain text, UTF-8 strings, and emojis into standard Base64 or Base64URL directly in your browser. 100% client-side with zero server uploads.",
+  alternates: {
+    canonical: "https://base64toolkit.com/base64-encoder",
+  },
+  openGraph: {
+    title: "Base64 Encoder Online — Fast, Private Text Encoding",
+    description:
+      "Transform plain text into standard RFC 4648 or Base64URL strings instantly. Zero server uploads.",
+    url: "https://base64toolkit.com/base64-encoder",
+    type: "website",
+  },
+};
+
+export default function Base64EncoderPage() {
+  return (
+    <main className="flex-1 flex flex-col items-center py-10 sm:py-14">
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        {/* 1. Header & Value Proposition */}
+        <section className="flex flex-col items-center text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#6259E8]/8 dark:bg-[#756EF0]/12 text-[#6259E8] dark:text-[#756EF0] border border-[#6259E8]/15 mb-4 shadow-whisper">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#6259E8] dark:bg-[#756EF0]" />
+            <span>Flagship Utility • In-Browser Execution</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl font-semibold tracking-[-0.03em] text-foreground leading-[1.15]">
+            Base64 Encoder Online
+          </h1>
+
+          <p className="mt-3.5 text-base sm:text-lg text-muted max-w-2xl leading-relaxed font-normal">
+            Convert UTF-8 text, international characters, and emojis into RFC 4648 Base64 or
+            Base64URL strings. Processed completely on your local device—no server transmissions.
+          </p>
+        </section>
+
+        {/* 2. Interactive Flagship Tool Component */}
+        <section aria-label="Base64 Text Encoder Tool">
+          <Base64EncoderTool initialText="Hello World" />
+        </section>
+
+        {/* 3. Verified Privacy Statement */}
+        <section className="p-5 rounded-2xl bg-surface border border-border/80 shadow-card flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-foreground">Local Execution Guarantee</p>
+              <p className="text-xs text-muted">
+                Your input text is encoded using browser-native <code className="font-mono text-[11px] bg-black/[0.04] dark:bg-white/[0.06] px-1 py-0.5 rounded">TextEncoder</code> and in-memory byte arrays. Data is never uploaded to any backend.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/base64-decoder"
+            className="text-xs font-medium text-[#6259E8] dark:text-[#756EF0] hover:underline shrink-0"
+          >
+            Need to decode? Switch to Base64 Decoder →
+          </Link>
+        </section>
+
+        {/* 4. Supported Modes and Features */}
+        <section className="space-y-6">
+          <SectionHeading
+            eyebrow="Capabilities"
+            title="Engineered for Precision & Compliance"
+            description="Unlike rudimentary encoders that fail on non-ASCII characters, our engine complies strictly with RFC 4648 and Unicode standards."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <ToolPanel variant="subtle">
+              <ToolPanelBody className="space-y-2.5">
+                <span className="text-xs font-mono text-[#6259E8] dark:text-[#756EF0] font-semibold">
+                  01 • Multi-Byte UTF-8
+                </span>
+                <h3 className="text-sm font-semibold text-foreground">Accents, CJK & Emojis</h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Standard browser <code className="font-mono text-[11px]">btoa()</code> only accepts Latin-1 characters (0–255) and crashes on Unicode. Our engine uses <code className="font-mono text-[11px]">TextEncoder</code> to reliably encode any multi-byte string.
+                </p>
+              </ToolPanelBody>
+            </ToolPanel>
+
+            <ToolPanel variant="subtle">
+              <ToolPanelBody className="space-y-2.5">
+                <span className="text-xs font-mono text-[#6259E8] dark:text-[#756EF0] font-semibold">
+                  02 • Base64URL Safe
+                </span>
+                <h3 className="text-sm font-semibold text-foreground">URL & Filename Safe</h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Toggle seamlessly between standard Base64 (using <code className="font-mono text-[11px]">+</code> and <code className="font-mono text-[11px]">/</code>) and Base64URL (using <code className="font-mono text-[11px]">-</code> and <code className="font-mono text-[11px]">_</code>) for JWT tokens and URL query strings.
+                </p>
+              </ToolPanelBody>
+            </ToolPanel>
+
+            <ToolPanel variant="subtle">
+              <ToolPanelBody className="space-y-2.5">
+                <span className="text-xs font-mono text-[#6259E8] dark:text-[#756EF0] font-semibold">
+                  03 • Padding Control
+                </span>
+                <h3 className="text-sm font-semibold text-foreground">Flexible Padding (=)</h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Choose between standard 4-character padded output (<code className="font-mono text-[11px]">=</code> and <code className="font-mono text-[11px]">==</code>) or unpadded output commonly required in modern OAuth2 and WebAuthn specifications.
+                </p>
+              </ToolPanelBody>
+            </ToolPanel>
+          </div>
+        </section>
+
+        {/* 5. Tested Worked Examples */}
+        <section className="space-y-6">
+          <SectionHeading
+            eyebrow="Test Vectors"
+            title="Verified Input & Output Examples"
+            description="RFC 4648 test vectors and Unicode test cases validated against standard cryptographic specifications."
+          />
+
+          <div className="overflow-x-auto rounded-2xl border border-border/80 shadow-whisper bg-surface">
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="border-b border-border/70 bg-[#FBFBFA] dark:bg-[#151518]">
+                  <th className="py-3 px-4 font-semibold text-foreground">Input Text</th>
+                  <th className="py-3 px-4 font-semibold text-foreground">Type / Notes</th>
+                  <th className="py-3 px-4 font-semibold text-foreground">Base64 Encoded</th>
+                  <th className="py-3 px-4 font-semibold text-foreground">Base64URL (Unpadded)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/50 font-mono text-[12px]">
+                <tr>
+                  <td className="py-3 px-4 text-foreground font-sans">Hello World</td>
+                  <td className="py-3 px-4 text-muted font-sans">ASCII standard</td>
+                  <td className="py-3 px-4 text-[#6259E8] dark:text-[#756EF0]">SGVsbG8gV29ybGQ=</td>
+                  <td className="py-3 px-4 text-muted">SGVsbG8gV29ybGQ</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 text-foreground font-sans">Café</td>
+                  <td className="py-3 px-4 text-muted font-sans">Accented (2-byte é)</td>
+                  <td className="py-3 px-4 text-[#6259E8] dark:text-[#756EF0]">Q2Fmw6k=</td>
+                  <td className="py-3 px-4 text-muted">Q2Fmw6k</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 text-foreground font-sans">🚀</td>
+                  <td className="py-3 px-4 text-muted font-sans">Emoji (4 UTF-8 bytes)</td>
+                  <td className="py-3 px-4 text-[#6259E8] dark:text-[#756EF0]">8J+agA==</td>
+                  <td className="py-3 px-4 text-muted">8J-agA</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 text-foreground font-sans">foobar</td>
+                  <td className="py-3 px-4 text-muted font-sans">RFC 4648 Vector</td>
+                  <td className="py-3 px-4 text-[#6259E8] dark:text-[#756EF0]">Zm9vYmFy</td>
+                  <td className="py-3 px-4 text-muted">Zm9vYmFy</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* 6. Technical Explanation */}
+        <section className="space-y-6">
+          <SectionHeading
+            eyebrow="Deep Dive"
+            title="How Base64 Encoding Works"
+            description="The mathematical mechanics behind converting 8-bit binary data to 6-bit ASCII characters."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-muted leading-relaxed font-normal">
+            <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-whisper space-y-3">
+              <h3 className="text-sm font-semibold text-foreground">The 3-to-4 Character Ratio</h3>
+              <p>
+                Computers store binary data in 8-bit bytes (256 possible values). However, legacy
+                transmission protocols (like early email SMTP and HTTP header fields) were designed
+                only for 7-bit ASCII text and could corrupt raw binary bytes.
+              </p>
+              <p>
+                Base64 solves this by taking groups of <strong>3 bytes (24 bits)</strong> and
+                splitting them into <strong>4 groups of 6 bits</strong>. Each 6-bit group maps to one
+                of 64 printable characters (<code className="font-mono text-[11px]">A–Z</code>, <code className="font-mono text-[11px]">a–z</code>, <code className="font-mono text-[11px]">0–9</code>, <code className="font-mono text-[11px]">+</code>, <code className="font-mono text-[11px]">/</code>). This produces a predictable <strong>33% size expansion</strong>.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-whisper space-y-3">
+              <h3 className="text-sm font-semibold text-foreground">Why Does Base64 Use Padding?</h3>
+              <p>
+                When your input length in bytes is not divisible by 3, trailing bytes remain. If 1
+                byte remains (8 bits), it is converted into 2 Base64 characters (12 bits) with 4 zero
+                bits of padding, followed by two <code className="font-mono text-[11px]">=</code> characters.
+              </p>
+              <p>
+                If 2 bytes remain (16 bits), they are converted into 3 Base64 characters (18 bits)
+                with 2 zero bits of padding, followed by one <code className="font-mono text-[11px]">=</code> character. The padding explicitly signals the exact number of bytes originally encoded.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. Common Errors & Troubleshooting */}
+        <section className="space-y-6">
+          <SectionHeading
+            eyebrow="Troubleshooting"
+            title="Common Base64 Encoding Issues"
+            description="Practical solutions to common developer pitfalls when integrating Base64 strings."
+          />
+
+          <div className="space-y-4">
+            <div className="p-5 rounded-2xl bg-surface border border-border/80 shadow-whisper">
+              <h3 className="text-sm font-semibold text-foreground mb-1">
+                The dreaded “InvalidCharacterError” in JavaScript
+              </h3>
+              <p className="text-xs text-muted leading-relaxed font-normal">
+                If you run <code className="font-mono text-[11px]">btoa(&apos;Café&apos;)</code> in browser developer tools, you will receive an <code className="font-mono text-[11px]">InvalidCharacterError</code>. This happens because native <code className="font-mono text-[11px]">btoa()</code> only supports 1-byte Latin-1 characters. Our tool uses <code className="font-mono text-[11px]">new TextEncoder().encode()</code> to convert strings to UTF-8 binary bytes first, guaranteeing complete Unicode compatibility.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-surface border border-border/80 shadow-whisper">
+              <h3 className="text-sm font-semibold text-foreground mb-1">
+                Base64 is an Encoding, NOT Encryption
+              </h3>
+              <p className="text-xs text-muted leading-relaxed font-normal">
+                Base64 is a data representation format, not a security mechanism. Anyone can decode
+                a Base64 string back into plain text in milliseconds. Never rely on Base64 to conceal
+                sensitive passwords, API keys, or private records without cryptographic encryption
+                (such as AES-GCM).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 8. Genuine FAQ */}
+        <section className="space-y-6 border-t border-border/70 pt-12 sm:pt-16">
+          <SectionHeading
+            eyebrow="FAQ"
+            title="Frequently Asked Questions"
+            description="Clear, technically accurate answers to common developer questions."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-muted">
+            <div className="p-5 rounded-2xl bg-surface border border-border/80 shadow-whisper space-y-2">
+              <h3 className="text-sm font-semibold text-foreground">
+                Does this tool send my data to a server?
+              </h3>
+              <p className="leading-relaxed font-normal">
+                No. All encoding runs locally inside your browser via standard JavaScript Web APIs.
+                You can verify this by checking your browser&apos;s Network tab or disconnecting from the internet.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-surface border border-border/80 shadow-whisper space-y-2">
+              <h3 className="text-sm font-semibold text-foreground">
+                What is the difference between Base64 and Base64URL?
+              </h3>
+              <p className="leading-relaxed font-normal">
+                Standard Base64 uses <code className="font-mono text-[11px]">+</code> and <code className="font-mono text-[11px]">/</code>, which have reserved meanings in URL parameters and web paths. Base64URL replaces them with <code className="font-mono text-[11px]">-</code> and <code className="font-mono text-[11px]">_</code> so strings can be safely passed in query strings and JSON Web Tokens (JWTs).
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}

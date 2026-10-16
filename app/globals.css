@@ -26,8 +26,8 @@
     --foreground: #f4f4f5;
     --muted: #a1a1aa;
     --border: #27272a;
-    --accent: hsl(60, 60, 80%);
-    --accent-hover: hsl(60, 65, 90%);
+    --accent: #756ef0;
+    --accent-hover: #6259e8;
     --accent-foreground: #ffffff;
     --accent-tint: rgba(117, 110, 240, 0.1);
     --code-surface: #1a1a1e;
