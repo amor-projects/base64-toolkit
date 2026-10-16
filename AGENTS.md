@@ -210,33 +210,42 @@ Base64 is an encoding, **not encryption**. Never describe encoded output as secr
 
 ## 6. Visual design and UX
 
-### Design direction
-Modern, restrained developer-tool aesthetic: clear typography, precise spacing, calm surfaces, obvious controls, and strong focus states. Aim for “developer documentation meets a polished utility,” not a generic SaaS landing page.
+### Master UI Direction — Premium, Elegant, Fluid Developer Experience
+The product should feel like a beautiful application that happens to be an exceptionally useful Base64 toolkit—not a basic utility website decorated to look attractive. It blends Apple-like restraint, clarity, and precision typography with the warmth, softness, and fluid microinteractions of modern developer tools (such as Linear and Raycast).
 
-### Visual tokens (initial proposal)
-- Page background: `#FAFAFA`
-- Surface: `#FFFFFF`
-- Main text: `#171717`
-- Muted text: `#737373`
-- Borders: `#E5E5E5`
-- Accent: `#4F46E5`
-- Success: `#16A34A`
-- Error: `#DC2626`
-- Code/input surface: `#F5F5F5`
+### Visual tokens
+- **Primary background:** Warm off-white `#FAFAF8` (Dark: `#0E0E10`)
+- **Main surfaces:** Pure white `#FFFFFF` (Dark: `#161618`)
+- **Primary text:** Deep charcoal `#171717` (Dark: `#F4F4F5`)
+- **Secondary / muted text:** Balanced neutral gray `#737373` (Dark: `#A1A1AA`)
+- **Borders:** Subtle stone gray `#E7E5E4` (Dark: `#27272A`)
+- **Primary accent:** Restrained indigo `#6259E8`, hover `#5348DE` (Dark: `#756EF0`)
+- **Success:** Muted emerald `#15803D` (Dark: `#22C55E`)
+- **Error:** Balanced crimson `#DC2626` (Dark: `#EF4444`)
+- **Code / input surfaces:** Refined soft gray `#F6F6F4` (Dark: `#1A1A1E`)
+- **Elevation / Shadows:** Whisper-soft multi-layered shadows (`0 1px 2px rgba(0,0,0,0.03), 0 6px 20px rgba(0,0,0,0.02)`); avoid heavy muddy drop shadows.
 
-Use these as starting tokens and keep them centralized. Check color contrast and visible focus states. Avoid using color as the only way to convey state.
+### Shape language and radii
+- **Small controls and badges:** 8–10px (`rounded-lg` / `rounded-xl`)
+- **Buttons and inputs:** 10–14px (`rounded-xl` / `rounded-2xl`)
+- **Cards and secondary surfaces:** 16–22px (`rounded-2xl`)
+- **Major tool containers:** 20–26px (`rounded-3xl`)
+- **Tactile feedback:** Subtle border highlights, soft inner glow, and smooth focus rings (`focus-visible:ring-2 focus-visible:ring-[#6259E8]/30 focus-visible:border-[#6259E8]`).
+
+### Motion and fluid interaction principles
+- **Fluid, not animated for animation's sake:** Microinteractions must communicate state, establish visual continuity, and feel effortless.
+- **Timing & Easing:** Microinteractions in 120–220ms; larger view transitions in 180–300ms. Use natural fluid easing (`cubic-bezier(0.16, 1, 0.3, 1)`).
+- **Physicality:** Subtle press transitions (`active:scale-[0.985]`), smooth tab transitions, and calm state shifts without layout shifts.
+- **Accessibility:** Full compliance with `prefers-reduced-motion`. All animations must degrade gracefully to instantaneous state changes.
 
 ### UX principles
-- The first action is obvious without scrolling on common laptop/mobile viewports.
-- Provide Text / File / Image workflows as clear tabs or segmented modes when relevant.
-- Keep the input, options, primary action, output, and copy/download actions visually distinct.
-- Provide clear empty, success, invalid-input, file-too-large, and processing states.
-- Add drag-and-drop as an enhancement, never as the only upload method.
-- Make all controls keyboard-accessible and label form fields for assistive technology.
-- Ensure mobile layouts do not create horizontal overflow for long Base64 output.
-- Use a monospace font for encoded output, allow sensible wrapping, and offer download/copy for large outputs.
-- Never place an advertisement so close to a conversion, copy, clear, or download control that users could mistake it for part of the tool.
-- Use animation sparingly and respect reduced-motion settings.
+- The primary tool is immediately accessible on desktop and mobile viewports without wading through marketing clutter.
+- Provide Text / File / Image workflows as clear segmented controls.
+- Distinct input, output, options, and actions regions with clear visual separation.
+- Clear empty states with helpful microcopy, intuitive error feedback, and tactile copy/download actions.
+- Drag-and-drop file upload with natural drag-over response.
+- Prevent horizontal scroll/overflow on long Base64 strings using smart wrapping and monospace layout.
+- Strictly no fake buttons or links; unreleased features must be visibly marked or disabled.
 
 ### Flagship encoder page order
 1. H1 and a concise, accurate explanation.

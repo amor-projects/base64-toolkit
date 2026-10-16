@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fafaf8;
+  --surface: #ffffff;
   --foreground: #171717;
-}
+  --muted: #737373;
+  --border: #e7e5e4;
+  --accent: #6259e8;
+  --accent-hover: #5348de;
+  --accent-foreground: #ffffff;
+  --accent-tint: rgba(98, 89, 232, 0.06);
+  --code-surface: #f6f6f4;
+  --code-surface-subtle: #f0f0ee;
+  --success: #15803d;
+  --error: #dc2626;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Easing curves */
+  --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0e0e10;
+    --surface: #161618;
+    --foreground: #f4f4f5;
+    --muted: #a1a1aa;
+    --border: #27272a;
+    --accent: hsl(60, 60, 80%);
+    --accent-hover: hsl(60, 65, 90%);
+    --accent-foreground: #ffffff;
+    --accent-tint: rgba(117, 110, 240, 0.1);
+    --code-surface: #1a1a1e;
+    --code-surface-subtle: #222227;
+    --success: #22c55e;
+    --error: #ef4444;
   }
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-tint: var(--accent-tint);
+  --color-code-surface: var(--code-surface);
+  --color-code-surface-subtle: var(--code-surface-subtle);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Custom shadow utilities matching Apple / Linear restraint */
+.shadow-whisper {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.015);
+}
+
+.shadow-card {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02), 0 6px 20px -2px rgba(0, 0, 0, 0.035);
+}
+
+.shadow-tool {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02), 0 14px 40px -4px rgba(0, 0, 0, 0.05), 0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-glow-accent {
+  box-shadow: 0 0 0 1px var(--accent), 0 4px 16px -2px rgba(98, 89, 232, 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: rgba(98, 89, 232, 0.18);
+  color: var(--foreground);
+}
+
+/* Clear, refined focus-visible styling */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--accent);
+}
+
+/* Subtle, smooth transitions */
+.transition-fluid {
+  transition: all 180ms var(--ease-fluid);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
