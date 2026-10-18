@@ -23,43 +23,48 @@ interface MobileNavProps {
 
 export function MobileNav({ items }: MobileNavProps) {
   const pathname = usePathname();
-
-  // Store the route on which the menu was opened.
-  // Route changes automatically make isOpen false.
   const [openPath, setOpenPath] = useState<string | null>(null);
-
-  const isOpen = openPath !== null && openPath === pathname;
 
   const buttonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Manage viewport positioning, keyboard dismissal, and scroll locking.
+  // Automatically closes when the route changes.
+  const isOpen = openPath !== null && openPath === pathname;
+
   useEffect(() => {
     if (!isOpen) return;
+
+    const menu = menuRef.current;
+    if (!menu) return;
 
     const header = buttonRef.current?.closest<HTMLElement>(
       "header, [data-site-header]"
     );
 
-    const menu = menuRef.current;
+    const viewport = window.visualViewport;
+    let lastTouchY = 0;
 
-    const updateMenuTop = () => {
-      const bottom = header?.getBoundingClientRect().bottom ?? 64;
+    // Explicit positioning avoids depending on Safari's fixed bottom edge.
+    const updateViewport = () => {
+      const visualTop = viewport?.offsetTop ?? 0;
+      const visualLeft = viewport?.offsetLeft ?? 0;
+      const visualHeight = viewport?.height ?? window.innerHeight;
+      const visualWidth = viewport?.width ?? window.innerWidth;
 
-      // Synchronize the actual DOM instead of triggering a React render.
-      if (menu) {
-        menu.style.top = `${Math.max(0, Math.round(bottom))}px`;
-      }
+      const headerBottom = header?.getBoundingClientRect().bottom;
+      const top = Math.max(
+        visualTop,
+        headerBottom ?? visualTop + 64
+      );
+
+      const visibleBottom = visualTop + visualHeight;
+      const height = Math.max(0, visibleBottom - top);
+
+      menu.style.top = `${top}px`;
+      menu.style.left = `${visualLeft}px`;
+      menu.style.width = `${visualWidth}px`;
+      menu.style.height = `${height}px`;
     };
-
-    const previousBodyOverflow = document.body.style.overflow;
-    const previousHtmlOverflow =
-      document.documentElement.style.overflow;
-
-    updateMenuTop();
-
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -68,27 +73,62 @@ export function MobileNav({ items }: MobileNavProps) {
       }
     };
 
-    const observer =
-      header && typeof ResizeObserver !== "undefined"
-        ? new ResizeObserver(updateMenuTop)
-        : null;
+    // Prevent background scrolling without changing html/body dimensions.
+    // Allow scrolling inside the menu, but prevent scroll chaining at its edges.
+    const handleTouchStart = (event: TouchEvent) => {
+      lastTouchY = event.touches[0]?.clientY ?? 0;
+    };
 
-    if (header) observer?.observe(header);
+    const handleTouchMove = (event: TouchEvent) => {
+      const target = event.target;
 
-    window.addEventListener("resize", updateMenuTop);
-    window.addEventListener("scroll", updateMenuTop, true);
+      if (!(target instanceof Node) || !menu.contains(target)) {
+        event.preventDefault();
+        return;
+      }
+
+      const touchY = event.touches[0]?.clientY;
+      if (touchY === undefined) return;
+
+      const deltaY = touchY - lastTouchY;
+      lastTouchY = touchY;
+
+      const atTop = menu.scrollTop <= 0;
+      const atBottom =
+        menu.scrollTop + menu.clientHeight >= menu.scrollHeight - 1;
+
+      if (
+        (atTop && deltaY > 0) ||
+        (atBottom && deltaY < 0)
+      ) {
+        event.preventDefault();
+      }
+    };
+
+    updateViewport();
+
+    window.addEventListener("resize", updateViewport);
+    window.addEventListener("orientationchange", updateViewport);
+    viewport?.addEventListener("resize", updateViewport);
+    viewport?.addEventListener("scroll", updateViewport);
+
     document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("touchstart", handleTouchStart, {
+      passive: true,
+    });
+    document.addEventListener("touchmove", handleTouchMove, {
+      passive: false,
+    });
 
     return () => {
-      observer?.disconnect();
+      window.removeEventListener("resize", updateViewport);
+      window.removeEventListener("orientationchange", updateViewport);
+      viewport?.removeEventListener("resize", updateViewport);
+      viewport?.removeEventListener("scroll", updateViewport);
 
-      window.removeEventListener("resize", updateMenuTop);
-      window.removeEventListener("scroll", updateMenuTop, true);
       document.removeEventListener("keydown", handleKeyDown);
-
-      document.body.style.overflow = previousBodyOverflow;
-      document.documentElement.style.overflow =
-        previousHtmlOverflow;
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchmove", handleTouchMove);
     };
   }, [isOpen]);
 
@@ -104,15 +144,14 @@ export function MobileNav({ items }: MobileNavProps) {
           isOpen ? "Close navigation menu" : "Open navigation menu"
         }
         className="
-          inline-flex min-h-11 min-w-11
-          items-center justify-center rounded-xl p-2
-          text-muted transition-all duration-150
-          ease-[cubic-bezier(0.16,1,0.3,1)]
+          inline-flex min-h-11 min-w-11 items-center justify-center
+          rounded-xl p-2 text-muted
+          transition-colors duration-150
           hover:bg-black/[0.04] hover:text-foreground
           dark:hover:bg-white/[0.05]
           focus-visible:outline-none
           focus-visible:ring-2 focus-visible:ring-[#84CC16]/50
-          cursor-pointer active:scale-95
+          active:scale-95
         "
       >
         {isOpen ? (
@@ -127,21 +166,30 @@ export function MobileNav({ items }: MobileNavProps) {
           <div
             ref={menuRef}
             id="mobile-menu"
-            style={{ top: "64px" }}
+            role="dialog"
+            aria-label="Mobile navigation menu"
+            style={{
+              position: "fixed",
+              top: "64px",
+              left: 0,
+              width: "100%",
+              height: "calc(100vh - 64px)",
+              boxSizing: "border-box",
+              WebkitOverflowScrolling: "touch",
+            }}
             className="
-              fixed inset-x-0 bottom-0 z-[100]
-              flex min-h-0 flex-col
+              z-[100] flex min-h-0 flex-col
               justify-between gap-8
               overflow-y-auto overscroll-contain
               border-t border-border/80
-              bg-[#FAFAF8]/95 p-5 backdrop-blur-md
+              bg-[#FAFAF8]/95 p-5
+              backdrop-blur-md
               dark:bg-[#0E0E10]/95
-              animate-in fade-in duration-150
             "
           >
             <nav
               className="flex shrink-0 flex-col gap-1.5 pt-2"
-              aria-label="Mobile navigation"
+              aria-label="Mobile navigation links"
             >
               {items.map((item) => {
                 const isAnchor = item.href.startsWith("/#");
@@ -164,9 +212,7 @@ export function MobileNav({ items }: MobileNavProps) {
                     className={`
                       flex min-h-11 items-center justify-between
                       gap-3 rounded-xl px-4 py-3
-                      text-sm font-medium transition-all duration-150
-                      ease-[cubic-bezier(0.16,1,0.3,1)]
-                      active:scale-[0.99]
+                      text-sm font-medium transition-colors
                       ${
                         isActive
                           ? "border-l-4 border-[#65A30D] bg-black/[0.05] font-semibold text-foreground dark:border-[#A3E635] dark:bg-white/[0.08]"
@@ -208,8 +254,8 @@ export function MobileNav({ items }: MobileNavProps) {
               </div>
 
               <p className="leading-relaxed">
-                100% in-browser processing. Zero network transmission
-                of inputs or outputs.
+                100% in-browser processing. Zero network
+                transmission of inputs or outputs.
               </p>
             </div>
           </div>,
