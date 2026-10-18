@@ -81,9 +81,16 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
+      <body className="min-h-dvh flex flex-col bg-background text-foreground font-sans">
         <Header />
-        <main className="flex-1 flex flex-col animate-page-enter">{children}</main>
+
+        <main
+          id="main-content"
+          className="w-full min-w-0 flex-1 flex flex-col animate-page-enter"
+        >
+          {children}
+        </main>
+
         <Footer />
       </body>
     </html>

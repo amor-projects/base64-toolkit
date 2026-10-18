@@ -42,7 +42,7 @@ export default function Home() {
   });
 
   return (
-    <main className="flex-1 flex flex-col items-center">
+      <div className="w-full min-w-0 flex flex-col items-center">
       {/* Schema.org WebApplication structured data */}
       <script
         type="application/ld+json"
@@ -434,6 +434,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
