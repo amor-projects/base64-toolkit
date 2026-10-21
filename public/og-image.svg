@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Base64 Toolkit</title>
+  <desc id="desc">Fast browser-based tools for encoding, decoding, and converting Base64.</desc>
+  <rect width="1200" height="630" fill="#0E0E10"/>
+  <circle cx="1080" cy="-20" r="300" fill="none" stroke="#27272A" stroke-width="2"/>
+  <circle cx="1100" cy="630" r="260" fill="#BEF264" fill-opacity=".06"/>
+  <rect x="74" y="58" width="62" height="62" rx="17" fill="#BEF264"/>
+  <text x="105" y="101" fill="#090D04" font-family="Arial, sans-serif" font-size="30" font-weight="700" text-anchor="middle">64</text>
+  <text x="154" y="98" fill="#F4F4F5" font-family="monospace" font-size="20" font-weight="700" letter-spacing="1">BASE64 TOOLKIT</text>
+  <rect x="74" y="166" width="238" height="36" rx="18" fill="#BEF264" fill-opacity=".12" stroke="#BEF264" stroke-opacity=".28"/>
+  <text x="93" y="190" fill="#BEF264" font-family="monospace" font-size="14" font-weight="700" letter-spacing=".5">LOCAL-FIRST / RFC 4648</text>
+  <text x="74" y="280" fill="#F4F4F5" font-family="Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-3">Encode. Decode.</text>
+  <text x="74" y="350" fill="#F4F4F5" font-family="Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-3">Convert.</text>
+  <text x="74" y="402" fill="#A1A1AA" font-family="Arial, sans-serif" font-size="23">Fast browser tools for text, files, images, and Base64URL.</text>
+  <rect x="760" y="116" width="360" height="390" rx="28" fill="#161618" stroke="#27272A"/>
+  <circle cx="790" cy="150" r="5" fill="#EF4444"/>
+  <circle cx="809" cy="150" r="5" fill="#FACC15"/>
+  <circle cx="828" cy="150" r="5" fill="#22C55E"/>
+  <text x="786" y="224" fill="#BEF264" font-family="monospace" font-size="16">input</text>
+  <text x="846" y="224" fill="#A1A1AA" font-family="monospace" font-size="16">Hello, world!</text>
+  <text x="786" y="252" fill="#BEF264" font-family="monospace" font-size="16">output</text>
+  <text x="866" y="252" fill="#A1A1AA" font-family="monospace" font-size="16">SGVsbG8sIHdvcmxkIQ==</text>
+  <line x1="786" y1="284" x2="1094" y2="284" stroke="#27272A"/>
+  <text x="786" y="324" fill="#71717A" font-family="monospace" font-size="16">browser-local</text>
+  <text x="786" y="354" fill="#71717A" font-family="monospace" font-size="16">no upload required</text>
+  <text x="786" y="414" fill="#BEF264" font-family="monospace" font-size="16" font-weight="700">ready when you are_</text>
+  <text x="76" y="588" fill="#BEF264" font-family="monospace" font-size="13" letter-spacing=".6">TEXT</text>
+  <text x="140" y="588" fill="#71717A" font-family="monospace" font-size="13">/</text>
+  <text x="170" y="588" fill="#71717A" font-family="monospace" font-size="13">FILES</text>
+  <text x="240" y="588" fill="#71717A" font-family="monospace" font-size="13">/</text>
+  <text x="270" y="588" fill="#71717A" font-family="monospace" font-size="13">IMAGES</text>
+  <text x="354" y="588" fill="#71717A" font-family="monospace" font-size="13">/</text>
+  <text x="384" y="588" fill="#71717A" font-family="monospace" font-size="13">BASE64URL</text>
+  <text x="486" y="588" fill="#71717A" font-family="monospace" font-size="13">/</text>
+  <text x="516" y="588" fill="#71717A" font-family="monospace" font-size="13">DATA URIS</text>
+</svg>

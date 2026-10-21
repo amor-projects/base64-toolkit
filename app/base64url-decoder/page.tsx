@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = buildRouteMetadata({
   title: "Base64URL Decoder Online — Decode URL-Safe & JWT Strings",
   description:
-    "Decode URL-safe Base64URL strings (-, _) with or without padding. Safely inspect JWT payloads and URL query parameters directly in your browser with zero server uploads.",
+    "Decode URL-safe Base64URL strings with or without padding. Inspect JWT-style segments and URL parameters locally, with clear validation and no conversion upload.",
   path: "/base64url-decoder",
 });
 

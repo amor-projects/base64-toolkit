@@ -14,8 +14,8 @@ export const SITE_URL: string = (
 ).replace(/\/+$/, "");
 
 export const SITE_NAME = "Base64 Toolkit";
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/opengraph-image`;
-export const DEFAULT_TWITTER_IMAGE = `${SITE_URL}/twitter-image`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+export const DEFAULT_TWITTER_IMAGE = `${SITE_URL}/og-image.png`;
 export const SOCIAL_IMAGE_ALT =
   "Base64 Toolkit — fast, private in-browser tools for encoding, decoding, and converting Base64";
 
@@ -71,6 +71,7 @@ export function buildRouteMetadata({
           url: DEFAULT_OG_IMAGE,
           width: 1200,
           height: 630,
+          type: "image/png",
           alt: SOCIAL_IMAGE_ALT,
         },
       ],
@@ -80,7 +81,7 @@ export function buildRouteMetadata({
       card: "summary_large_image",
       title: `${title} | ${SITE_NAME}`,
       description,
-      images: [DEFAULT_TWITTER_IMAGE],
+      images: [{ url: DEFAULT_TWITTER_IMAGE, alt: SOCIAL_IMAGE_ALT }],
     },
   };
 }

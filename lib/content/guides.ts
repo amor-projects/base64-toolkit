@@ -358,7 +358,7 @@ This means Base64 data is **always roughly 33.3% larger** than the source file. 
       {
         question: "Does Base64 take up more memory in JavaScript?",
         answer:
-          "Yes. JavaScript strings use UTF-16 representation internally, meaning each Base64 character can consume 2 bytes of heap memory, roughly doubling in-memory footprint during string manipulations.",
+          "Often, yes. The browser may keep the Base64 text in a compact representation, but string copies, decoded byte arrays, and UI state can coexist in memory. Plan for more than the original file size when processing large payloads.",
       },
     ],
   },

@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = buildRouteMetadata({
   title: "Privacy Policy — Base64 Toolkit",
   description:
-    "Transparent privacy policy for Base64 Toolkit. Detailed disclosure of our in-browser architecture, zero server uploads, and data handling practices.",
+    "Read how Base64 Toolkit handles tool inputs, browser storage, hosting logs, and future third-party integrations while conversions run locally in the browser.",
   path: "/privacy",
 });
 
@@ -117,10 +117,9 @@ export default function PrivacyPage() {
                 <span>Planned Integrations Disclosure</span>
               </div>
               <p className="text-xs">
-                [TODO: OWNER - If Google AdSense or GA4 is deployed in future releases, configure appropriate regional consent management (e.g. GDPR/CCPA consent banners) and document third-party advertising cookies here before going live.]
-              </p>
-              <p className="text-xs">
-                Currently, no third-party advertising scripts or behavioral tracking pixels are active on this website.
+                No third-party advertising scripts, analytics tools, or behavioral tracking pixels are
+                currently active on this website. If that changes, this policy will be updated before
+                the new integration is deployed, including any required consent choices.
               </p>
             </div>
           </section>
@@ -136,7 +135,7 @@ export default function PrivacyPage() {
               <p>Operator: Abdul Samad (aka amorzephyr)</p>
               <p>Email: <a href="mailto:amorzephyr@gmail.com" className="underline underline-offset-2">amorzephyr@gmail.com</a></p>
               <p>Jurisdiction: Pakistan (operator residence)</p>
-              <p>Effective Date: [TODO: OWNER - Supply effective date, e.g. October 16, 2026]</p>
+              <p>Effective Date: October 22, 2026</p>
             </div>
           </section>
         </div>

@@ -62,7 +62,9 @@ export default function AboutPage() {
               When working with authentication payloads, private keys, database dumps, or confidential design assets, uploading data to an unknown third-party server represents a serious security and privacy risk.
             </p>
             <p>
-              Base64 Toolkit was built to provide an honest, modern alternative: an elegant, responsive developer tool that runs 100% inside your browser tab, respecting both your time and your data privacy.
+            Base64 Toolkit was built to provide an honest, modern alternative: an elegant, responsive
+            developer tool that performs conversions inside your browser tab, without using a
+            conversion backend for the data you provide.
             </p>
           </div>
         </section>

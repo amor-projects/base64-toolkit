@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = buildRouteMetadata({
   title: "Base64 Encoder Online — Fast, Private Text Encoding",
   description:
-    "Encode plain text, UTF-8 strings, and international characters into standard Base64 or Base64URL directly in your browser. 100% client-side with zero server uploads.",
+    "Encode plain text and UTF-8 strings as standard Base64 or Base64URL in your browser. Handles accents, emoji, padding options, and byte-length details without uploading the input.",
   path: "/base64-encoder",
 });
 

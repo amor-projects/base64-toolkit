@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = buildRouteMetadata({
   title: "Image to Base64 Converter Online — Data URI & HTML/CSS Generator",
   description:
-    "Convert PNG, JPG, WebP, SVG, and GIF images to Base64 strings, Data URIs, HTML <img> tags, and CSS url() snippets directly in your browser. 100% private.",
+    "Convert PNG, JPEG, WebP, SVG, and GIF images to Base64, Data URIs, HTML img tags, or CSS url() snippets in your browser without uploading the image.",
   path: "/image-to-base64",
 });
 
@@ -121,7 +121,9 @@ export default function ImageToBase64Page() {
               </span>
               <h3 className="text-sm font-semibold text-foreground">Large Photos & Hero Banners</h3>
               <p>
-                Because Base64 adds ~33% byte expansion and prevents browser HTTP image caching across separate page visits, large images (&gt;50 KB) should be served as regular image URLs rather than embedded Base64 strings.
+                Because Base64 adds about 33% byte expansion and embeds the bytes inside the
+                containing document or stylesheet, large images are usually better served as regular
+                image URLs with independent caching.
               </p>
             </div>
           </div>

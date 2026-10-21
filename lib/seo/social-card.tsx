@@ -1,4 +1,4 @@
-import { SOCIAL_IMAGE_ALT } from "@/lib/seo/site";
+import { SITE_URL } from "@/lib/seo/site";
 
 export const SOCIAL_IMAGE_SIZE = {
   width: 1200,
@@ -265,7 +265,7 @@ export function SocialCard() {
           fontSize: 13,
         }}
       >
-        best-base64-toolkit.vercel.app
+        {SITE_URL.replace(/^https?:\/\//, "")}
       </div>
     </div>
   );

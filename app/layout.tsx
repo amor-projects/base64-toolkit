@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "@fontsource/comic-mono/400.css";
@@ -28,11 +28,20 @@ import {
 export const metadata: Metadata = {
   title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
   description:
-    "Encode, decode, convert, and inspect Base64, Base64URL, files, and images directly in your browser. Fast, private by design, with zero server uploads.",
+    "Encode, decode, convert, and inspect Base64, Base64URL, files, and images in your browser. Tool data stays in the page instead of being sent to a conversion backend.",
   metadataBase: new URL(SITE_URL),
+  applicationName: "Base64 Toolkit",
+  category: "technology",
+  creator: "Base64 Toolkit",
+  publisher: "Base64 Toolkit",
+  manifest: "/manifest.webmanifest",
   icons: {
-    icon: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   robots: {
     index: true,
@@ -41,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
     description:
-      "Client-side Base64 tools for developers and creators. Process text and files locally with zero server transmissions.",
+      "Browser-based Base64 tools for text, files, images, Base64URL, and Data URIs. Process tool data locally without a conversion upload.",
     type: "website",
     locale: "en_US",
     siteName: "Base64 Toolkit",
@@ -50,6 +59,7 @@ export const metadata: Metadata = {
         url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
+        type: "image/png",
         alt: SOCIAL_IMAGE_ALT,
       },
     ],
@@ -58,9 +68,18 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
     description:
-      "Client-side Base64 tools for developers and creators. Process text and files locally with zero server transmissions.",
-    images: [DEFAULT_TWITTER_IMAGE],
+      "Browser-based Base64 tools for text, files, images, Base64URL, and Data URIs. Process tool data locally without a conversion upload.",
+    images: [{ url: DEFAULT_TWITTER_IMAGE, alt: SOCIAL_IMAGE_ALT }],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAFAF8" },
+    { media: "(prefers-color-scheme: dark)", color: "#0E0E10" },
+  ],
 };
 
 export default function RootLayout({

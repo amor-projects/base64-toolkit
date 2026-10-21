@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ToolPanel, ToolPanelBody, ToolPanelFooter } from "@/components/ui/ToolPanel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Base64EncoderTool } from "@/components/tools/Base64EncoderTool";
-import { absoluteUrl, generateWebApplicationSchema } from "@/lib/seo/site";
+import { buildRouteMetadata, generateWebApplicationSchema } from "@/lib/seo/site";
 import {
   ShieldCheckIcon,
   CodeIcon,
@@ -16,21 +16,12 @@ import {
   ArrowRightIcon,
 } from "@/components/ui/Icons";
 
-export const metadata: Metadata = {
-  title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
+export const metadata: Metadata = buildRouteMetadata({
+  title: "Base64 Tools Online",
   description:
-    "Free, private in-browser Base64 utilities for developers. Encode, decode, convert, and inspect UTF-8 text, files, and images locally with zero server uploads.",
-  alternates: {
-    canonical: absoluteUrl("/"),
-  },
-  openGraph: {
-    title: "Base64 Toolkit — Fast, Private In-Browser Base64 Utilities",
-    description:
-      "Transform and inspect Base64 text and files locally with zero network transmission.",
-    url: absoluteUrl("/"),
-    type: "website",
-  },
-};
+    "Use free Base64 tools in your browser: encode and decode UTF-8 text, convert files and images, inspect padding, and calculate size overhead without uploading tool data.",
+  path: "/",
+});
 
 export default function Home() {
   const schema = generateWebApplicationSchema({
@@ -57,12 +48,12 @@ export default function Home() {
         </div>
 
         <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-semibold tracking-[-0.03em] text-foreground max-w-2xl leading-[1.12] font-sans">
-          Precision Base64, processed entirely in your browser.
+          Base64 tools for text, files, and images.
         </h1>
 
         <p className="mt-4 text-base sm:text-lg text-muted max-w-xl leading-relaxed font-normal font-sans">
-          Fast, private encoding, decoding, and diagnostics. No server uploads, no artificial
-          delays, and strict RFC 4648 compliance.
+          Encode, decode, inspect, and convert Base64 in a clear browser workflow. Text and file
+          conversion happen locally, with practical limits and standards-based output.
         </p>
 
         {/* Spec highlights with Google Icons */}
@@ -336,8 +327,8 @@ export default function Home() {
               Zero Server Intermediation
             </h3>
             <p className="text-xs text-muted leading-relaxed font-normal">
-              Every operation executes strictly inside your browser’s local JavaScript runtime. Your
-              files, security keys, and text never touch a server, proxy, or remote storage.
+              Conversion happens in the browser tab, so your text, files, and decoded bytes are not
+              sent to a conversion backend or stored by this app.
             </p>
           </div>
 
@@ -349,8 +340,8 @@ export default function Home() {
               No Payload Telemetry
             </h3>
             <p className="text-xs text-muted leading-relaxed font-normal">
-              Any analytics enabled for the product measure strictly high-level interface navigation.
-              User input strings, Base64 payloads, and file names are never tracked or logged.
+              No analytics or advertising scripts are currently active. If measurement is added,
+              it should cover aggregate actions only—not input strings, payloads, file names, or bytes.
             </p>
           </div>
 
@@ -362,8 +353,8 @@ export default function Home() {
               Memory Ceiling Safeguards
             </h3>
             <p className="text-xs text-muted leading-relaxed font-normal">
-              Base64 expands binary size by 33%. To protect browser stability and mobile devices from
-              out-of-memory crashes, we enforce an explicit 25MB ceiling with in-UI warnings.
+              Base64 expands binary size by about 33%. The file converter currently enforces a 10 MB
+              input ceiling and explains the limit before processing.
             </p>
           </div>
         </div>

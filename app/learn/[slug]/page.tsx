@@ -107,7 +107,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
           <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-muted pt-2">
             <span>Reviewed: {guide.lastUpdated}</span>
             <span>•</span>
-            <span>Status: Verified RFC Specification</span>
+            <span>Status: Standards reviewed</span>
           </div>
         </header>
 

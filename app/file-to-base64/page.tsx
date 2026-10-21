@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = buildRouteMetadata({
   title: "File to Base64 Converter Online — Fast, Private Local Conversion",
   description:
-    "Convert any file (PDF, image, audio, archive, or binary) into a Base64 string directly in your browser. 10MB safe ceiling, zero server uploads, 100% private.",
+    "Convert a PDF, image, archive, audio file, or other binary file to Base64 in your browser. Local processing, clear size limits, and no conversion upload.",
   path: "/file-to-base64",
 });
 
@@ -83,7 +83,7 @@ export default function FileToBase64Page() {
               <ShieldCheckIcon size={18} className="text-[#65A30D] dark:text-[#A3E635]" />
             </div>
             <div>
-              <p className="text-xs font-semibold text-foreground">Zero Upload Guarantee</p>
+              <p className="text-xs font-semibold text-foreground">Local file processing</p>
               <p className="text-xs text-muted">
                 Your files are read via browser-native <code className="font-mono text-[11px] bg-black/[0.04] dark:bg-white/[0.06] px-1 py-0.5 rounded">FileReader</code> and <code className="font-mono text-[11px] bg-black/[0.04] dark:bg-white/[0.06] px-1 py-0.5 rounded">ArrayBuffer</code>. No file bytes or filenames ever leave your machine.
               </p>
@@ -113,7 +113,8 @@ export default function FileToBase64Page() {
                 </span>
                 <h3 className="text-sm font-semibold text-foreground">Memory Crash Prevention</h3>
                 <p className="text-xs text-muted leading-relaxed font-normal">
-                  Base64 expands binary size by 33%. Storing multi-gigabyte strings in JavaScript heap can freeze the browser UI. We enforce a tested 10 MB ceiling to guarantee performance.
+                  Base64 expands binary size by about 33%. Keeping the input under the 10 MB ceiling
+                  limits memory pressure while the browser holds the file and output string.
                 </p>
               </ToolPanelBody>
             </ToolPanel>
@@ -158,7 +159,9 @@ export default function FileToBase64Page() {
                 Can I convert files larger than 10 MB?
               </h3>
               <p className="leading-relaxed font-normal">
-                To guarantee zero page freezing on phones and tablets, the in-browser default is 10 MB. In upcoming releases, background Web Workers will allow streaming larger files safely.
+                This release accepts files up to 10 MB. Larger files may require more browser memory
+                than this page is designed to reserve, so use a local desktop tool or split the file
+                when you need to process more data.
               </p>
             </div>
 

@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/seo/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
-  const today = "2026-10-16";
+  const today = "2026-10-22";
 
   const coreRoutes: MetadataRoute.Sitemap = [
     {

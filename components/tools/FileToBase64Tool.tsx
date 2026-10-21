@@ -189,7 +189,7 @@ export function FileToBase64Tool() {
           <p className="mt-1 text-xs text-muted max-w-sm leading-relaxed">
             {file
               ? `Selected file size: ${formatBytes(file.size)} • Type: ${file.type || "unknown binary"}`
-              : "Works with any file format (PDF, images, archives, audio). Processed 100% in your browser up to 10 MB."}
+              : "Works with any file format (PDF, images, archives, audio). Processed in your browser up to 10 MB."}
           </p>
 
           <Button variant="secondary" size="sm" className="mt-4 pointer-events-none">

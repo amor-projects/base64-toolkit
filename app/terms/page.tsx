@@ -6,6 +6,7 @@ import { WarningIcon } from "@/components/ui/Icons";
 import {
   buildRouteMetadata,
   generateBreadcrumbSchema,
+  SITE_URL,
 } from "@/lib/seo/site";
 
 export const metadata: Metadata = buildRouteMetadata({
@@ -62,7 +63,9 @@ export default function TermsPage() {
               1. Acceptance of Terms
             </h2>
             <p>
-              By accessing or using Base64 Toolkit (accessible at best-base64-toolkit.vercel.app), you agree to be bound by these Terms of Service. If you disagree with any part of these terms, please discontinue using this website.
+              By accessing or using Base64 Toolkit at {SITE_URL}, you agree to be bound by these
+              Terms of Service. If you disagree with any part of these terms, please discontinue
+              using this website.
             </p>
           </section>
 
@@ -111,7 +114,7 @@ export default function TermsPage() {
             <div className="p-4 rounded-xl bg-surface border border-border/80 font-mono text-xs space-y-1">
               <p>Operator: Abdul Samad (aka amorzephyr)</p>
               <p>Contact: <Link href="/contact" className="text-[#27440D] dark:text-[#BEF264] underline">Contact Support</Link></p>
-              <p>Effective Date: [TODO: OWNER - Supply effective date, e.g. October 16, 2026]</p>
+              <p>Effective Date: October 22, 2026</p>
             </div>
           </section>
         </div>
