@@ -26,6 +26,8 @@ export interface EducationalGuide {
   slug: string;
   title: string;
   shortTitle: string;
+  category: string;
+  audience: string;
   description: string;
   canonicalUrl: string;
   readTimeMinutes: number;
@@ -48,6 +50,8 @@ export const EDUCATIONAL_GUIDES: EducationalGuide[] = [
     slug: "what-is-base64",
     title: "What Is Base64? How the Binary-to-Text Encoding Works",
     shortTitle: "What Is Base64?",
+    category: "Start here",
+    audience: "New to Base64",
     description:
       "A complete technical explanation of RFC 4648 Base64 encoding. Understand 6-bit chunking, ASCII mappings, why Base64 is not encryption, and where to use it.",
     canonicalUrl: absoluteUrl("/learn/what-is-base64"),
@@ -134,6 +138,8 @@ Result:           TWFu`,
     slug: "base64-vs-base64url",
     title: "Base64 vs Base64URL: RFC 4648 Standards & Key Differences",
     shortTitle: "Base64 vs Base64URL",
+    category: "Standards",
+    audience: "Working with URLs or JWTs",
     description:
       "Understand the technical differences between standard Base64 and URL-safe Base64URL. Learn how '+' and '/' are replaced with '-' and '_', and how padding is handled in JWTs.",
     canonicalUrl: absoluteUrl("/learn/base64-vs-base64url"),
@@ -219,6 +225,8 @@ export function fromBase64Url(base64url: string): string {
     slug: "base64-padding",
     title: "How Base64 Padding Works: Why '=' Characters Appear",
     shortTitle: "How Base64 Padding Works",
+    category: "Troubleshooting",
+    audience: "Fixing decode errors",
     description:
       "Demystifying '=' padding characters in Base64 strings. Learn why inputs are aligned to 4-character blocks, the three mathematical cases, and how to troubleshoot padding errors.",
     canonicalUrl: absoluteUrl("/learn/base64-padding"),
@@ -297,6 +305,8 @@ The input has 2 leftover bytes (16 bits). 16 bits require three 6-bit blocks (18
     slug: "base64-file-size",
     title: "Base64 File Size Explained: The Exact 33% Bandwidth Overhead",
     shortTitle: "Base64 File Size Overhead",
+    category: "Performance",
+    audience: "Choosing the right delivery format",
     description:
       "Learn the exact mathematical formulas for Base64 size expansion. Calculate byte overhead, understand why Base64 compresses poorly, and know when to avoid it.",
     canonicalUrl: absoluteUrl("/learn/base64-file-size"),
@@ -366,6 +376,8 @@ This means Base64 data is **always roughly 33.3% larger** than the source file. 
     slug: "base64-data-uri",
     title: "Base64 Data URIs: Complete Guide to Inlining Images and Files",
     shortTitle: "Base64 Data URIs",
+    category: "Web embedding",
+    audience: "Embedding small assets in HTML or CSS",
     description:
       "Master RFC 2397 Data URIs. Learn how to embed PNG, JPEG, WebP, and SVG images directly into HTML and CSS stylesheets, with syntax rules and practical examples.",
     canonicalUrl: absoluteUrl("/learn/base64-data-uri"),

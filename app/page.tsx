@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ToolPanel, ToolPanelBody, ToolPanelFooter } from "@/components/ui/ToolPanel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Base64EncoderTool } from "@/components/tools/Base64EncoderTool";
+import { EDUCATIONAL_GUIDES } from "@/lib/content/guides";
 import { buildRouteMetadata, generateWebApplicationSchema } from "@/lib/seo/site";
 import {
   ShieldCheckIcon,
@@ -375,54 +376,34 @@ export default function Home() {
             href="/learn"
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#27440D] dark:text-[#BEF264] hover:underline shrink-0"
           >
-            <span>View All 5 Technical Guides</span>
+            <span>View All {EDUCATIONAL_GUIDES.length} Technical Guides</span>
             <ArrowRightIcon size={14} />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
-          <Link href="/learn/what-is-base64" className="flex flex-col group">
-            <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-card hover:border-[#65A30D]/40 dark:hover:border-[#BEF264]/40 hover:shadow-tool transition-all duration-200 flex flex-col justify-between h-full">
-              <div className="flex flex-col gap-2">
-                <span className="text-[11px] font-mono text-[#27440D] dark:text-[#BEF264] uppercase font-semibold">
-                  Guide • Fundamentals
-                </span>
-                <h3 className="text-base font-semibold text-foreground group-hover:text-[#27440D] dark:group-hover:text-[#BEF264] transition-colors tracking-tight flex items-center justify-between">
-                  <span>What Is Base64 and Why Is It Used?</span>
-                  <ArrowRightIcon size={15} />
-                </h3>
-                <p className="text-xs text-muted leading-relaxed font-normal">
-                  How Base64 converts 8-bit binary data into a safe 64-character ASCII alphabet to
-                  prevent corruption across plain-text communication channels (MIME, JSON, URLs).
-                </p>
+          {EDUCATIONAL_GUIDES.slice(0, 2).map((guide, index) => (
+            <Link key={guide.slug} href={`/learn/${guide.slug}`} className="flex flex-col group">
+              <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-card hover:border-[#65A30D]/40 dark:hover:border-[#BEF264]/40 hover:shadow-tool transition-all duration-200 flex flex-col justify-between h-full">
+                <div className="flex flex-col gap-2">
+                  <span className="text-[11px] font-mono text-[#27440D] dark:text-[#BEF264] uppercase font-semibold">
+                    {guide.category} · 0{index + 1}
+                  </span>
+                  <h3 className="text-base font-semibold text-foreground group-hover:text-[#27440D] dark:group-hover:text-[#BEF264] transition-colors tracking-tight flex items-center justify-between">
+                    <span>{guide.shortTitle}</span>
+                    <ArrowRightIcon size={15} />
+                  </h3>
+                  <p className="text-xs text-muted leading-relaxed font-normal">
+                    {guide.description}
+                  </p>
+                </div>
+                <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between text-xs text-muted">
+                  <span>{guide.readTimeMinutes} min read</span>
+                  <span className="font-semibold text-[#27440D] dark:text-[#BEF264]">Read Guide →</span>
+                </div>
               </div>
-              <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between text-xs text-muted">
-                <span>5 min read</span>
-                <span className="font-semibold text-[#27440D] dark:text-[#BEF264]">Read Guide →</span>
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/learn/base64-vs-base64url" className="flex flex-col group">
-            <div className="p-6 rounded-2xl bg-surface border border-border/80 shadow-card hover:border-[#65A30D]/40 dark:hover:border-[#BEF264]/40 hover:shadow-tool transition-all duration-200 flex flex-col justify-between h-full">
-              <div className="flex flex-col gap-2">
-                <span className="text-[11px] font-mono text-[#27440D] dark:text-[#BEF264] uppercase font-semibold">
-                  Guide • Standards
-                </span>
-                <h3 className="text-base font-semibold text-foreground group-hover:text-[#27440D] dark:group-hover:text-[#BEF264] transition-colors tracking-tight flex items-center justify-between">
-                  <span>Standard Base64 vs Base64URL</span>
-                  <ArrowRightIcon size={15} />
-                </h3>
-                <p className="text-xs text-muted leading-relaxed font-normal">
-                  Why standard Base64 characters <code className="font-mono text-xs">+</code> and <code className="font-mono text-xs">/</code> break URL query strings and filenames, and how RFC 4648 §5 solves it with <code className="font-mono text-xs">-</code> and <code className="font-mono text-xs">_</code>.
-                </p>
-              </div>
-              <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between text-xs text-muted">
-                <span>4 min read</span>
-                <span className="font-semibold text-[#27440D] dark:text-[#BEF264]">Read Guide →</span>
-              </div>
-            </div>
-          </Link>
+            </Link>
+          ))}
         </div>
       </section>
     </div>

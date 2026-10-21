@@ -2,26 +2,42 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EDUCATIONAL_GUIDES } from "@/lib/content/guides";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ShieldCheckIcon, CodeIcon, ArrowRightIcon } from "@/components/ui/Icons";
-
-import {
-  buildRouteMetadata,
-  generateBreadcrumbSchema,
-} from "@/lib/seo/site";
+import { ShieldCheckIcon, CodeIcon, ArrowRightIcon, BoltIcon } from "@/components/ui/Icons";
+import { buildRouteMetadata, generateBreadcrumbSchema } from "@/lib/seo/site";
 
 export const metadata: Metadata = buildRouteMetadata({
-  title: "Base64 Technical Guides & Standards — RFC 4648 & 2397 Tutorials",
+  title: "Base64 Guides for Developers — Learn, Debug, and Build",
   description:
-    "In-depth, technically accurate tutorials on Base64, Base64URL, padding mechanics, size expansion overhead, and RFC 2397 Data URIs. Written with tested code examples.",
+    "Practical Base64 guides for understanding encoding, choosing Base64URL, fixing padding errors, measuring file-size overhead, and embedding Data URIs.",
   path: "/learn",
 });
+
+const guideBySlug = Object.fromEntries(EDUCATIONAL_GUIDES.map((guide) => [guide.slug, guide]));
+
+const paths = [
+  {
+    label: "I’m new to Base64",
+    description: "Build the mental model first, then see the 3-bytes-to-4-characters rule.",
+    guide: guideBySlug["what-is-base64"],
+  },
+  {
+    label: "My string will live in a URL",
+    description: "Learn when standard Base64 breaks and why Base64URL exists.",
+    guide: guideBySlug["base64-vs-base64url"],
+  },
+  {
+    label: "My decoder is throwing an error",
+    description: "Use the padding guide to diagnose length, alphabet, and truncation problems.",
+    guide: guideBySlug["base64-padding"],
+  },
+];
 
 export default function LearnIndexPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", path: "/" },
     { name: "Guides", path: "/learn" },
   ]);
+  const featuredGuide = guideBySlug["what-is-base64"];
 
   return (
     <main className="flex-1 flex flex-col items-center py-10 sm:py-14 font-sans">
@@ -29,121 +45,118 @@ export default function LearnIndexPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
-        {/* Header */}
-        <section className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/10 text-[#27440D] dark:text-[#BEF264] border border-[#84CC16]/25 mb-4 shadow-whisper">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#65A30D] dark:bg-[#A3E635]" />
-            <span>RFC 4648 &amp; RFC 2397 Standards • Original Technical Guides</span>
+
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 sm:space-y-20">
+        <section className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#84CC16]/25 bg-[#84CC16]/10 px-3 py-1 text-xs font-medium text-[#27440D] shadow-whisper dark:text-[#BEF264]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#65A30D] dark:bg-[#A3E635]" />
+              <span>{EDUCATIONAL_GUIDES.length} practical guides · standards-aware</span>
+            </div>
+            <h1 className="mt-5 max-w-2xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-foreground sm:text-6xl">
+              Learn just enough Base64 to get unstuck.
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+              Short, technical guides for the moments when a Base64 string, URL, image, or file
+              needs an explanation—not more guesswork.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Link
+                href={`/learn/${featuredGuide.slug}`}
+                className="inline-flex items-center gap-2 rounded-xl bg-[#84CC16] px-4 py-2.5 text-sm font-semibold text-[#090D04] shadow-whisper transition-all duration-150 hover:bg-[#65A30D] hover:shadow-tool"
+              >
+                Start with the fundamentals
+                <ArrowRightIcon size={15} />
+              </Link>
+              <Link
+                href="/base64-encoder"
+                className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-[#65A30D]/50"
+              >
+                Use the encoder
+              </Link>
+            </div>
+            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted">
+              <span className="inline-flex items-center gap-1.5"><ShieldCheckIcon size={14} className="text-[#65A30D] dark:text-[#A3E635]" /> No filler or fake claims</span>
+              <span className="inline-flex items-center gap-1.5"><CodeIcon size={14} className="text-[#65A30D] dark:text-[#A3E635]" /> Tested examples</span>
+            </div>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-semibold tracking-[-0.03em] text-foreground leading-[1.15]">
-            Base64 Technical Guides
-          </h1>
-
-          <p className="mt-3.5 text-base sm:text-lg text-muted max-w-2xl leading-relaxed font-normal">
-            Understand the mathematics, specifications, and real-world web architecture behind
-            binary-to-text encoding. Tested code examples, honest performance trade-offs, and zero marketing filler.
-          </p>
+          <div className="relative overflow-hidden rounded-[28px] border border-border/80 bg-surface p-5 shadow-tool sm:p-6">
+            <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#84CC16]/12 blur-2xl dark:bg-[#BEF264]/10" />
+            <div className="relative">
+              <div className="flex items-center justify-between border-b border-border/70 pb-4">
+                <div>
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#27440D] dark:text-[#BEF264]">Featured guide</p>
+                  <p className="mt-1 text-sm text-muted">The fastest place to begin</p>
+                </div>
+                <span className="rounded-lg bg-[#84CC16]/12 px-2 py-1 font-mono text-[11px] text-[#3F6212] dark:text-[#BEF264]">01 / {String(EDUCATIONAL_GUIDES.length).padStart(2, "0")}</span>
+              </div>
+              <h2 className="mt-6 text-2xl font-semibold leading-tight tracking-[-0.025em] text-foreground">{featuredGuide.title}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{featuredGuide.description}</p>
+              <div className="mt-6 grid grid-cols-2 gap-2 text-xs">
+                <div className="rounded-xl bg-[#F6F6F4] p-3 dark:bg-[#1A1A1E]"><span className="block font-mono text-muted">Read time</span><strong className="mt-1 block text-foreground">{featuredGuide.readTimeMinutes} minutes</strong></div>
+                <div className="rounded-xl bg-[#F6F6F4] p-3 dark:bg-[#1A1A1E]"><span className="block font-mono text-muted">You’ll leave with</span><strong className="mt-1 block text-foreground">A working model</strong></div>
+              </div>
+              <Link href={`/learn/${featuredGuide.slug}`} className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#27440D] hover:underline dark:text-[#BEF264]">
+                Read the guide <ArrowRightIcon size={14} />
+              </Link>
+            </div>
+          </div>
         </section>
 
-        {/* Guides List */}
-        <section className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {EDUCATIONAL_GUIDES.map((guide, idx) => (
-              <article
-                key={guide.slug}
-                className="group p-6 sm:p-7 rounded-3xl bg-surface border border-border/80 shadow-card hover:shadow-tool hover:border-[#65A30D]/40 dark:hover:border-[#BEF264]/40 transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between"
-              >
-                <div className="space-y-3.5">
-                  <div className="flex items-center justify-between text-xs text-muted font-mono">
-                    <span className="text-[#27440D] dark:text-[#BEF264] font-semibold">
-                      0{idx + 1} • Guide
-                    </span>
-                    <span>{guide.readTimeMinutes} min read</span>
-                  </div>
-
-                  <h2 className="text-lg font-semibold text-foreground group-hover:text-[#27440D] dark:group-hover:text-[#BEF264] transition-colors leading-snug">
-                    <Link href={`/learn/${guide.slug}`}>{guide.title}</Link>
-                  </h2>
-
-                  <p className="text-xs sm:text-sm text-muted leading-relaxed font-normal">
-                    {guide.description}
-                  </p>
-
-                  <ul className="space-y-1.5 pt-2 border-t border-border/60">
-                    {guide.summaryKeyPoints.slice(0, 2).map((pt, pIdx) => (
-                      <li
-                        key={pIdx}
-                        className="text-xs text-foreground/80 flex items-start gap-2"
-                      >
-                        <span className="text-[#65A30D] dark:text-[#A3E635] font-bold">✓</span>
-                        <span>{pt}</span>
-                      </li>
-                    ))}
-                  </ul>
+        <section aria-labelledby="path-heading">
+          <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#27440D] dark:text-[#BEF264]">Choose your path</p>
+              <h2 id="path-heading" className="mt-2 text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">What are you trying to do?</h2>
+            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-muted">Each route points to one useful answer and one next action.</p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-3">
+            {paths.map(({ label, description, guide }, index) => (
+              <Link key={guide.slug} href={`/learn/${guide.slug}`} className="group rounded-2xl border border-border/80 bg-surface p-5 shadow-whisper transition-all duration-200 hover:-translate-y-0.5 hover:border-[#65A30D]/45 hover:shadow-card">
+                <div className="flex items-center justify-between">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#84CC16]/12 font-mono text-xs font-semibold text-[#3F6212] dark:text-[#BEF264]">0{index + 1}</span>
+                  <ArrowRightIcon size={15} className="text-muted transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-foreground" />
                 </div>
+                <h3 className="mt-5 text-sm font-semibold text-foreground">{label}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{description}</p>
+                <p className="mt-4 border-t border-border/60 pt-3 text-[11px] font-medium text-[#27440D] dark:text-[#BEF264]">{guide.shortTitle} · {guide.readTimeMinutes} min</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-                <div className="pt-5 mt-4 border-t border-border/50 flex items-center justify-between">
-                  <Link
-                    href={`/learn/${guide.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#27440D] dark:text-[#BEF264] hover:underline"
-                  >
-                    <span>Read Full Guide</span>
-                    <ArrowRightIcon size={14} />
-                  </Link>
-
-                  <Link
-                    href={guide.relatedTool.href}
-                    className="text-[11px] font-mono text-muted hover:text-foreground"
-                  >
-                    Try Tool: {guide.relatedTool.title} →
-                  </Link>
+        <section aria-labelledby="all-guides-heading">
+          <div className="mb-6 flex items-end justify-between gap-4">
+            <div>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#27440D] dark:text-[#BEF264]">The library</p>
+              <h2 id="all-guides-heading" className="mt-2 text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">Browse every guide</h2>
+            </div>
+            <span className="hidden text-xs text-muted sm:block">{EDUCATIONAL_GUIDES.length} guides · updated {EDUCATIONAL_GUIDES[0].lastUpdated}</span>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {EDUCATIONAL_GUIDES.map((guide, index) => (
+              <article key={guide.slug} className="group flex flex-col rounded-2xl border border-border/80 bg-surface p-5 shadow-whisper transition-all duration-200 hover:-translate-y-0.5 hover:border-[#65A30D]/45 hover:shadow-card sm:p-6">
+                <div className="flex items-center justify-between gap-4 text-[11px] font-mono text-muted">
+                  <span className="font-semibold text-[#27440D] dark:text-[#BEF264]">{guide.category}</span>
+                  <span>{String(index + 1).padStart(2, "0")} · {guide.readTimeMinutes} min</span>
+                </div>
+                <h3 className="mt-4 text-lg font-semibold leading-snug tracking-[-0.015em] text-foreground group-hover:text-[#27440D] dark:group-hover:text-[#BEF264]">{guide.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{guide.description}</p>
+                <div className="mt-5 flex items-center justify-between gap-4 border-t border-border/60 pt-4">
+                  <span className="text-[11px] text-muted">Best for: {guide.audience}</span>
+                  <Link href={`/learn/${guide.slug}`} className="inline-flex shrink-0 items-center gap-1.5 text-xs font-semibold text-[#27440D] hover:underline dark:text-[#BEF264]">Read <ArrowRightIcon size={13} /></Link>
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        {/* Quality Commitment Section */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-surface border border-border/80 shadow-whisper space-y-4">
-          <SectionHeading
-            eyebrow="Editorial Standards"
-            title="Evidence-Based Technical Documentation"
-            description="How our educational guides are researched, tested, and maintained."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-muted leading-relaxed">
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-[#84CC16]/10 text-[#27440D] dark:text-[#BEF264] flex items-center justify-center font-bold">
-                <CodeIcon size={16} />
-              </div>
-              <h3 className="text-sm font-semibold text-foreground">Tested Code Vectors</h3>
-              <p>
-                Every code snippet is verified against official RFC test suites and the actual browser engine implementation running on this website.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-[#84CC16]/10 text-[#27440D] dark:text-[#BEF264] flex items-center justify-center font-bold">
-                <ShieldCheckIcon size={16} />
-              </div>
-              <h3 className="text-sm font-semibold text-foreground">Accurate Security Stance</h3>
-              <p>
-                We never describe Base64 as encryption or security. We clearly delineate between encoding, token serialization, and cryptography.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-[#84CC16]/10 text-[#27440D] dark:text-[#BEF264] flex items-center justify-center font-bold">
-                <ArrowRightIcon size={16} />
-              </div>
-              <h3 className="text-sm font-semibold text-foreground">Specification Citations</h3>
-              <p>
-                All technical claims cite formal IETF standards (RFC 4648, RFC 2397, RFC 7519) and active W3C / WHATWG browser specifications.
-              </p>
-            </div>
-          </div>
+        <section className="grid gap-4 border-t border-border/70 pt-10 sm:grid-cols-3">
+          <div className="flex gap-3"><BoltIcon size={18} className="mt-0.5 shrink-0 text-[#65A30D] dark:text-[#A3E635]" /><div><h3 className="text-sm font-semibold text-foreground">Skimmable by design</h3><p className="mt-1 text-xs leading-relaxed text-muted">Takeaways, headings, examples, and FAQs keep the useful parts easy to find.</p></div></div>
+          <div className="flex gap-3"><CodeIcon size={18} className="mt-0.5 shrink-0 text-[#65A30D] dark:text-[#A3E635]" /><div><h3 className="text-sm font-semibold text-foreground">Grounded in standards</h3><p className="mt-1 text-xs leading-relaxed text-muted">Examples point to RFC 4648, RFC 2397, and actual browser behavior where it matters.</p></div></div>
+          <div className="flex gap-3"><ShieldCheckIcon size={18} className="mt-0.5 shrink-0 text-[#65A30D] dark:text-[#A3E635]" /><div><h3 className="text-sm font-semibold text-foreground">Honest limitations</h3><p className="mt-1 text-xs leading-relaxed text-muted">We call out overhead, security boundaries, and cases where Base64 is the wrong tool.</p></div></div>
         </section>
       </div>
     </main>
