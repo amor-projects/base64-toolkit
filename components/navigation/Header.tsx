@@ -43,7 +43,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation with Active Page Indicator */}
-        <nav className="hidden md:flex items-center gap-1" aria-label="Main Navigation">
+        <nav className="hidden lg:flex items-center gap-1" aria-label="Main Navigation">
           {navItems.map((item) => {
             const isActive =
               item.href === "/"

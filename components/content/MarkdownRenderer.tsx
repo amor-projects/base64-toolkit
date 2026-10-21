@@ -88,7 +88,7 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
   const rawBlocks = content.split(/\n\n+/);
 
   return (
-    <div className={`space-y-4 text-sm sm:text-base text-muted font-normal leading-relaxed ${className}`}>
+    <div className={`min-w-0 max-w-full space-y-4 break-words text-sm sm:text-base text-muted font-normal leading-relaxed ${className}`}>
       {rawBlocks.map((block, blockIdx) => {
         const trimmed = block.trim();
         if (!trimmed) return null;
@@ -108,7 +108,7 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
             return (
               <div
                 key={blockIdx}
-                className="overflow-x-auto my-5 rounded-2xl bg-surface border border-border/80 shadow-whisper"
+                className="my-5 max-w-full min-w-0 overflow-x-auto rounded-2xl bg-surface border border-border/80 shadow-whisper"
               >
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
@@ -199,7 +199,7 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
 
         // 5. Regular paragraph
         return (
-          <p key={blockIdx} className="leading-relaxed font-normal">
+          <p key={blockIdx} className="break-words leading-relaxed font-normal">
             {renderInline(trimmed)}
           </p>
         );

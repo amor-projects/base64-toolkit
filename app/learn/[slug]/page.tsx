@@ -118,15 +118,15 @@ export default async function GuidePage({ params }: GuidePageProps) {
               </ul>
             </section>
 
-            <article className="mt-12 space-y-12 leading-relaxed text-foreground">
+            <article className="mt-12 min-w-0 max-w-full space-y-12 leading-relaxed text-foreground">
               {guide.sections.map((section) => (
                 <section key={section.id} id={section.id} className="scroll-mt-24 space-y-4">
                   <h2 className="border-b border-border/60 pb-3 text-xl font-semibold tracking-[-0.025em] text-foreground sm:text-2xl">{section.title}</h2>
                   <MarkdownRenderer content={section.content} />
                   {section.codeSnippet && (
-                    <div className="my-5 overflow-hidden rounded-2xl border border-border/80 shadow-whisper">
+                    <div className="my-5 min-w-0 max-w-full overflow-hidden rounded-2xl border border-border/80 shadow-whisper">
                       {section.codeSnippet.caption && <div className="flex items-center justify-between border-b border-border/80 bg-surface px-4 py-2 text-[11px] text-muted"><span>{section.codeSnippet.caption}</span><span className="font-mono uppercase">{section.codeSnippet.language}</span></div>}
-                      <pre className="overflow-x-auto bg-[#141417] p-4 text-[12.5px] leading-relaxed text-[#F4F4F5] sm:p-5 sm:text-[13px]"><code>{section.codeSnippet.code}</code></pre>
+                      <pre className="max-w-full overflow-x-auto bg-[#141417] p-4 text-[12.5px] leading-relaxed text-[#F4F4F5] sm:p-5 sm:text-[13px]"><code>{section.codeSnippet.code}</code></pre>
                     </div>
                   )}
                   {section.callout && (
