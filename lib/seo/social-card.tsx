@@ -6,37 +6,24 @@ export const SOCIAL_IMAGE_SIZE = {
 } as const;
 
 export async function loadSocialFonts() {
-  const [outfitRegular, outfitBold, comicMonoRegular, comicMonoBold] =
-    await Promise.all([
-      fetch(
-        "https://cdn.jsdelivr.net/npm/@fontsource/outfit@5.0.8/files/outfit-latin-400-normal.woff"
-      ).then((res) => res.arrayBuffer()),
-      fetch(
-        "https://cdn.jsdelivr.net/npm/@fontsource/outfit@5.0.8/files/outfit-latin-700-normal.woff"
-      ).then((res) => res.arrayBuffer()),
-      fetch(
-        "https://cdn.jsdelivr.net/npm/@fontsource/comic-mono@1.0.5/files/comic-mono-latin-400-normal.woff"
-      ).then((res) => res.arrayBuffer()),
-      fetch(
-        "https://cdn.jsdelivr.net/npm/@fontsource/comic-mono@1.0.5/files/comic-mono-latin-700-normal.woff"
-      ).then((res) => res.arrayBuffer()),
-    ]);
+  const [outfitRegular, outfitBold] = await Promise.all([
+    fetch(
+      "https://cdn.jsdelivr.net/npm/@fontsource/outfit@5.0.8/files/outfit-latin-400-normal.woff"
+    ).then((res) => {
+      if (!res.ok) throw new Error(`Unable to load social-card font: ${res.status}`);
+      return res.arrayBuffer();
+    }),
+    fetch(
+      "https://cdn.jsdelivr.net/npm/@fontsource/outfit@5.0.8/files/outfit-latin-700-normal.woff"
+    ).then((res) => {
+      if (!res.ok) throw new Error(`Unable to load social-card font: ${res.status}`);
+      return res.arrayBuffer();
+    }),
+  ]);
 
   return [
     { name: "Outfit", data: outfitRegular, weight: 400 as const, style: "normal" as const },
     { name: "Outfit", data: outfitBold, weight: 700 as const, style: "normal" as const },
-    {
-      name: "Comic Mono",
-      data: comicMonoRegular,
-      weight: 400 as const,
-      style: "normal" as const,
-    },
-    {
-      name: "Comic Mono",
-      data: comicMonoBold,
-      weight: 700 as const,
-      style: "normal" as const,
-    },
   ];
 }
 
@@ -106,7 +93,7 @@ export function SocialCard() {
         <div
           style={{
             display: "flex",
-            fontFamily: "Comic Mono",
+            fontFamily: "Outfit",
             fontSize: 20,
             fontWeight: 700,
             letterSpacing: "1px",
@@ -138,7 +125,7 @@ export function SocialCard() {
             background: "rgba(190, 242, 100, 0.12)",
             border: "1px solid rgba(190, 242, 100, 0.28)",
             color: "#BEF264",
-            fontFamily: "Comic Mono",
+            fontFamily: "Outfit",
             fontSize: 14,
             fontWeight: 700,
             letterSpacing: "0.5px",
@@ -200,7 +187,7 @@ export function SocialCard() {
             display: "flex",
             flexDirection: "column",
             marginTop: 34,
-            fontFamily: "Comic Mono",
+            fontFamily: "Outfit",
             fontSize: 16,
             lineHeight: 1.75,
           }}
@@ -238,7 +225,7 @@ export function SocialCard() {
           display: "flex",
           alignItems: "center",
           color: "#71717A",
-          fontFamily: "Comic Mono",
+          fontFamily: "Outfit",
           fontSize: 13,
           letterSpacing: "0.6px",
         }}
@@ -261,7 +248,7 @@ export function SocialCard() {
           bottom: 42,
           display: "flex",
           color: "#71717A",
-          fontFamily: "Comic Mono",
+          fontFamily: "Outfit",
           fontSize: 13,
         }}
       >
