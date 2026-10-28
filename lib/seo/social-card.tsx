@@ -114,6 +114,7 @@ export function SocialCard() {
         <div
           style={{
             display: "flex",
+            flexDirection: "column",
             marginTop: 26,
             fontSize: 68,
             lineHeight: 1.02,
@@ -121,9 +122,8 @@ export function SocialCard() {
             letterSpacing: "-3px",
           }}
         >
-          Encode. Decode.
-          <br />
-          Convert.
+          <div style={{ display: "flex" }}>Encode. Decode.</div>
+          <div style={{ display: "flex" }}>Convert.</div>
         </div>
         <div
           style={{
