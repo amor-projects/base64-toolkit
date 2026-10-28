@@ -8,7 +8,7 @@ import { buildRouteMetadata, generateBreadcrumbSchema } from "@/lib/seo/site";
 export const metadata: Metadata = buildRouteMetadata({
   title: "Base64 Guides for Developers — Learn, Debug, and Build",
   description:
-    "Practical Base64 guides for understanding encoding, choosing Base64URL, fixing padding errors, measuring file-size overhead, and embedding Data URIs.",
+    "Practical Base64 guides for understanding the alphabet and algorithm, encoding images, choosing Base64URL, fixing padding errors, measuring file-size overhead, and embedding Data URIs.",
   path: "/learn",
 });
 

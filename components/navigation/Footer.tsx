@@ -18,7 +18,7 @@ export function Footer() {
             </Link>
             <p className="text-xs text-muted leading-relaxed max-w-xs font-normal">
               A refined developer utility designed for precision, clarity, and uncompromising
-              privacy. All transformations execute locally on your device.
+              privacy. Browser tools process content locally; the optional API is documented separately.
             </p>
             <div className="mt-1 text-[11px] text-muted/80 font-mono">
               RFC 4648 • UTF-8 Safe • Offline Capable
@@ -76,6 +76,11 @@ export function Footer() {
                   Size &amp; Overhead Calculator
                 </Link>
               </li>
+              <li>
+                <Link href="/api-reference" className="hover:text-foreground transition-colors duration-150">
+                  Base64 API Reference
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -108,6 +113,11 @@ export function Footer() {
               <li>
                 <Link href="/learn/base64-data-uri" className="hover:text-foreground transition-colors duration-150">
                   Data URIs &amp; Image Embedding
+                </Link>
+              </li>
+              <li>
+                <Link href="/learn/convert-image-to-base64" className="hover:text-foreground transition-colors duration-150">
+                  Convert an Image to Base64
                 </Link>
               </li>
               <li>
@@ -152,9 +162,9 @@ export function Footer() {
         <div className="mt-12 pt-6 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
           <p>© 2026 Base64 Toolkit. Designed for developers who value clarity and privacy.</p>
           <div className="flex items-center gap-4 text-[11px] font-mono">
-            <span>100% In-Browser</span>
+            <span>Browser Tools Local</span>
             <span>•</span>
-            <span>Zero Server Transmission</span>
+            <span>No Payload Storage by App</span>
             <span>•</span>
             <span>RFC 4648 Compliant</span>
           </div>

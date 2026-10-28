@@ -1,6 +1,6 @@
 # Base64 Toolkit
 
-Base64 Toolkit is a privacy-first web utility for encoding, decoding, inspecting, and converting text, files, images, Base64URL values, and Data URIs. Conversion work runs in the browser; the application does not use an API route to receive tool inputs or file bytes.
+Base64 Toolkit is a privacy-first web utility for encoding, decoding, inspecting, and converting text, files, images, Base64URL values, and Data URIs. Browser-tool conversion runs locally; optional, separately documented GET endpoints provide server-side JSON encoding and decoding for developers.
 
 The project is built with Next.js App Router, React, TypeScript, Tailwind CSS, and browser-native APIs. It is intentionally focused on useful Base64 workflows rather than a directory of unrelated utilities.
 
@@ -64,8 +64,10 @@ The value is used for canonical URLs, Open Graph metadata, structured data, site
 
 ```text
 app/                  Next.js routes, metadata, sitemap, and robots.txt
+app/api/v1/           Versioned GET API routes for Base64 encoding and decoding
 components/           Shared UI, navigation, and interactive tool components
 lib/base64/           Pure conversion, validation, file, and Data URI logic
+lib/api/              API validation, URL encoding, and rate limiting
 lib/content/          Local educational guide content
 lib/seo/              Canonical URL, metadata, and structured-data helpers
 public/               Static assets
@@ -76,11 +78,14 @@ Conversion logic should remain independent of React so it can be tested without 
 ## Privacy and safety model
 
 - Text, file, and image conversions happen locally in the browser.
-- User strings, file bytes, filenames, and decoded output must not be sent to analytics, third-party APIs, or a conversion backend.
+- Browser-tool strings, file bytes, filenames, and decoded output must not be sent to analytics, third-party APIs, or a conversion backend.
+- The optional `GET /api/v1/base64/encode` and `GET /api/v1/base64/decode` endpoints necessarily receive query values to compute responses. The app does not persist those values or results, but GET query strings can appear in browser, CDN, network, or hosting-provider logs outside the app's control.
+- The API rate limiter stores only a temporary client identifier and counter, not the submitted URL or output.
+- API text inputs are limited to 8,192 characters/16 KiB UTF-8, Base64 decode inputs to 16,384 characters, and malformed or non-canonical Base64 is rejected.
 - Base64 is an encoding, not encryption. The product must not describe encoded output as secret or secure.
 - Decoded content is treated as untrusted. Do not execute or inject decoded HTML/SVG content without a deliberate sanitization design.
 - File conversion has a default 10 MB limit to reduce browser memory and responsiveness problems.
-- The privacy policy currently describes hosting access logs and the browser-local processing model.
+- The [API reference](app/api-reference/page.tsx) and privacy policy describe the API's input visibility, no-application-storage behavior, input ceilings, and 60 requests/minute process-local rate limit.
 
 ## Owner and publication details
 

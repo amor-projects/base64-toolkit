@@ -1,21 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import "@fontsource/comic-mono/400.css";
-import "@fontsource/comic-mono/700.css";
 import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/navigation/Footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
+  preload: false,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
+  preload: false,
 });
 
 import {

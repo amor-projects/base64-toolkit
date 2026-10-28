@@ -13,7 +13,7 @@ import {
 } from "@/lib/seo/site";
 
 export const metadata: Metadata = buildRouteMetadata({
-  title: "File to Base64 Converter Online — Fast, Private Local Conversion",
+  title: "Convert File to Base64 Online — PDF, Image & Binary Files",
   description:
     "Convert a PDF, image, archive, audio file, or other binary file to Base64 in your browser. Local processing, clear size limits, and no conversion upload.",
   path: "/file-to-base64",

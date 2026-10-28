@@ -158,6 +158,18 @@ export function base64ToBytes(
     };
   }
 
+  const unpaddedLength = sanitized.length - paddingCount;
+  const expectedPadding = (4 - (unpaddedLength % 4)) % 4;
+  if (paddingCount > 0 && paddingCount !== expectedPadding) {
+    return {
+      success: false,
+      error: new Base64Error(
+        "INVALID_PADDING",
+        `Malformed padding: expected ${expectedPadding} '=' character(s) for this Base64 length, found ${paddingCount}.`
+      ),
+    };
+  }
+
   if (paddingMode === "strict" && sanitized.length % 4 !== 0) {
     return {
       success: false,
@@ -178,7 +190,6 @@ export function base64ToBytes(
     };
   }
 
-  const unpaddedLength = sanitized.length - paddingCount;
   const remainder = unpaddedLength % 4;
 
   if (remainder === 1) {
@@ -189,6 +200,23 @@ export function base64ToBytes(
         `Malformed Base64 string: length without padding is ${unpaddedLength} (modulo 4 is 1). A single Base64 character contains only 6 bits and cannot form a valid byte.`
       ),
     };
+  }
+
+  // Reject non-zero unused bits so the API accepts only canonical Base64.
+  // Without this check, multiple strings could decode to the same bytes.
+  if (unpaddedLength > 0) {
+    const lastValue = table[sanitized.charCodeAt(unpaddedLength - 1)];
+    const unusedBits = remainder === 2 ? 4 : remainder === 3 ? 2 : 0;
+
+    if (unusedBits > 0 && (lastValue & ((1 << unusedBits) - 1)) !== 0) {
+      return {
+        success: false,
+        error: new Base64Error(
+          "INVALID_PADDING",
+          "Non-zero trailing bits are not valid canonical Base64."
+        ),
+      };
+    }
   }
 
   // 5. Decode into bytes

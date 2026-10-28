@@ -48,12 +48,12 @@ export interface EducationalGuide {
 export const EDUCATIONAL_GUIDES: EducationalGuide[] = [
   {
     slug: "what-is-base64",
-    title: "What Is Base64? How the Binary-to-Text Encoding Works",
+    title: "What Is Base64? Alphabet, Algorithm & Encoding Explained",
     shortTitle: "What Is Base64?",
     category: "Start here",
     audience: "New to Base64",
     description:
-      "A complete technical explanation of RFC 4648 Base64 encoding. Understand 6-bit chunking, ASCII mappings, why Base64 is not encryption, and where to use it.",
+      "A practical explanation of the Base64 alphabet and algorithm. Understand 6-bit chunking, ASCII output, why Base64 is not encryption, and when to use alternatives.",
     canonicalUrl: absoluteUrl("/learn/what-is-base64"),
     readTimeMinutes: 5,
     lastUpdated: "October 2026",
@@ -119,6 +119,16 @@ Result:           TWFu`,
 - **JSON REST & GraphQL APIs:** Transferring file metadata or digital signatures inside JSON envelopes without multipart form boundaries.
 - **MIME Email Attachments:** The underlying mechanism that powers attachments in modern email protocols.
 - **Cryptographic Keys & Hashes:** Representing raw SHA-256 digests or public RSA/ECDSA keys in clean human-readable PEM formats.`,
+      },
+      {
+        id: "alternatives",
+        title: "4. Base64 Alternatives and Boundaries",
+        content: `Base64 is not automatically the best representation for every payload. Choose the format based on the transport and the data:
+
+- **Use the original binary file** for images, PDFs, audio, and downloads when HTTP can carry the bytes directly. This avoids Base64's roughly 33% expansion.
+- **Use percent-encoding** for short text values placed in a URL. Use Base64URL only when you need to represent arbitrary binary bytes in a URL-safe alphabet.
+- **Use JSON strings** for ordinary text. Encoding readable text as Base64 does not make it safer and usually makes it harder to inspect.
+- **Use encryption**, not Base64, when confidentiality or tamper resistance is required. Base64 can be decoded by anyone who receives it.`,
       },
     ],
     faq: [
@@ -458,6 +468,96 @@ data:[<mediatype>][;base64],<data>
         question: "What is the maximum supported length for a Data URI?",
         answer:
           "Modern browsers (Chrome, Edge, Safari, Firefox) support Data URIs of several megabytes. However, practical web performance guidelines recommend keeping inline Data URIs under 10 KB.",
+      },
+    ],
+  },
+  {
+    slug: "convert-image-to-base64",
+    title: "How to Convert an Image to Base64: PNG, JPG, and SVG",
+    shortTitle: "Convert Images to Base64",
+    category: "Practical workflows",
+    audience: "Embedding an image in HTML, CSS, or JSON",
+    description:
+      "Learn when to use an image-to-Base64 converter for PNG, JPG, SVG, WebP, and GIF files, how Raw Base64 differs from a Data URI, and how to decode image data safely.",
+    canonicalUrl: absoluteUrl("/learn/convert-image-to-base64"),
+    readTimeMinutes: 5,
+    lastUpdated: "October 2026",
+    relatedTool: {
+      title: "Image to Base64 Converter",
+      href: "/image-to-base64",
+      description: "Convert PNG, JPG, SVG, WebP, or GIF files locally into Base64 and Data URI output.",
+    },
+    summaryKeyPoints: [
+      "PNG, JPG, SVG, WebP, and GIF files can all be represented as Base64 bytes.",
+      "Raw Base64 is only the payload; a Data URI adds the MIME type and the data: prefix needed for HTML or CSS embedding.",
+      "Small icons and standalone snippets are better candidates for Base64 than large photographs or frequently cached assets.",
+      "A Base64 string becomes a PDF only when its decoded bytes are actually a PDF; Base64 itself does not convert arbitrary content into PDF.",
+    ],
+    sections: [
+      {
+        id: "choose-output",
+        title: "1. Choose Raw Base64 or a Data URI",
+        content: `An image-to-Base64 converter usually offers two related outputs:
+
+- **Raw Base64:** Only the encoded bytes, such as \`iVBORw0KGgo...\`. This is useful when an API or database field expects a Base64 payload.
+- **Data URI:** A complete inline resource such as \`data:image/png;base64,iVBORw0KGgo...\`. This is ready for an HTML \`<img>\` element or a CSS \`background-image\` rule.
+
+The MIME type matters. A PNG should use \`image/png\`, a JPEG should use \`image/jpeg\`, an SVG should use \`image/svg+xml\`, and a WebP image should use \`image/webp\`. The Base64 alphabet does not identify the original file type by itself; the Data URI header supplies that context.`,
+      },
+      {
+        id: "file-type-workflows",
+        title: "2. PNG to Base64, JPG to Base64, and SVG to Base64",
+        content: `The conversion steps are the same for each supported image type: select the file, read its bytes locally, encode those bytes, and copy or download the result.
+
+- **PNG to Base64:** Preserves lossless PNG bytes and is common for small icons, favicons, and transparent graphics.
+- **JPG to Base64:** Encodes the already-compressed JPEG bytes. It does not improve image quality or compress the image again.
+- **SVG to Base64:** Encodes XML text as bytes. Treat SVG as untrusted content; do not render an unknown SVG Data URI without a deliberate sanitization policy.
+- **WebP and GIF:** Can be encoded the same way, with their correct MIME type included in a Data URI.
+
+The [Image to Base64 converter](/image-to-base64) produces both Raw Base64 and Data URI output, along with HTML and CSS snippets. Processing happens in the browser, so the selected file is not uploaded by the tool.`,
+      },
+      {
+        id: "browser-example",
+        title: "3. A Browser-Native Conversion Pattern",
+        content: `For a small local image, the browser can produce a Data URI with \`FileReader.readAsDataURL()\`. The prefix and payload can be separated when an API needs only the raw Base64 value:`,
+        codeSnippet: {
+          language: "javascript",
+          caption: "Read an image locally and separate the Data URI payload",
+          code: `const dataUri = await new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.onload = () => resolve(String(reader.result));
+  reader.onerror = () => reject(reader.error);
+  reader.readAsDataURL(file);
+});
+
+const [header, rawBase64] = dataUri.split(",", 2);
+console.log(header);    // data:image/png;base64
+console.log(rawBase64); // encoded image bytes`,
+        },
+      },
+      {
+        id: "limits-and-reverse-conversion",
+        title: "4. When to Avoid Base64—and What About PDF?",
+        content: `Base64 adds about one-third to the encoded size and prevents the browser from caching an embedded image independently. Use a normal image URL for large photographs, hero images, or assets shared across many pages.
+
+To reverse the workflow, use [Base64 to Image](/base64-to-image) for image previews or [Base64 to File](/base64-to-file) for downloads. You can convert Base64 to PDF only if the decoded bytes already represent a PDF file—usually indicated by a \`data:application/pdf;base64,\` prefix or a decoded \`%PDF\` header. Base64 is an encoding format, not a document converter.`,
+      },
+    ],
+    faq: [
+      {
+        question: "Is PNG to Base64 different from JPG to Base64?",
+        answer:
+          "The byte-to-Base64 algorithm is the same, but the source bytes and MIME type differ. Use image/png for PNG files and image/jpeg for JPG files when creating a Data URI.",
+      },
+      {
+        question: "Can I convert Base64 to PDF?",
+        answer:
+          "You can decode a Base64 string into a PDF file when its bytes are already a PDF. Base64 does not transform an image or text document into a PDF format; it only represents existing bytes as text.",
+      },
+      {
+        question: "Should I use an image-to-Base64 converter for a large photo?",
+        answer:
+          "Usually not. Base64 increases the payload by roughly 33% and removes independent browser caching. It is most useful for small icons, inline assets, and APIs that explicitly require a Base64 field.",
       },
     ],
   },

@@ -13,7 +13,7 @@ import {
 } from "@/lib/seo/site";
 
 export const metadata: Metadata = buildRouteMetadata({
-  title: "Base64 Decoder Online — Fast, Safe In-Browser Decoding",
+  title: "Base64 Decode Online — Base64 Decoder for Text",
   description:
     "Decode standard Base64 and Base64URL into UTF-8 text in your browser. Get clear errors for invalid characters, padding, and malformed input without uploading the string.",
   path: "/base64-decoder",
@@ -66,8 +66,9 @@ export default function Base64DecoderPage() {
           </h1>
 
           <p className="mt-3.5 text-base sm:text-lg text-muted max-w-2xl leading-relaxed font-normal">
-            Decode standard Base64 and Base64URL strings into readable plain text. Features strict
-            malformed padding detection, binary byte separation, and local in-browser processing.
+            Decode standard Base64 and Base64URL strings into readable plain text. This is decoding,
+            not decryption: Base64 does not provide secrecy. The tool also detects malformed padding,
+            separates binary bytes, and processes everything in your browser.
           </p>
         </section>
 

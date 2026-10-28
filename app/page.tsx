@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/Icons";
 
 export const metadata: Metadata = buildRouteMetadata({
-  title: "Base64 Tools Online",
+  title: "Base64 Encoder, Decoder & File Tools Online",
   description:
     "Use free Base64 tools in your browser: encode and decode UTF-8 text, convert files and images, inspect padding, and calculate size overhead without uploading tool data.",
   path: "/",
@@ -279,7 +279,34 @@ export default function Home() {
             </ToolPanel>
           </Link>
 
-          {/* Card 8: Data URI Generator */}
+          {/* Card 8: Base64 API */}
+          <Link href="/api-reference" className="flex flex-col group">
+            <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
+              <ToolPanelBody className="flex flex-col gap-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-[#84CC16]/12 dark:bg-[#BEF264]/14 text-[#27440D] dark:text-[#BEF264] font-mono">
+                    API v1
+                  </span>
+                  <span className="text-[11px] text-muted font-mono">GET + JSON</span>
+                </div>
+                <h3 className="text-base font-semibold text-foreground tracking-tight group-hover:text-[#27440D] dark:group-hover:text-[#BEF264] transition-colors flex items-center gap-1.5">
+                  <CodeIcon size={16} className="text-[#65A30D] dark:text-[#A3E635]" />
+                  <span>Base64 Encode &amp; Decode API</span>
+                  <ArrowRightIcon size={15} />
+                </h3>
+                <p className="text-xs text-muted leading-relaxed font-normal">
+                  Encode or decode UTF-8 text with simple GET requests, JSON responses, strict
+                  validation, and transparent rate limits.
+                </p>
+              </ToolPanelBody>
+              <ToolPanelFooter>
+                <span className="font-medium text-foreground">Input: UTF-8 text</span>
+                <span className="text-[11px] text-[#27440D] dark:text-[#BEF264] font-semibold">Read API Docs →</span>
+              </ToolPanelFooter>
+            </ToolPanel>
+          </Link>
+
+          {/* Card 9: Data URI Generator */}
           <Link href="/data-uri-generator" className="flex flex-col group">
             <ToolPanel variant="secondary" className="flex-1 flex flex-col justify-between group-hover:border-[#84CC16]/50 group-hover:shadow-card transition-all duration-200">
               <ToolPanelBody className="flex flex-col gap-3.5">
@@ -329,7 +356,8 @@ export default function Home() {
             </h3>
             <p className="text-xs text-muted leading-relaxed font-normal">
               Conversion happens in the browser tab, so your text, files, and decoded bytes are not
-              sent to a conversion backend or stored by this app.
+              sent to a conversion backend or stored by this app. The optional Base64 API is
+              documented openly and has its own request-handling disclosure.
             </p>
           </div>
 

@@ -51,8 +51,10 @@ export default function PrivacyPage() {
             <span>Architecture Summary</span>
           </div>
           <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed font-normal">
-            When you type text or select a file on this website, conversion is handled directly by
-            your browser&apos;s JavaScript engine. Your inputs, files, and outputs are <strong>never uploaded, transmitted, or stored on our servers</strong>.
+            When you use a browser tool, conversion is handled directly by your browser&apos;s
+            JavaScript engine. Those tool inputs, files, and outputs are <strong>not uploaded to a
+            conversion backend or stored by this application</strong>. The optional Base64 API
+            endpoints are different: they must receive query values to produce JSON responses, as explained below.
           </p>
         </div>
 
@@ -60,7 +62,7 @@ export default function PrivacyPage() {
         <div className="space-y-10 text-xs sm:text-sm text-muted leading-relaxed font-normal">
           <section className="space-y-3">
             <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
-              1. Information We Do Not Collect (Tool Inputs &amp; Outputs)
+              1. Browser Tool Inputs &amp; Outputs
             </h2>
             <p>
               When using any converter or inspector tool (such as Base64 Encoder, File to Base64, or Base64 Inspector):
@@ -71,13 +73,39 @@ export default function PrivacyPage() {
               <li>We do not record, log, or analyze the contents of your payloads.</li>
             </ul>
             <p>
-              All processing executes locally in active browser memory and is discarded when you clear the input, reload the tab, or close your browser.
+              All browser-tool processing executes locally in active browser memory and is discarded when you clear the input, reload the tab, or close your browser.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
-              2. Browser Storage &amp; Cookies
+              2. Base64 API Endpoints
+            </h2>
+            <p>
+              The optional <strong>GET /api/v1/base64/encode</strong> and <strong>GET /api/v1/base64/decode</strong>
+              endpoints are server features for developers who want JSON output. Clients send text
+              or Base64 values through query parameters. The application processes values in memory and does not save inputs,
+              decoded output, encoded results, or responses in an application database, file,
+              analytics event, or application log.
+            </p>
+            <p>
+              The API keeps a temporary in-memory rate-limit counter keyed by a client network
+              identifier. It does not put submitted values or results in that counter. Inputs are
+              bounded before processing, malformed Base64 is rejected, and decoded output is returned
+              only as JSON. The limiter is bounded and expires entries, but its behavior can vary
+              between hosting instances.
+            </p>
+            <p className="text-foreground/90">
+              Because this is a GET request, the full request URL may be visible in browser history,
+              intermediary, CDN, or hosting-provider logs. We cannot control those third-party
+              retention practices. Do not send passwords, private tokens, confidential URLs, or other
+              secrets to this endpoint. Base64 is not encryption.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
+              3. Browser Storage &amp; Cookies
             </h2>
             <p>
               This website does not currently use tracking cookies. We utilize standard client-side browser storage exclusively for user interface preferences:
@@ -91,7 +119,7 @@ export default function PrivacyPage() {
 
           <section className="space-y-3">
             <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
-              3. Web Hosting &amp; Server Access Logs
+              4. Web Hosting &amp; Server Access Logs
             </h2>
             <p>
               Like virtually all web services, our hosting provider automatically receives and logs basic technical network connection data whenever a web browser requests a page or asset:
@@ -103,13 +131,16 @@ export default function PrivacyPage() {
               <li>HTTP response status code</li>
             </ul>
             <p>
-              These server logs are used strictly for security monitoring, DDoS mitigation, and ensuring server uptime. They do not contain any tool conversion inputs.
+              These server logs are used by hosting infrastructure for security monitoring, DDoS
+              mitigation, and uptime. Browser-tool inputs are not sent to the server, but an API
+              request&apos;s query string may contain the URL that you chose to submit. Review the API
+              disclosure above before using it with sensitive data.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
-              4. Advertising &amp; Third-Party Integrations
+              5. Advertising &amp; Third-Party Integrations
             </h2>
             <div className="p-4 rounded-xl bg-surface dark:bg-[#161619] border border-border/80 shadow-whisper space-y-2">
               <div className="flex items-center gap-2 text-foreground font-semibold text-xs">
@@ -126,7 +157,7 @@ export default function PrivacyPage() {
 
           <section className="space-y-3">
             <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
-              5. Operator Details &amp; Privacy Contact
+              6. Operator Details &amp; Privacy Contact
             </h2>
             <p>
               If you have questions regarding this Privacy Policy or data handling practices, please contact:
@@ -135,7 +166,7 @@ export default function PrivacyPage() {
               <p>Operator: Abdul Samad (aka amorzephyr)</p>
               <p>Email: <a href="mailto:amorzephyr@gmail.com" className="underline underline-offset-2">amorzephyr@gmail.com</a></p>
               <p>Jurisdiction: Pakistan (operator residence)</p>
-              <p>Effective Date: October 22, 2026</p>
+              <p>Effective Date: October 28, 2026</p>
             </div>
           </section>
         </div>

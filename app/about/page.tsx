@@ -41,8 +41,9 @@ export default function AboutPage() {
           </h1>
 
           <p className="mt-3.5 text-base sm:text-lg text-muted max-w-2xl leading-relaxed font-normal">
-            A developer-focused utility built on a simple architectural promise: convert, inspect,
-            and transform data entirely in your local browser without transmitting your content across the internet.
+            A developer-focused utility built on a simple architectural promise: browser tools
+            convert, inspect, and transform data locally, while optional Base64 API endpoints are
+            documented separately with explicit request-handling limits.
           </p>
         </section>
 
@@ -62,9 +63,10 @@ export default function AboutPage() {
               When working with authentication payloads, private keys, database dumps, or confidential design assets, uploading data to an unknown third-party server represents a serious security and privacy risk.
             </p>
             <p>
-            Base64 Toolkit was built to provide an honest, modern alternative: an elegant, responsive
-            developer tool that performs conversions inside your browser tab, without using a
-            conversion backend for the data you provide.
+              Base64 Toolkit was built to provide an honest, modern alternative: an elegant, responsive
+              developer tool that performs browser conversions inside your tab, without using a
+              conversion backend for those local workflows. We also publish optional Base64 API
+              endpoints for developers who explicitly choose to send text to the service.
             </p>
           </div>
         </section>
@@ -84,7 +86,8 @@ export default function AboutPage() {
               </div>
               <h3 className="text-sm font-semibold text-foreground">Zero Server Uploads</h3>
               <p>
-                All file encoding, decoding, and string transformations execute in your browser via native Web APIs (<code className="font-mono text-[11px]">FileReader</code>, <code className="font-mono text-[11px]">ArrayBuffer</code>, <code className="font-mono text-[11px]">TextEncoder</code>). No input or output data is ever posted to an API route.
+                All browser-tool file encoding, decoding, and string transformations execute locally
+                via native Web APIs (<code className="font-mono text-[11px]">FileReader</code>, <code className="font-mono text-[11px]">ArrayBuffer</code>, <code className="font-mono text-[11px]">TextEncoder</code>). The optional API is opt-in and receives query values to compute a response.
               </p>
             </div>
 

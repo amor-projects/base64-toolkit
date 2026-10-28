@@ -13,7 +13,7 @@ import {
 } from "@/lib/seo/site";
 
 export const metadata: Metadata = buildRouteMetadata({
-  title: "Base64 Encoder Online — Fast, Private Text Encoding",
+  title: "Base64 Encode Online — Text to Base64 Converter",
   description:
     "Encode plain text and UTF-8 strings as standard Base64 or Base64URL in your browser. Handles accents, emoji, padding options, and byte-length details without uploading the input.",
   path: "/base64-encoder",

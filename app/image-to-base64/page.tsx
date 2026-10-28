@@ -12,7 +12,7 @@ import {
 } from "@/lib/seo/site";
 
 export const metadata: Metadata = buildRouteMetadata({
-  title: "Image to Base64 Converter Online — Data URI & HTML/CSS Generator",
+  title: "Image to Base64 Converter — PNG, JPG, SVG & WebP",
   description:
     "Convert PNG, JPEG, WebP, SVG, and GIF images to Base64, Data URIs, HTML img tags, or CSS url() snippets in your browser without uploading the image.",
   path: "/image-to-base64",
@@ -65,8 +65,9 @@ export default function ImageToBase64Page() {
           </h1>
 
           <p className="mt-3.5 text-base sm:text-lg text-muted max-w-2xl leading-relaxed font-normal">
-            Transform PNG, JPG, WebP, SVG, and GIF images into Raw Base64 strings or ready-to-embed
-            Data URIs. Generates copyable HTML and CSS snippets with zero server transmissions.
+            Transform PNG to Base64, JPG to Base64, SVG to Base64, WebP, and GIF images into Raw
+            Base64 strings or ready-to-embed Data URIs. Generate copyable HTML and CSS snippets with
+            zero server transmissions.
           </p>
         </section>
 

@@ -1,8 +1,4 @@
-"use client";
-
-import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { MobileNav } from "./MobileNav";
 import { ShieldCheckIcon } from "@/components/ui/Icons";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -14,12 +10,11 @@ const navItems = [
   { label: "Files", href: "/file-to-base64" },
   { label: "Images", href: "/image-to-base64" },
   { label: "Inspector", href: "/base64-inspector" },
+  { label: "API", href: "/api-reference" },
   { label: "Guides", href: "/learn/what-is-base64" },
 ];
 
 export function Header() {
-  const pathname = usePathname();
-
   return (
     <header className="sticky top-0 z-40 w-full bg-[#FAFAF8]/90 dark:bg-[#0E0E10]/90 backdrop-blur-md border-b border-border/75 transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-15 flex items-center justify-between gap-4">
@@ -42,44 +37,24 @@ export function Header() {
           </div>
         </Link>
 
-        {/* Desktop Navigation with Active Page Indicator */}
+        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-1" aria-label="Main Navigation">
-          {navItems.map((item) => {
-            const isActive =
-              item.href === "/"
-                ? pathname === "/"
-                : item.href.startsWith("/learn")
-                ? pathname.startsWith("/learn")
-                : pathname === item.href;
-
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive ? "page" : undefined}
-                className={`relative px-3.5 py-2 rounded-xl text-[13px] transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center ${
-                  isActive
-                    ? "text-foreground font-semibold bg-black/[0.04] dark:bg-white/[0.06]"
-                    : "text-muted font-medium hover:text-foreground hover:bg-black/[0.03] dark:hover:bg-white/[0.04]"
-                }`}
-              >
-                <span>{item.label}</span>
-                {isActive && (
-                  <span
-                    className="absolute bottom-0 inset-x-2.5 h-[2px] bg-[#65A30D] dark:bg-[#A3E635] rounded-full"
-                    aria-hidden="true"
-                  />
-                )}
-              </Link>
-            );
-          })}
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="relative px-3.5 py-2 rounded-xl text-[13px] transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center text-muted font-medium hover:text-foreground hover:bg-black/[0.03] dark:hover:bg-white/[0.04]"
+            >
+              <span>{item.label}</span>
+            </Link>
+          ))}
         </nav>
 
         {/* Right status chip, Theme toggle & Mobile toggle */}
         <div className="flex items-center gap-2.5 sm:gap-3">
           <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#84CC16]/12 text-[#3F6212] dark:text-[#BEF264] border border-[#84CC16]/25 shadow-whisper">
             <ShieldCheckIcon size={14} className="text-[#65A30D] dark:text-[#A3E635]" />
-            <span>100% In-Browser</span>
+            <span>Browser Tools Local</span>
           </div>
 
           <ThemeToggle />

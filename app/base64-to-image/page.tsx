@@ -11,7 +11,7 @@ import {
 } from "@/lib/seo/site";
 
 export const metadata: Metadata = buildRouteMetadata({
-  title: "Base64 to Image Decoder Online — Preview & Download Images",
+  title: "Base64 to Image Converter — Decode PNG, JPG & SVG",
   description:
     "Decode Base64 strings and Data URIs into visible images directly in your browser. Live visual preview, automatic image format detection, and instant download.",
   path: "/base64-to-image",

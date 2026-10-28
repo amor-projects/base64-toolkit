@@ -85,19 +85,40 @@ export default function TermsPage() {
 
           <section className="space-y-3">
             <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
-              3. Disclaimer of Warranties (&apos;As-Is&apos;)
+              3. API Use, URL Visibility &amp; Rate Limits
             </h2>
             <p>
-              Base64 Toolkit is provided on an <strong>&apos;AS IS&apos;</strong> and <strong>&apos;AS AVAILABLE&apos;</strong> basis, without warranties of any kind, whether express, statutory, or implied.
+              The optional Base64 API accepts text, Base64 values, or URLs through GET query
+              parameters and returns JSON. You must not submit passwords, secrets, private tokens,
+              unlawful content, or confidential values. GET query strings can be retained by
+              browsers, networks, CDNs, and hosting providers outside our control. The application
+              does not intentionally persist submitted values or results.
             </p>
             <p>
-              While we test our conversion algorithms rigorously against RFC standards, we do not warrant that the website will be uninterrupted, error-free, or that decoded data from untrusted third parties will be free from corruption or security risks.
+              The API is rate-limited, validates input length and Base64 syntax, and may reject
+              requests with a 400, 413, 422, or 429 response. Rate limits are process-local and
+              may vary between hosting instances. Base64 output is not encryption, does not shorten
+              a URL, and does not guarantee that a destination is safe or available.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
-              4. Limitation of Liability
+              4. Disclaimer of Warranties (&apos;As-Is&apos;)
+            </h2>
+            <p>
+              Base64 Toolkit, including the website and API, is provided on an <strong>&apos;AS IS&apos;</strong> and <strong>&apos;AS AVAILABLE&apos;</strong> basis, without warranties of any kind, whether express, statutory, or implied.
+            </p>
+            <p>
+              While we test our conversion algorithms against relevant standards, we do not warrant
+              that the website or API will be uninterrupted, error-free, permanently available, or
+              that decoded data from untrusted third parties will be free from corruption or security risks.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
+              5. Limitation of Liability
             </h2>
             <p>
               To the fullest extent permitted by applicable law, the operators of Base64 Toolkit shall not be liable for any indirect, incidental, special, consequential, or punitive damages—including data loss, lost profits, or business interruption—arising from your use of or inability to use this website.
@@ -106,7 +127,7 @@ export default function TermsPage() {
 
           <section className="space-y-3">
             <h2 className="text-base sm:text-lg font-semibold text-foreground border-b border-border/60 pb-2">
-              5. Governing Law &amp; Contact
+              6. Governing Law &amp; Contact
             </h2>
             <p>
               These terms are governed by the laws applicable in Pakistan.
@@ -114,7 +135,7 @@ export default function TermsPage() {
             <div className="p-4 rounded-xl bg-surface border border-border/80 font-mono text-xs space-y-1">
               <p>Operator: Abdul Samad (aka amorzephyr)</p>
               <p>Contact: <Link href="/contact" className="text-[#27440D] dark:text-[#BEF264] underline">Contact Support</Link></p>
-              <p>Effective Date: October 22, 2026</p>
+              <p>Effective Date: October 28, 2026</p>
             </div>
           </section>
         </div>

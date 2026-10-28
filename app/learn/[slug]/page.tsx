@@ -1,7 +1,7 @@
-import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { EDUCATIONAL_GUIDES } from "@/lib/content/guides";
 import { MarkdownRenderer } from "@/components/content/MarkdownRenderer";
 import { CopyLinkButton, GuideProgress } from "@/components/content/GuideProgress";
@@ -29,7 +29,43 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
   });
 }
 
-export default async function GuidePage({ params }: GuidePageProps) {
+export default function GuidePage({ params }: GuidePageProps) {
+  return (
+    <main className="flex-1 flex flex-col items-center py-8 sm:py-12 font-sans">
+      <GuideProgress />
+      <Suspense fallback={<GuideLoadingFallback />}>
+        <GuidePageContent params={params} />
+      </Suspense>
+    </main>
+  );
+}
+
+function GuideLoadingFallback() {
+  return (
+    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" aria-busy="true">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-muted font-mono">
+        <Link href="/">Home</Link>
+        <span>/</span>
+        <Link href="/learn">Guides</Link>
+      </nav>
+      <div className="mt-8 max-w-4xl border-b border-border/70 pb-9">
+        <div className="h-4 w-32 animate-pulse rounded bg-border/70" />
+        <div className="mt-6 h-12 max-w-2xl animate-pulse rounded-xl bg-border/70" />
+        <div className="mt-5 h-5 max-w-xl animate-pulse rounded bg-border/50" />
+      </div>
+      <div className="mt-8 grid items-start gap-10 lg:grid-cols-[190px_minmax(0,1fr)] lg:gap-14">
+        <div className="hidden h-52 animate-pulse rounded-2xl bg-border/40 lg:block" />
+        <div className="space-y-5">
+          <div className="h-28 animate-pulse rounded-2xl bg-border/40" />
+          <div className="h-96 animate-pulse rounded-2xl bg-border/30" />
+        </div>
+      </div>
+      <p className="sr-only">Loading guide content…</p>
+    </div>
+  );
+}
+
+async function GuidePageContent({ params }: GuidePageProps) {
   const { slug } = await params;
   const guide = EDUCATIONAL_GUIDES.find((item) => item.slug === slug);
 
@@ -51,8 +87,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
   });
 
   return (
-    <main className="flex-1 flex flex-col items-center py-8 sm:py-12 font-sans">
-      <GuideProgress />
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
@@ -169,6 +204,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
           </div>
         </div>
       </div>
-    </main>
+    </>
   );
 }

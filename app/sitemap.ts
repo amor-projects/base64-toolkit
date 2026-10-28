@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/seo/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
-  const today = "2026-10-22";
+  const today = "2026-10-28";
 
   const coreRoutes: MetadataRoute.Sitemap = [
     {
@@ -78,6 +78,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: today,
       changeFrequency: "weekly",
       priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/api-reference`,
+      lastModified: today,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/learn`,
