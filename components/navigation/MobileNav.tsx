@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ShieldCheckIcon, MenuIcon, CloseIcon } from "@/components/ui/Icons";
+import { CloseMobileNavOnNavigation } from "./CloseMobileNavOnNavigation";
 
 interface NavItem {
   label: string;
@@ -18,6 +19,7 @@ interface MobileNavProps {
 export function MobileNav({ items }: MobileNavProps) {
   return (
     <details className="mobile-nav lg:hidden">
+      <CloseMobileNavOnNavigation />
       <summary
         className="mobile-nav-summary inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl p-2 text-muted transition-colors duration-150 hover:bg-black/[0.04] hover:text-foreground dark:hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#84CC16]/50 active:scale-95"
         aria-controls="mobile-menu"
