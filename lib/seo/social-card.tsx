@@ -5,28 +5,6 @@ export const SOCIAL_IMAGE_SIZE = {
   height: 630,
 } as const;
 
-export async function loadSocialFonts() {
-  const [outfitRegular, outfitBold] = await Promise.all([
-    fetch(
-      "https://cdn.jsdelivr.net/npm/@fontsource/outfit@5.0.8/files/outfit-latin-400-normal.woff"
-    ).then((res) => {
-      if (!res.ok) throw new Error(`Unable to load social-card font: ${res.status}`);
-      return res.arrayBuffer();
-    }),
-    fetch(
-      "https://cdn.jsdelivr.net/npm/@fontsource/outfit@5.0.8/files/outfit-latin-700-normal.woff"
-    ).then((res) => {
-      if (!res.ok) throw new Error(`Unable to load social-card font: ${res.status}`);
-      return res.arrayBuffer();
-    }),
-  ]);
-
-  return [
-    { name: "Outfit", data: outfitRegular, weight: 400 as const, style: "normal" as const },
-    { name: "Outfit", data: outfitBold, weight: 700 as const, style: "normal" as const },
-  ];
-}
-
 export function SocialCard() {
   return (
     <div
